@@ -2,8 +2,8 @@
 
 Reproducibility companion for the note:
 
-> E. De Jesús, *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum*, 2026.
-> Zenodo DOI: **[to be assigned on deposit]** · ORCID: [0009-0007-0190-9143](https://orcid.org/0009-0007-0190-9143)
+> E. De Jesús, *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum*, 2026.  
+> Zenodo DOI: **[10.5281/zenodo.21796640](https://doi.org/10.5281/zenodo.21796640)** · ORCID: [0009-0007-0190-9143](https://orcid.org/0009-0007-0190-9143)
 
 The note studies chronological record minima on the exact spectrum of an uncoupled
 two-mode harmonic oscillator, `E = ħω₁(n₁+½) + ħω₂(n₂+½)`, `α = ω₁/ω₂ > 1`.
@@ -112,10 +112,14 @@ repository root.
 - **Three-tier labels** — proved / computationally verified / conjectural — on every
   statement in the note; computation never upgrades a label.
 
-## Citing
 
-Until the Zenodo DOI is assigned, cite the note by title and author, and this repository
-by URL. A `CITATION.cff` is included; update the `doi` field after deposit.
+## Citation
+
+If you use this repository or the accompanying manuscript, please cite:
+
+> E. De Jesús, *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum*. Zenodo (2026). https://doi.org/10.5281/zenodo.21796640
+
+The repository includes a `CITATION.cff` file with the corresponding citation metadata. Please ensure the DOI in `CITATION.cff` is set to:
 
 ## License
 

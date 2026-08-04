@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the accompanying note."
+title: "Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum"
+authors:
+  - family-names: "De Jesús"
+    given-names: "Elias"
+    orcid: "https://orcid.org/0009-0007-0190-9143"
+date-released: 2026-08-04
+version: "1.0.0"
+doi: "10.5281/zenodo.XXXXXXXX"  # update after Zenodo deposit
+keywords:
+  - record sequences
+  - Pell equation
+  - Diophantine approximation
+  - two-mode oscillator spectrum
+  - exact arithmetic
+license: MIT

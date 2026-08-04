@@ -1,0 +1,569 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[margin=1.1in]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\eb}{\varepsilon_{\mathrm{bal}}}
+\newcommand{\ee}{\varepsilon_{\mathrm{edge}}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\lam}{\lambda}
+\newcommand{\B}{\mathcal{B}}
+
+\title{Boundary and Interior Record Chronologies\\ for the Two-Mode Oscillator Spectrum}
+\author{Elias De Jes\'us\\ \small Independent Researcher\\ \small ORCID: 0009-0007-0190-9143\\ \small \texttt{dejesuselias10@gmail.com}}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $E(n_1,n_2)=\hbar\omega_1(n_1+\tfrac12)+\hbar\omega_2(n_2+\tfrac12)$ be the spectrum of an uncoupled two-mode harmonic oscillator with frequency ratio $\alpha=\omega_1/\omega_2>1$. Writing $m=2n_1+1$, $k=2n_2+1$ and normalizing by $\hbar\omega_2$, every level has height $h=(m\alpha+k)/2$ with $m,k$ odd, and carries the energy partition $(a,b)=\bigl(m\alpha,\,k\bigr)/(m\alpha+k)$. We study the chronological record minima, in the sense of the author's earlier work on primitive Pythagorean triples, of two observables: the balance error $\eb=|a-b|$ and the boundary error $\ee=\min(a,b)$. Two complete theorems are proved. First, for every $\alpha>1$ the boundary records are exactly the minimum-occupation ladder $(m,1)$ together with a finite, explicitly determined exceptional set of states $(1,2n+1)$, $n\in S(\alpha)$, where $S(\alpha)=\{n\ge1:\alpha^2(2\lfloor n/\alpha\rfloor+1)<2n+1\}$; along the ladder $h\,\ee=\tfrac12$ exactly. The set $S(\alpha)$ is nonempty on an isolated window $(2,\sqrt5)$ in addition to the interval near $\alpha=1$. Second, for $\alpha=\sqrt2$ the interior balance records are exactly a merged pair of orbits of the Pell automorph $\bigl(\begin{smallmatrix}3&2\\4&3\end{smallmatrix}\bigr)$, with signed norm defects $k^2-2m^2$ alternating $-1,+7,-1,+7,\dots$; the proof combines two congruence exclusions with four exact gap inequalities in $\ZZ[\sqrt2]$, and yields the record-counting coefficient $2/\log(3+2\sqrt2)$ and the exact envelope constants $\liminf h^2\eb=\tfrac14$, $\limsup=\frac{57+40\sqrt2}{28}$ along the running minimum. Computational chronologies, obtained by exact arithmetic and clearly separated from the theorems, are reported for $\alpha=\varphi$ (a period-three merge of odd Fibonacci and alternate odd Lucas pairs, with defect cycle $-1,+1,-5$ decided by geometrically shrinking margins), for $\alpha=1+\sqrt3$ (defect cycle $-3,+1,-11$), for the rational ratios $3/2$ and $5/3$ (an infinite ladder chronology with boundary-type scaling, and a terminating chronology with exact equipartition, respectively; the rational dichotomy is proved), and for $\alpha=e,\pi$. All ordering decisions and error comparisons underlying every table were made by exact sign tests in real quadratic fields or in exact rational arithmetic; the reproducibility package is described in the appendices.
+\end{abstract}
+
+\section{Introduction}
+
+In a series of papers on primitive Pythagorean triples the author studied \emph{chronological record} problems: triples are ordered by a height (the hypotenuse), and one asks which triples achieve each successive strict improvement of a fixed observable. Two such problems were solved completely. The record minima of the normalized leg separation $|b-a|/c$ are attained exactly on the Pell spine $|b-a|=1$ \cite{pellspine}, and the record minima of the coupling $ab/c^2$ are attained exactly on the boundary family $c-\max(a,b)=1$ \cite{quartercircle}. The comparison of these two chronologies in \cite{quartercircle} isolated a general mechanism: a multiplicative gap in the admissible values of an integer numerator is weighed against the growth ratio of a distinguished extremal ladder, and the observable's chronology is governed by whichever is larger. The same paper developed matched first-order observables, record counting functions, relative record spacing, and the oscillation or collapse of scaled record envelopes, and warned explicitly against classifying such chronologies by the algebraic degree of the target alone. The transfer of record structure through exact identities and monotone reparametrizations was treated in \cite{majorization}.
+
+The present note asks whether an analogous chronology appears in a different, equally elementary arithmetic object: the exact spectrum of an uncoupled two-mode harmonic oscillator. The emphasis is entirely mathematical. The spectrum supplies nothing more than a two-parameter family of heights $h=(m\alpha+k)/2$ over odd integer pairs, together with a natural binary partition of each height; no dynamics, coupling, or physical interpretation enters, and none is claimed. What makes the setting worth a separate note is that both extremal problems on this family---balance and boundary---admit complete answers of exactly the gap-versus-ladder type of \cite{quartercircle,pellspine}, with the roles of rational and quadratic-irrational targets reappearing in a transparent form, and with one new structural feature: the parity restriction to odd $(m,k)$, forced by the zero-point energies, selects sub-orbits of the relevant Pell dynamics and thereby changes which norm values can carry records.
+
+The results are stated with explicit epistemic labels. Theorems and propositions marked \emph{proved} carry complete proofs. Statements marked \emph{computationally verified} are exact finite computations, reproducible from the accompanying code, and are never used as evidence for the infinite statements. Statements marked \emph{conjectural} are conjectures. This discipline follows the practice of \cite{pellspine,quartercircle}, and the boundary between the categories is maintained throughout.
+
+\section{Definitions}
+
+\subsection{States, heights, and partitions}
+
+Let $\omega_1>\omega_2>0$ and $\alpha=\omega_1/\omega_2>1$. The energy levels of the uncoupled two-mode oscillator are
+\[
+E(n_1,n_2)=\hbar\omega_1\Bigl(n_1+\tfrac12\Bigr)+\hbar\omega_2\Bigl(n_2+\tfrac12\Bigr),
+\qquad n_1,n_2\in\ZZ_{\ge0}.
+\]
+Substituting the odd integers
+\[
+m=2n_1+1,\qquad k=2n_2+1,
+\]
+and normalizing by $\hbar\omega_2$, every state $T=(m,k)$ has the dimensionless height
+\[
+h(T)=\frac{E}{\hbar\omega_2}=\frac{m\alpha+k}{2},
+\]
+and the parity constraint \emph{$m$ and $k$ odd} is imposed throughout; it is the arithmetic residue of the two zero-point terms and is the only feature of the oscillator origin that survives into the mathematics. The two energy channels define the normalized partition
+\[
+a=\frac{m\alpha}{m\alpha+k},\qquad b=\frac{k}{m\alpha+k},\qquad a+b=1 .
+\]
+
+\subsection{The two observables}
+
+\begin{definition}[Balance and boundary errors]\label{def:obs}
+For a state $T=(m,k)$ set
+\[
+\eb(T)=|a-b|=\frac{|m\alpha-k|}{m\alpha+k},
+\qquad
+\ee(T)=\min(a,b)=\frac{\min(m\alpha,\,k)}{m\alpha+k}.
+\]
+$\eb$ measures the distance of the partition from equipartition $a=b=\tfrac12$; $\ee$ measures its distance from the boundary $\{a=0\}\cup\{b=0\}$ of the partition simplex.
+\end{definition}
+
+\subsection{Chronological records}
+
+Records are always chronological in the height $h$, in the sense of \cite[Def.~1.1]{quartercircle}, which we restate in the present coordinates.
+
+\begin{definition}[Chronological record]\label{def:record}
+Let $\Phi$ be a real observable on states. A state $T$ is a \emph{record minimum} of $\Phi$ if
+\[
+\Phi(T)<\Phi(T')\ \text{ for every state } T' \text{ with } h(T')<h(T),
+\quad\text{and}\quad
+\Phi(T)\le\Phi(T')\ \text{ for every } T' \text{ with } h(T')=h(T).
+\]
+A state that merely ties the running minimum at strictly larger height is not a record. For irrational $\alpha$ distinct states have distinct heights, so the equal-height clause is vacuous; for rational $\alpha$ it is not, and the computations of Section~\ref{sec:audit} implement it exactly.
+\end{definition}
+
+The ordering convention is therefore: sort states by exact height; within an exact height tie, a record must be weakly minimal in its tie class and strictly better than everything below.
+
+\section{Exact identities}\label{sec:identities}
+
+All statements in this section are \emph{proved}; each proof is a short algebraic verification.
+
+\begin{lemma}[Balance identity]\label{lem:balance}
+For every state $T=(m,k)$ and every $\alpha>1$,
+\[
+\boxed{\ 4h^2\,\eb \;=\; \bigl|m^2\alpha^2-k^2\bigr|.\ }
+\]
+\end{lemma}
+
+\begin{proof}
+$4h^2\eb=(m\alpha+k)^2\cdot|m\alpha-k|/(m\alpha+k)=|m\alpha-k|(m\alpha+k)=|m^2\alpha^2-k^2|$.
+\end{proof}
+
+When $\alpha=\sqrt{s}$ for an integer $s$, the right-hand side is the absolute value of the \emph{integer} norm form $|k^2-sm^2|$. More generally, if $\alpha$ is a quadratic irrational with minimal polynomial $x^2-tx-s$ ($t,s\in\ZZ$) and conjugate $\bar\alpha$, then the integer
+\begin{equation}\label{eq:normform}
+N(m,k)=(k-m\alpha)(k-m\bar\alpha)=k^2-t\,km-s\,m^2
+\end{equation}
+satisfies the exact relation
+\begin{equation}\label{eq:epsN}
+\eb=\frac{|N(m,k)|}{(m\alpha+k)\,\bigl|k-m\bar\alpha\bigr|},
+\end{equation}
+so that near the target line $k\approx m\alpha$ one has, exactly at the level of identities and without asymptotics, $\eb\cdot 4h^2=|N|\cdot(m\alpha+k)/|k-m\bar\alpha|$, an integer times a bounded algebraic factor. For $\alpha=\sqrt s$ the factor is $1$ and Lemma~\ref{lem:balance} is the integral norm-form identity itself.
+
+\begin{lemma}[Scaling and primitivity]\label{lem:scaling}
+For every odd $d\ge1$,
+\[
+\eb(dm,dk)=\eb(m,k),\qquad \ee(dm,dk)=\ee(m,k),\qquad h(dm,dk)=d\,h(m,k).
+\]
+Consequently no imprimitive state $(dm,dk)$, $d\ge3$, can be a strict record of either observable: it ties a state of strictly smaller height and is excluded by Definition~\ref{def:record}. Records may be sought among $\gcd(m,k)=1$.
+\end{lemma}
+
+\begin{proof}
+Both observables are homogeneous of degree $0$ in $(m,k)$ and $h$ is homogeneous of degree $1$; oddness of $d$ preserves the parity constraint.
+\end{proof}
+
+\subsection{Why the two orders of decay differ}\label{sec:orders}
+
+The interior error is naturally $O(h^{-2})$ and the boundary error $O(h^{-1})$, and both facts are exact consequences of identities together with integrality; no heuristic or measure-theoretic argument is required.
+
+For the boundary: on the minimum-occupation ladder $\B=\{(m,1):m \text{ odd}\}$ one has $\min(m\alpha,1)=1$ (since $m\alpha>1$), so
+\begin{equation}\label{eq:half}
+\ee(m,1)=\frac{1}{m\alpha+1}=\frac{1/2}{h(m,1)},
+\qquad\text{i.e.}\qquad h\,\ee=\tfrac12\ \text{ exactly on }\B .
+\end{equation}
+The ladder contains one state per odd $m$, hence a state in every height window of length $\alpha$; the boundary error therefore decays exactly like $\tfrac12 h^{-1}$ along an ever-present family, and Theorem~\ref{thm:boundary} will show nothing does better.
+
+For the interior with $\alpha=\sqrt2$: Lemma~\ref{lem:balance} gives $\eb=|k^2-2m^2|/(4h^2)$ with $k^2-2m^2$ a nonzero integer (irrationality of $\sqrt2$), so \emph{pointwise} $\eb\ge 1/(4h^2)$; and Theorem~\ref{thm:complete} will show that on the record sequence the integer numerator is bounded (by $7$), so that $h^2\eb$ is bounded above and below by explicit constants along records. Both orders are thus read off from the identities: the boundary observable has an exact $h^{-1}$ law on a dense-in-height ladder, while the interior observable has an integer-quantized numerator over $4h^2$ whose record values are proved bounded.
+
+\section{The boundary record theorem}\label{sec:boundary}
+
+Throughout this section $\alpha>1$ is arbitrary. Define the main ladder and the exceptional set
+\[
+\B=\{(m,1):m\ \text{odd}\},
+\qquad
+S(\alpha)=\Bigl\{\,n\ge1:\ \alpha^2\Bigl(2\Bigl\lfloor\frac n\alpha\Bigr\rfloor+1\Bigr)<2n+1\,\Bigr\}.
+\]
+
+\begin{theorem}[Boundary record theorem; \emph{proved}]\label{thm:boundary}
+For every $\alpha>1$ the record minima of $\ee$ are exactly
+\[
+\B\ \cup\ \bigl\{(1,2n+1):\,n\in S(\alpha)\bigr\}.
+\]
+Every element of $\B$ is a record; the states $(1,2n+1)$, i.e.\ $(n_1,n_2)=(0,n)$, are records precisely for $n\in S(\alpha)$; and no state with $n_1\ge1$ and $n_2\ge1$ is a record, for any $\alpha>1$, with no exceptions. Moreover:
+\begin{enumerate}
+\item[(i)] $S(\alpha)$ is finite, with the explicit bound $\displaystyle\max S(\alpha)<\frac{1+\alpha^2}{2(\alpha-1)}$;
+\item[(ii)] $h\,\ee=\tfrac12$ exactly on $\B$, and the running-minimum envelope satisfies
+$\displaystyle h\,\min_{h(T)\le h}\ee(T)\longrightarrow\tfrac12$, dimensionally
+$\displaystyle E\,\min_{E(T)\le E}\ee(T)\to\tfrac12\hbar\omega_2$;
+\item[(iii)] the record counting function satisfies $N_{\mathrm{edge}}(h)=h/\alpha+O_\alpha(1)$, equivalently $N_{\mathrm{edge}}(E)=E/(\hbar\omega_1)+O_\alpha(1)$, and consecutive record heights satisfy $h_{j+1}/h_j\to1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{No mixed state is a record.} Let $m,k\ge3$. If the minimum in $\ee$ is the $k$-side, compare with $(m,1)$, which has strictly smaller height:
+$\frac{1}{m\alpha+1}<\frac{k}{m\alpha+k}\iff m\alpha+k<k(m\alpha+1)\iff m\alpha<km\alpha$, true since $k>1$. If the minimum is the $m$-side (so $m\alpha<k$), compare with $(1,k)$, again of strictly smaller height:
+$\frac{\alpha}{\alpha+k}<\frac{m\alpha}{m\alpha+k}\iff k<mk$, true since $m>1$. Both dominations are strict.
+
+\emph{Every rung $(m,1)$ is a record.} The values $\ee(m,1)=1/(m\alpha+1)$ are strictly decreasing in $m$. For any $(1,k)$ of smaller height, $k<(m-1)\alpha+1$, and
+\[
+\frac{1}{m\alpha+1}<\frac{\alpha}{\alpha+k}\iff k<\alpha^2 m,
+\]
+which holds because $\alpha^2m-\bigl((m-1)\alpha+1\bigr)=(\alpha m+1)(\alpha-1)>0$. Mixed states of smaller height are strictly worse than ladder states that are lower still, by the previous paragraph combined with monotonicity along each ladder. If $\alpha$ is rational and $(m,1)$ shares its exact height with another state $(m',k')$, then $\min(m'\alpha,k')>1$ unless $(m',k')=(m,1)$, so $\ee(m,1)=1/u$ is strictly minimal in its height class; ties never disqualify a rung.
+
+\emph{The exceptional condition.} Fix $n\ge1$ and consider $T=(1,2n+1)$, of height $u/2$ with $u=\alpha+2n+1$. Along its own ladder, $\ee(1,k)=\alpha/(\alpha+k)$ is strictly decreasing, so all earlier $(1,k')$ are beaten strictly. Mixed states of smaller height are strictly worse than lower ladder states, as above. The binding competitor is therefore the most recent main rung below $T$: the largest odd $2j+1$ with $(2j+1)\alpha+1<\alpha+2n+1$, i.e.\ $j\alpha<n$, i.e.
+\[
+j=\Bigl\lfloor \frac n\alpha \Bigr\rfloor .
+\]
+This is the role of $j$: it indexes the last main-ladder record already established when $(1,2n+1)$ arrives. (If $j\alpha=n$ exactly, which requires $\alpha$ rational, the two heights tie; at a tied height the rung wins strictly, since $1/u<\alpha/u$, so the strict inequality below is correct in the tie case as well.) The record condition is
+\[
+\frac{\alpha}{\alpha+2n+1}<\frac{1}{(2j+1)\alpha+1}
+\iff
+\alpha^2(2j+1)+\alpha<\alpha+2n+1
+\iff
+\alpha^2(2j+1)<2n+1 ,
+\]
+which is precisely membership in $S(\alpha)$. Thus the exceptional set is exactly $S(\alpha)$; the candidate formula is hereby \emph{derived}, not merely tested.
+
+\emph{Finiteness.} Since $\lfloor n/\alpha\rfloor>n/\alpha-1$, membership forces $\alpha^2(2n/\alpha-1)<2n+1$, i.e.\ $n<\frac{1+\alpha^2}{2(\alpha-1)}$, proving (i).
+
+\emph{Envelope and counting.} \eqref{eq:half} gives $h\,\ee=\tfrac12$ on $\B$. The running minimum at height $h$ is achieved by the last rung, of height $h_{\mathrm{rec}}$ with $h-h_{\mathrm{rec}}\le\alpha$ (consecutive odd $m$), plus at most the finitely many exceptional records, so $h\cdot\min_{h(T)\le h}\ee=\tfrac12\,h/h_{\mathrm{rec}}\to\tfrac12$, proving (ii). The records up to height $h$ are the odd $m\le(2h-1)/\alpha$ plus $|S(\alpha)|$ states, giving (iii); the spacing claim is immediate.
+\end{proof}
+
+\begin{remark}[Comparison with the quarter circle]
+Theorem~\ref{thm:boundary} is the oscillator analogue of the boundary record theorem of \cite[Thm.~1.4]{quartercircle}: a distinguished ladder achieving the minimal admissible numerator at every parameter scale carries all records once its growth ratio tends to $1$, and the envelope oscillation collapses ($h\,\ee\to\tfrac12$ here, $\sqrt C\,h\to\sqrt2$ there). The new phenomenon here is the exceptional set: the two ladders $(m,1)$ and $(1,k)$ compete near the origin, and $S(\alpha)$ records exactly which minimum-$n_1$ states win before the main ladder dominates.
+\end{remark}
+
+\subsection{Thresholds and explicit exceptional sets}\label{sec:thresholds}
+
+\begin{proposition}[Threshold structure; \emph{proved}]\label{prop:thresholds}
+$S(\alpha)$ changes exactly at the quadratic surds $\alpha=\sqrt{(2n+1)/(2j+1)}$ at which the defining inequality changes sign (with $j=\lfloor n/\alpha\rfloor$ consistent on the relevant side), and at the rationals $\alpha=n/j$ at which the floor jumps. In particular:
+\begin{enumerate}
+\item[(a)] $n=1\in S(\alpha)\iff \alpha<\sqrt3$ (with $j=0$; note $1<\alpha<\sqrt3$ forces $\lfloor 1/\alpha\rfloor=0$);
+\item[(b)] $n=2\in S(\alpha)\iff \alpha<\sqrt{5/3}$ (branch $j=1$) or $2<\alpha<\sqrt5$ (branch $j=0$);
+\item[(c)] for $n\ge2$ the branch $j=0$ requires $n<\alpha<\sqrt{2n+1}$, hence $n^2<2n+1$, hence $n=2$; therefore
+\[
+S(\alpha)=\varnothing \ \text{ for }\ \alpha\in[\sqrt3,\,2\,]\ \text{ and for }\ \alpha\ge\sqrt5,
+\qquad
+S(\alpha)=\{2\}\ \text{ for }\ \alpha\in(2,\sqrt5).
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) For $1<\alpha<\sqrt3$ one has $1/\alpha<1$, so $j=0$ and the condition reads $\alpha^2<3$. (b) For $\alpha<2$, $j=\lfloor2/\alpha\rfloor=1$ and the condition is $3\alpha^2<5$; for $\alpha>2$, $j=0$ and it is $\alpha^2<5$. (c) With $j=0$ the condition is $\alpha^2<2n+1$ together with $\lfloor n/\alpha\rfloor=0$, i.e.\ $\alpha>n$; consistency forces $n^2<2n+1$, so $n\le2$. Combining (a)--(c) with the finiteness bound of Theorem~\ref{thm:boundary}(i) gives the three displayed statements; e.g.\ on $[\sqrt3,2]$ the bound excludes $n\ge3$ directly, $n=1$ fails by (a), and $n=2$ fails on both branches of (b).
+\end{proof}
+
+The window $(2,\sqrt5)$ corrects an earlier working assumption that $S(\alpha)$ is empty for all $\alpha>\sqrt3$: the floor jump at $\alpha=2$ reopens the $j=0$ branch, and $S$ is not always an initial interval. Representative exceptional sets, each verified by an independent exact record scan (Section~\ref{sec:audit}):
+\[
+\begin{array}{llll}
+\alpha\downarrow1: & S=\{1,\dots,N(\alpha)\},\ N(\alpha)\sim\tfrac{1}{\alpha-1}; &
+S(21/20)=\{1,\dots,10\}, & S(11/10)=\{1,\dots,5\};\\[2pt]
+\alpha=\sqrt2: & S=\{1\}; & \alpha=\varphi: & S=\{1\};\\[2pt]
+\alpha=129/100:& S=\{1,2\}, & \alpha=130/100: & S=\{1\}\quad(\text{threshold }\sqrt{5/3});\\[2pt]
+\alpha=173/100:& S=\{1\}, & \alpha=\sqrt3,\ 174/100: & S=\varnothing\quad(\text{threshold }\sqrt3);\\[2pt]
+\alpha=199/100,\ 2: & S=\varnothing, & \alpha=201/100: & S=\{2\}\quad(\text{threshold }2);\\[2pt]
+\alpha=5/2,\ 3: & S=\varnothing. & &
+\end{array}
+\]
+
+\section{Interior chronology}\label{sec:interior}
+
+We now fix the balance observable $\eb$ and vary the arithmetic type of $\alpha$. Subsection~\ref{sec:sqrt2} is proved in full; Subsections~\ref{sec:phi} and~\ref{sec:onesqrt3} are computational with explicitly labelled conjectures; Subsection~\ref{sec:rational} is proved; Subsection~\ref{sec:generic} is computational and deliberately brief.
+
+\subsection{$\alpha=\sqrt2$: a proved two-orbit chronology}\label{sec:sqrt2}
+
+Here $h=(m\sqrt2+k)/2$ and, by Lemma~\ref{lem:balance}, $4h^2\eb=|Q|$ with the integer norm form
+\[
+Q=Q(m,k)=k^2-2m^2 .
+\]
+By Lemma~\ref{lem:scaling} we restrict to $\gcd(m,k)=1$, $m,k$ odd.
+
+\begin{lemma}[Parity restriction; \emph{proved}]\label{lem:mod8}
+For odd $m,k$: $Q\equiv7\pmod 8$. Consequently the branches $Q=+1$ and $Q=-7$ are impossible: $|Q|=1$ occurs only as $Q=-1$, and $|Q|=7$ only as $Q=+7$. The feasible values are $Q\in\{\dots,-17,-9,-1,7,15,23,\dots\}$.
+\end{lemma}
+
+\begin{proof}
+$k^2\equiv1\pmod8$ and $2m^2\equiv2\pmod8$ for odd $k,m$, so $Q\equiv-1\equiv7\pmod8$.
+\end{proof}
+
+\begin{lemma}[Congruence exclusion mod 3; \emph{proved}]\label{lem:mod3}
+If $3\mid Q(m,k)$ then $3\mid m$ and $3\mid k$. Hence there are no primitive pairs with $|Q|\in\{9,15\}$.
+\end{lemma}
+
+\begin{proof}
+$3\mid k^2-2m^2$ with $3\nmid m$ would give $(km^{-1})^2\equiv2\pmod3$, impossible since $2$ is a quadratic nonresidue mod $3$; so $3\mid m$, then $3\mid k^2$, then $3\mid k$.
+\end{proof}
+
+\begin{proposition}[Orbit classification; \emph{proved}]\label{prop:orbits}
+Let $\lam=3+2\sqrt2=(1+\sqrt2)^2$ and let
+\[
+A=\begin{pmatrix}3&2\\4&3\end{pmatrix},\qquad
+\binom{m'}{k'}=A\binom{m}{k}.
+\]
+Then $A$ acts on $u=m\sqrt2+k$ as multiplication by $\lam$, preserves $Q$, preserves parity and coprimality, and the positive odd coprime solutions organize as follows:
+\begin{enumerate}
+\item[(i)] $Q=-1$: a single $A$-orbit, $P_j=A^j(1,1)$, with $u(P_j)=(1+\sqrt2)\lam^j$; explicitly $(1,1),(5,7),(29,41),\dots$;
+\item[(ii)] $Q=+7$: exactly two $A$-orbits, $S_j=A^j(3,5)$ with $u(S_j)=(5+3\sqrt2)\lam^j$, and $T_j=A^j(1,3)$ with $u(T_j)=(3+\sqrt2)\lam^j$; all solutions of $x^2-2y^2=7$ automatically have $x,y$ odd.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+$(m\sqrt2+k)(3+2\sqrt2)=(3m+2k)\sqrt2+(4m+3k)$, and $(4m+3k)^2-2(3m+2k)^2=k^2-2m^2$ by expansion. For (i), the positive solutions of $x^2-2y^2=-1$ are $x+y\sqrt2=(1+\sqrt2)^{2j+1}$ by the classical theory of the fundamental unit $\omega=1+\sqrt2$ of $\ZZ[\sqrt2]$ (norm $-1$); coordinates are odd and coprime automatically, and $\lam=\omega^2$ steps through them, so they form one $A$-orbit with $u(P_j)=\omega^{2j+1}$. For (ii), $2$ is a quadratic residue mod $7$ ($3^2\equiv2$), so $7$ splits in $\ZZ[\sqrt2]$ and every element of norm $7$ is an associate of $3+\sqrt2$ or of its conjugate $3-\sqrt2$; the positive-coordinate solutions of $x^2-2y^2=7$ are $(3+\sqrt2)\omega^{2t}$, $t\ge0$, and $(3-\sqrt2)\omega^{2t}$, $t\ge1$, and $(3-\sqrt2)\omega^{2}=5+3\sqrt2$. In state coordinates $(m,k)=(y,x)$ these are the $T$- and $S$-orbits with the stated seeds and heights. Oddness on the norm-$7$ branch: $x$ is odd since $x^2=2y^2+7$; then $2y^2\equiv x^2-7\equiv-6\equiv2\pmod 8$, so $y$ is odd. Applying $\omega^{-2}$ to either seed produces a negative coordinate, so each seed is minimal in its orbit and the two orbits are distinct and exhaustive.
+\end{proof}
+
+\begin{proposition}[Interlacing; \emph{proved}]\label{prop:interlace}
+For all $j\ge0$,
+\[
+h(P_j)<h(T_j)<h(S_j)<h(P_{j+1}),
+\]
+with the exact ratios
+\[
+\frac{h(S_j)}{h(P_j)}=1+2\sqrt2,\qquad
+\frac{h(P_{j+1})}{h(S_j)}=\frac{5+4\sqrt2}{7},\qquad
+\frac{h(T_j)}{h(P_j)}=2\sqrt2-1 ,
+\]
+and both record subsequences grow geometrically with common multiplier $\lam=3+2\sqrt2$.
+\end{proposition}
+
+\begin{proof}
+The identities $(1+\sqrt2)(1+2\sqrt2)=5+3\sqrt2$, $(1+\sqrt2)(2\sqrt2-1)=3+\sqrt2$, and $(5+3\sqrt2)(5+4\sqrt2)=7\lam(1+\sqrt2)$ are verified by expansion; dividing the closed forms of Proposition~\ref{prop:orbits} gives the ratios, and $1<2\sqrt2-1<1+2\sqrt2<(1+2\sqrt2)\cdot\frac{5+4\sqrt2}{7}=\lam$ gives the strict order.
+\end{proof}
+
+\begin{theorem}[Record completeness; \emph{proved}]\label{thm:complete}
+The record minima of $\eb$ for $\alpha=\sqrt2$ are exactly the merged sequence
+\[
+P_0,\;S_0,\;P_1,\;S_1,\;P_2,\;S_2,\;\dots
+\]
+and the signed norm defects along the records alternate
+\[
+Q=-1,\;+7,\;-1,\;+7,\;\dots
+\]
+In particular, no primitive odd pair with $|Q|\ge9$ is ever a record, and the $T$-orbit, despite having $|Q|=7$, contributes no record.
+\end{theorem}
+
+\begin{proof}
+Since $\eb=|Q|/(4h^2)$, a state at height $h$ beats an earlier record at height $h_0$ with defect $q_0$ if and only if $|Q|\,h_0^2<q_0\,h^2$. We argue by induction along the merged sequence; $P_0=(1,1)$ is the lowest state of the entire spectrum and starts the chronology. Suppose the records up to and including height $h(P_j)$ are $P_0,S_0,\dots,P_j$ (the case ending at $S_j$ is symmetric). Consider a candidate interloper $T'$ with $h(P_j)<h(T')<h(S_j)$ and defect $q=|Q(T')|$; it must satisfy $h(T')>\sqrt q\,h(P_j)$.
+
+If $q\ge15$: then $h(T')>\sqrt{15}\,h(P_j)>(1+2\sqrt2)h(P_j)=h(S_j)$, because $15>9+4\sqrt2$ (exactly: $36>32$); contradiction. If $q=9$: impossible primitively by Lemma~\ref{lem:mod3}. If $q=7$: by Proposition~\ref{prop:orbits} the only norm-$7$ states in this height window are $T_j$ (the $S$-orbit member is the endpoint $S_j$ itself), and $h(T_j)=(2\sqrt2-1)h(P_j)$ with $(2\sqrt2-1)^2=9-4\sqrt2<7$ (exactly: $2<4\sqrt2$, i.e.\ $4<32$), so $T_j$ fails. If $q=1$: the only norm-$1$ states are the $P$-orbit, and none lies in the open window. Hence there is no record strictly between $P_j$ and $S_j$; and $S_j$ itself is a record because $\eb(S_j)/\eb(P_j)=7/(1+2\sqrt2)^2=7/(9+4\sqrt2)<1$.
+
+Now consider the window $h(S_j)<h(T')<h(P_{j+1})$, where an interloper must satisfy $h(T')>\sqrt{q/7}\,h(S_j)$. If $q\ge17$: then $h(T')>\sqrt{17/7}\,h(S_j)>\frac{5+4\sqrt2}{7}h(S_j)=h(P_{j+1})$, because $7\cdot17=119>57+40\sqrt2$ (exactly: $62^2=3844>3200=(40\sqrt2)^2$); contradiction. The values $q\in\{9,15\}$ are impossible primitively (Lemma~\ref{lem:mod3}); $q=7$ contributes no state in this window (both norm-$7$ orbits lie in the $P\!\to\!S$ windows); $q=1$ contributes only the endpoint $P_{j+1}$, which is a record because $\eb(P_{j+1})/\eb(S_j)=\bigl(\tfrac{7}{(5+4\sqrt2)}\bigr)^2\cdot\tfrac{1}{7}\cdot 7=49/(57+40\sqrt2)<1$. This closes the induction; the defect alternation is immediate from Lemma~\ref{lem:mod8} and Proposition~\ref{prop:orbits}.
+\end{proof}
+
+\begin{remark}[The mechanism, and where the margins sit]
+The proof is of the gap-versus-ladder type of \cite{pellspine,quartercircle}: the admissible numerator values above the ladder minimum are compared against the growth of the ladder. Here the comparison must be run twice, once per gap type, and both margins are slim: $15$ against $9+4\sqrt2=14.657\dots$, and $119$ against $57+40\sqrt2=113.569\dots$. The congruence exclusion of $|Q|\in\{9,15\}$ (Lemma~\ref{lem:mod3}) is load-bearing exactly where the numeric margins would otherwise fail, and the parity exclusion of $Q=+1,-7$ (Lemma~\ref{lem:mod8}) is what forces the strict $-1,+7$ alternation. In \cite{pellspine} the corresponding inputs were the quadratic-residue gap $d=1$ or $d\ge7$ against the single ratio $3+2\sqrt2<7$; the oscillator parity constraint makes the present bookkeeping finer but the logic identical.
+\end{remark}
+
+\begin{corollary}[Counting; \emph{proved}]\label{cor:count}
+$N_{\mathrm{bal}}(h)=\dfrac{2}{\log(3+2\sqrt2)}\,\log\dfrac{2h}{1+\sqrt2}+O(1)$.
+The coefficient is $2/\log\lam$, two records per unit multiplier, not $3/\log\lam$: the $T$-orbit, though norm-minimal on its branch, never records.
+\end{corollary}
+
+\begin{corollary}[Exact envelope; \emph{proved}]\label{cor:envelope}
+Along the records, $\eb(P_j)=(3-2\sqrt2)\lam^{-2j}$ and $\eb(S_j)=\frac{43-30\sqrt2}{7}\lam^{-2j}$ exactly. With
+$E_{\mathrm{bal}}(H)=H^2\min_{h(T)\le H}\eb(T)$:
+\[
+\liminf_{H\to\infty}E_{\mathrm{bal}}(H)=\frac14,
+\qquad
+\limsup_{H\to\infty}E_{\mathrm{bal}}(H)=\frac{57+40\sqrt2}{28}=4.0560\dots,
+\]
+the liminf attained at $H=h(P_j)$ and the limsup approached as $H\uparrow h(P_{j+1})$; the competing per-cycle peak, approached as $H\uparrow h(S_j)$, is $\frac{9+4\sqrt2}{4}=3.6642\dots<\limsup$. The record improvement ratios are exactly
+\[
+\frac{\eb(P_j)}{\eb(S_j)}=\frac{9+4\sqrt2}{7},
+\qquad
+\frac{\eb(S_j)}{\eb(P_{j+1})}=\frac{57+40\sqrt2}{7},
+\]
+with product $\lam^2$, and the scaled envelope $E_{\mathrm{bal}}(H)$ is an exactly periodic function of $\log H$ with period $\log\lam$, from the first cycle onward.
+\end{corollary}
+
+\begin{proof}
+$\eb(P_j)=1/u(P_j)^2=(1+\sqrt2)^{-2}\lam^{-2j}=(3-2\sqrt2)\lam^{-2j}$ and $\eb(S_j)=7/(5+3\sqrt2)^2\lam^{-2j}=\frac{7(5-3\sqrt2)^2}{49}\lam^{-2j}$. On $[h_j,h_{j+1})$ the running minimum is $\eb$ at the $j$th record, so $E_{\mathrm{bal}}(h_j)=q_j/4\in\{\tfrac14,\tfrac74\}$ and $\sup$ on the cycle is $h_{j+1}^2\,\varepsilon_{\mathrm{bal},j}$, which by Proposition~\ref{prop:interlace} equals $(1+2\sqrt2)^2/4$ after a $P$-record and $7(5+4\sqrt2)^2/(4\cdot49)=\frac{57+40\sqrt2}{28}$ after an $S$-record. Exact periodicity in $\log H$ follows from the exact self-similarity $u\mapsto\lam u$ of the record set.
+\end{proof}
+
+The first thirty records, with exact heights, exact errors $\eb=(2m^2+k^2-2mk\sqrt2)/|Q|$ (an identity, since $u^2\bar u^2=Q^2$), and the alternating exact ratios, are tabulated in Appendix~\ref{app:csv} (file \texttt{records\_sqrt2\_first30.csv}); the first rows are
+\[
+(1,1),\,(3,5),\,(5,7),\,(19,27),\,(29,41),\,(111,157),\,(169,239),\,(647,915),\dots
+\]
+An exact pruned scan to $m\le2\times10^6$ (heights $\approx1.6\times10^6$; pruning justified \emph{by the theorem} via the record bound $|Q|<17$, and run with margin $|Q|\le60$), cross-validated against a full unpruned enumeration of all $14{,}141$ odd pairs with $u\le400$, reproduces the merged orbit exactly. This computation is a check on the proof and its implementation, not evidence for it.
+
+\subsection{$\alpha=\varphi$: a computational period-three chronology}\label{sec:phi}
+
+Let $\varphi=(1+\sqrt5)/2$, with minimal polynomial $x^2-x-1$; the integer defect \eqref{eq:normform} is $N(m,k)=k^2-km-m^2$. Fibonacci pairs $(F_n,F_{n+1})$ have $N=(-1)^n$, Lucas pairs $(L_n,L_{n+1})$ have $N=5(-1)^{n+1}$, and the odd/odd parity constraint admits exactly the index classes $n\equiv1\pmod3$ (Fibonacci) and $n\equiv1,2\pmod3$ intersected with oddness of both entries, i.e.\ $(F_{3j+1},F_{3j+2})$ and $(L_{3j+1},L_{3j+2})$.
+
+\begin{observation}[$\varphi$-chronology; \emph{computationally verified}]\label{obs:phi}
+An exact record scan (full enumeration to $u\le1500$, extended by an exact pruned scan to $m\le3\times10^6$ with $|N|\le200$; Section~\ref{sec:audit}) yields the chronology of Table~\ref{tab:phi}. Every odd Fibonacci pair $(F_{3j+1},F_{3j+2})$ is a record; of the odd Lucas pairs, exactly those with index $n\equiv4\pmod 6$ --- equivalently, those with $N=-5$, approaching $\varphi$ from below --- are records, every other odd Lucas pair being excluded. The resulting defect sequence is periodic,
+\[
+N=-1,\;+1,\;-5,\;-1,\;+1,\;-5,\;\dots
+\]
+with three records per multiplicative period $\varphi^6$ in height.
+\end{observation}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrll}
+\hline
+$j$ & $m$ & $k$ & $N$ & $h$ & $\eb$ \\
+\hline
+0 & 1 & 1 & $-1$ & 1.309017 & $2.360680\times10^{-1}$\\
+1 & 3 & 5 & $+1$ & 4.927051 & $1.480582\times10^{-2}$\\
+2 & 7 & 11 & $-5$ & 11.163119 & $1.461231\times10^{-2}$\\
+3 & 13 & 21 & $-1$ & 21.017221 & $8.193722\times10^{-4}$\\
+4 & 55 & 89 & $+1$ & 88.995935 & $4.567972\times10^{-5}$\\
+5 & 123 & 199 & $-5$ & 199.009090 & $4.567785\times10^{-5}$\\
+6 & 233 & 377 & $-1$ & 377.000960 & $2.545589\times10^{-6}$\\
+7 & 987 & 1597 & $+1$ & 1596.999773 & $1.418610\times10^{-7}$\\
+8 & 2207 & 3571 & $-5$ & 3571.000507 & $1.418609\times10^{-7}$\\
+9 & 4181 & 6765 & $-1$ & 6765.000053 & $7.905640\times10^{-9}$\\
+10 & 17711 & 28657 & $+1$ & 28656.999987 & $4.405662\times10^{-10}$\\
+11 & 39603 & 64079 & $-5$ & 64079.000028 & $4.405662\times10^{-10}$\\
+12 & 75025 & 121393 & $-1$ & 121393.000003 & $2.455196\times10^{-11}$\\
+\hline
+\end{tabular}
+\caption{Strict balance records for $\alpha=\varphi$ (exact scan; decimals are displays of exact comparisons). Records $j\equiv0,1\pmod3$ are consecutive odd Fibonacci pairs; records $j\equiv2\pmod3$ are the odd Lucas pairs $(L_n,L_{n+1})$, $n\equiv4\pmod6$. File \texttt{chron\_phi.csv}.}
+\label{tab:phi}
+\end{table}
+
+\begin{remark}[Asymptotically degenerate competition]\label{rem:degenerate}
+The Lucas records win by margins that shrink geometrically: $\eb$ at records $4$ and $5$ agree to five significant figures, at records $7$ and $8$ to seven, at records $10$ and $11$ to the displayed precision. The reason is visible in \eqref{eq:epsN}: for a Lucas pair, $|N|=5$ is exactly compensated to leading order by $L_n^2\approx5F_n^2$, so the two ladders are \emph{asymptotically tied} and the record decision is made by the lower-order term in the exact identity $L_n^2-5F_n^2=4(-1)^n$. The sign $(-1)^n$ of that term is what selects every other odd Lucas pair. Floating-point ordering at any fixed precision would eventually misclassify these comparisons; the chronology of Table~\ref{tab:phi} is trustworthy only because every comparison was made exactly in $\QQ(\sqrt5)$. We emphasize that the selection rule just described is an observed pattern with an identified finite mechanism, not a proved theorem.
+\end{remark}
+
+\begin{conjecture}[$\varphi$-completeness; \emph{conjectural}]\label{conj:phi}
+For $\alpha=\varphi$ the record minima of $\eb$ are exactly the merged sequence of Observation~\ref{obs:phi}: all pairs $(F_{3j+1},F_{3j+2})$, $j\ge0$, together with the Lucas pairs $(L_{6j+4},L_{6j+5})$, $j\ge0$, in height order, with defect cycle $(-1,+1,-5)$. A proof would require, in addition to a unit-group orbit classification as in Proposition~\ref{prop:orbits}, an exact treatment of the asymptotically degenerate Lucas--Fibonacci comparison of Remark~\ref{rem:degenerate}, for which the gap inequalities of Theorem~\ref{thm:complete} have no analogue with room to spare: the deciding quantity is the bounded term $4(-1)^n$, not a multiplicative gap.
+\end{conjecture}
+
+\subsection{$\alpha=1+\sqrt3$: a computational period-three chronology}\label{sec:onesqrt3}
+
+Here $\alpha=1+\sqrt3$ has minimal polynomial $x^2-2x-2$ and defect $N(m,k)=k^2-2km-2m^2$. For odd $m,k$ one checks directly that $N\equiv-1-2km\pmod 8$, hence $N\equiv1$ or $5\pmod 8$; in particular $N=-1$, $+3$, $-5$ are infeasible.
+
+\begin{observation}[$(1+\sqrt3)$-chronology; \emph{computationally verified}]\label{obs:sqrt3}
+The exact record scan (full to $u\le1500$, pruned to $m\le3\times10^6$) yields Table~\ref{tab:onesqrt3}: the defect sequence is periodic,
+\[
+N=-3,\;+1,\;-11,\;-3,\;+1,\;-11,\;\dots,
+\]
+with three records per multiplicative period $(2+\sqrt3)^2=7+4\sqrt3$ in height, $(2+\sqrt3)$ being the fundamental unit of $\ZZ[\sqrt3]$. All observed defects are $\equiv1,5\pmod 8$, consistent with the parity restriction.
+\end{observation}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrll}
+\hline
+$j$ & $m$ & $k$ & $N$ & $h$ & $\eb$ \\
+\hline
+0 & 1 & 1 & $-3$ & 1.866025 & $4.641016\times10^{-1}$\\
+1 & 1 & 3 & $+1$ & 2.866025 & $4.674578\times10^{-2}$\\
+2 & 5 & 13 & $-11$ & 13.330127 & $2.476548\times10^{-2}$\\
+3 & 7 & 19 & $-3$ & 19.062178 & $3.261843\times10^{-3}$\\
+4 & 15 & 41 & $+1$ & 40.990381 & $2.346634\times10^{-4}$\\
+5 & 67 & 183 & $-11$ & 183.023702 & $1.295026\times10^{-4}$\\
+6 & 97 & 265 & $-3$ & 265.004464 & $1.684563\times10^{-5}$\\
+7 & 209 & 571 & $+1$ & 570.999309 & $1.209474\times10^{-6}$\\
+8 & 933 & 2549 & $-11$ & 2549.001702 & $6.676068\times10^{-7}$\\
+9 & 1351 & 3691 & $-3$ & 3691.000321 & $8.683629\times10^{-8}$\\
+10 & 2911 & 7953 & $+1$ & 7952.999950 & $6.234566\times10^{-9}$\\
+11 & 12995 & 35503 & $-11$ & 35503.000122 & $3.441365\times10^{-9}$\\
+\hline
+\end{tabular}
+\caption{Strict balance records for $\alpha=1+\sqrt3$ (exact scan). File \texttt{chron\_1plus\_sqrt3.csv}.}
+\label{tab:onesqrt3}
+\end{table}
+
+\begin{conjecture}[\emph{conjectural}]\label{conj:sqrt3}
+For $\alpha=1+\sqrt3$ the chronology of Observation~\ref{obs:sqrt3} is complete: the records are exactly three unit-orbit ladders with defects $-3,+1,-11$, interlaced with period $(2+\sqrt3)^2$.
+\end{conjecture}
+
+\subsection{Rational ratios: termination and crossover}\label{sec:rational}
+
+For rational $\alpha$ the interior problem changes character completely, and both halves of the change can be proved.
+
+\begin{proposition}[Rational dichotomy; \emph{proved}]\label{prop:dichotomy}
+Let $\alpha=p/q>1$ in lowest terms.
+\begin{enumerate}
+\item[(i)] If $p$ and $q$ are both odd, then $\eb=0$ is attained, at $(m,k)=(q,p)$, and the chronology \emph{terminates} there: $(q,p)$ is the final record, and no later state is a record (later zeros are odd multiples $(dq,dp)$, excluded as ties by Definition~\ref{def:record}).
+\item[(ii)] If $pq$ is even, then $pm-qk$ is odd for all odd $m,k$, hence $|pm-qk|\ge1$ and
+$\eb\ge 1/(pm+qk)>0$: equipartition is never attained and the chronology is infinite.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $(q,p)$ is odd/odd and coprime, and $m\alpha=k$ there. (ii) Exactly one of $pm$, $qk$ is even.
+\end{proof}
+
+\begin{proposition}[$\alpha=3/2$; \emph{proved}]\label{prop:32}
+For $\alpha=3/2$ the record minima of $\eb$ are exactly the states
+\[
+\Bigl(m,\ \tfrac{3m\mp1}{2}\Bigr),\qquad m=1,3,5,\dots,
+\]
+where the sign is chosen to make $k$ odd (exactly one choice works, since the two candidates $\frac{3m\pm1}{2}$ differ by $1$). On these records $|3m-2k|=1$ and
+\[
+h\,\eb=\tfrac14 \ \text{ exactly},\qquad N_{\mathrm{bal}}(h)=\tfrac{h}{3}+O(1),\qquad \frac{h_{j+1}}{h_j}\to1 .
+\]
+\end{proposition}
+
+\begin{proof}
+Write $\nu=|3m-2k|$ (odd, $\ge1$ by Proposition~\ref{prop:dichotomy}(ii)) and $u=3m+2k=4h$, so $\eb=\nu/u$. The states with $\nu=1$ are exactly the displayed ones, with $u=6m\mp1$; their $\eb=1/u$ values are strictly decreasing, so each beats all earlier $\nu=1$ states. A record with $\nu\ge3$ at scaled height $u$ must satisfy $\nu/u<1/u_{\mathrm{prev}}$, i.e.\ $u>\nu\,u_{\mathrm{prev}}\ge3u_{\mathrm{prev}}$, where $u_{\mathrm{prev}}$ is the last $\nu=1$ height below. The consecutive $\nu=1$ heights are $5,19,29,43,53,\dots$, with all ratios $<3$ except the first, $19/5$. In the single risky window $u\in(15,19)$: a $\nu=3$ state has $3\mid 2k$, hence $3\mid k$, hence $3\mid u$; but $u$ is odd, and no odd multiple of $3$ lies in $(15,19)$. A $\nu\ge5$ state would need $u>25>19$. So no interloper exists anywhere; every $\nu=1$ state is a record and nothing else is. (The state $(3,3)$ at $u=15$ ties $\eb(1,1)=1/5$ at larger height and is excluded, illustrating the tie clause.) Finally $\eb=1/u=1/(4h)$ on records, and the records up to height $h$ are the odd $m\lesssim\frac{2u}{6}=\frac{4h}{6}$, giving $N=h/3+O(1)$.
+\end{proof}
+
+\begin{proposition}[$\alpha=5/3$; \emph{proved}]\label{prop:53}
+For $\alpha=5/3$ the chronology has exactly two records: $(1,1)$, with $\eb=\tfrac14$, and the terminal record $(3,5)$, with $\eb=0$, at $h=5$. (Verification of the finitely many states below height $5$ is a finite check, contained in the exact scan.)
+\end{proposition}
+
+\begin{remark}[Crossover]\label{rem:crossover}
+Propositions~\ref{prop:32} and~\ref{prop:53} exhibit the two rational behaviours. When equipartition is attainable ($pq$ odd) the interior chronology terminates in finitely many steps at an exact degeneracy. When it is not ($pq$ even) the interior chronology becomes \emph{boundary-like}: a single minimal-numerator ladder present at every scale carries all records, the counting function is linear in $h$, relative record spacing tends to $1$, and the scaled envelope $h\,\eb$ converges to a constant ($\tfrac14$ for $3/2$) instead of oscillating. This is the oscillator instance of the rational-versus-quadratic-irrational contrast of \cite{quartercircle}: rational targets yield dense, envelope-collapsing chronologies with power counting, quadratic-irrational targets yield sparse geometric chronologies with logarithmic counting and non-degenerate envelope oscillation (Corollary~\ref{cor:envelope}). As in \cite[\S7]{quartercircle}, we do not promote this two-regime contrast to a classification by algebraic degree: the $\varphi$ and $1+\sqrt3$ chronologies already show that within a fixed degree the defect cycle, the number of interlaced ladders per unit period, and the tightness of the record margins vary with the field, the unit, and the parity class.
+\end{remark}
+
+\subsection{Generic irrational examples: $e$ and $\pi$}\label{sec:generic}
+
+\begin{observation}[\emph{computationally verified}]\label{obs:epi}
+Exact record scans against high-precision rational surrogates of $e$ and $\pi$ (agreement of the full record lists at $60$ and $120$ decimal digits; Section~\ref{sec:audit}), over all odd pairs with $u\le3000$, give:
+\[
+\begin{array}{ll}
+\alpha=e: & (1,1),\,(1,3),\,(5,13),\,(7,19),\,(43,117),\,(57,155),\,(71,193);\\[2pt]
+\alpha=\pi: & (1,1),\,(1,3),\,(7,23),\,(9,29),\,(11,35),\,(13,41),\,(15,47),\,(27,85),\,(29,91),\\
+& (43,135),\,(57,179),\,(71,223),\,(85,267),\,(99,311),\,(113,355).
+\end{array}
+\]
+The records are odd/odd pairs tracking the continued-fraction approximation of $\alpha$, with arithmetic-progression runs between parity-admissible convergents (for $e$, the run of step $2\cdot(7,19)$ toward $193/71$; for $\pi$, the runs of step $2\cdot(7,22)$ toward $355/113$, whose final record has $\eb=4.2\times10^{-8}$, reflecting the large partial quotient $292$).
+\end{observation}
+
+We record these two examples only to show that the exact machinery applies unchanged, and we draw no structural conclusions from them: for generic $\alpha$ the record chronology inherits the irregularity of the partial quotients, no norm form is available, and no completeness statement of any kind is made.
+
+\section{Exact arithmetic audit}\label{sec:audit}
+
+Every table and every ``computationally verified'' label in this note refers to the following methodology.
+
+\emph{Quadratic-field arithmetic.} For $\alpha\in\QQ(\sqrt d)$ all quantities are represented as pairs $(A,B)$ meaning $A+B\sqrt d$ with integer (or exact rational) coefficients. The primitive is the exact sign test: $\operatorname{sgn}(A+B\sqrt d)$ is decided by the signs of $A,B$ and, in the mixed case, by comparing $A^2$ with $dB^2$ in integers. Heights are compared through $u=m\alpha+k$; errors through cross-multiplication, $\eb(T_1)<\eb(T_2)\iff n_1u_2<n_2u_1$ with $n_i=|m_i\alpha-k_i|$, all four factors being elements of $\ZZ[\sqrt d]$ (after clearing the denominator of $\alpha$), so that every comparison reduces to one exact sign test. No floating-point number ever decides an ordering: floats are used only as presort keys, and the sorted order is re-verified pairwise by exact sign tests before the scan.
+
+\emph{Tie handling.} For rational $\alpha$, exact height ties occur; states are grouped by exact height and the two clauses of Definition~\ref{def:record} are applied literally, including the exclusion of ties with the running minimum at larger height (e.g.\ $(3,3)$ against $(1,1)$ at $\alpha=3/2$, and the imprimitive multiples of Lemma~\ref{lem:scaling} everywhere).
+
+\emph{Brute force and pruning.} Each chronology was computed twice: by full enumeration of all odd pairs up to an exact height bound, and by a pruned scan over near-diagonal candidates ($k$ within a fixed window of $m\alpha$, integer defect bounded), reaching far greater heights; the two scans agree on their overlap. For $\alpha=\sqrt2$ the pruning bound is not an assumption but a consequence of Theorem~\ref{thm:complete} ($|Q|<17$ on any record); for $\varphi$ and $1+\sqrt3$ the pruned range is labelled computational precisely because the analogous bound is Conjectures~\ref{conj:phi}--\ref{conj:sqrt3}.
+
+\emph{Non-quadratic $\alpha$.} For $e$ and $\pi$, the constant is replaced by a rational surrogate accurate to $60$ decimal digits, all comparisons become exact integer comparisons against the surrogate, and the entire computation is repeated with a $120$-digit surrogate; the record lists agree verbatim. This does not make the chronology exact with respect to $e$ or $\pi$ themselves, and Observation~\ref{obs:epi} is labelled accordingly.
+
+\emph{Outputs.} All chronologies are emitted as CSV files with exact algebraic forms where available and high-precision decimals as secondary displays (Appendix~\ref{app:csv}); the source files, software versions, and SHA-256 checksums accompany the note.
+
+\subsection{Audit philosophy}
+
+A record chronology is an infinite sequence of strict inequalities, and the margins of those inequalities are not uniformly bounded below: Table~\ref{tab:phi} contains consecutive records whose errors agree to every displayed digit, with relative margins shrinking geometrically. Any fixed-precision numerical scan therefore fails on such problems not occasionally but \emph{systematically}, beyond a computable height. The working rules of this note, carried over from \cite{pellspine,quartercircle}, are: every ordering decision is an exact sign test; every computed table is reproduced by two independent scans; computations verify proofs and never substitute for them; and every statement carries one of three labels --- proved, computationally verified, conjectural --- which no amount of computation is permitted to upgrade.
+
+\section{Discussion}
+
+The two-mode oscillator spectrum carries the same pair of solved record problems as the quarter circle, in a cleaner arithmetic environment. On the boundary, a minimum-occupation ladder with the exact law $h\,\ee=\tfrac12$ carries all records up to a finite, explicitly computable exceptional set $S(\alpha)$; the counting is linear, the spacing ratio tends to $1$, and the envelope oscillation collapses. In the interior at $\alpha=\sqrt2$, records are quantized by an integer norm form, carried by two interlaced Pell orbits with defects alternating $-1,+7$, counted logarithmically with coefficient $2/\log(3+2\sqrt2)$, and enveloped between the exact constants $\tfrac14$ and $\tfrac{57+40\sqrt2}{28}$ with exact log-periodicity. Both theorems are instances of one mechanism --- an admissible-numerator gap weighed against ladder growth --- run here under a parity constraint that the Pythagorean setting did not impose.
+
+The parity effects are the most distinctive feature of the oscillator setting. The odd/odd restriction, inherited from the zero-point terms, forces $k^2-2m^2\equiv7\pmod 8$ and thereby fixes the signs in the $\sqrt2$ defect alternation; combined with the mod-$3$ exclusion it deletes exactly the numerator values ($9$ and $15$) at which the gap inequalities have no slack. At $\varphi$ the same restriction selects the index classes of the Fibonacci and Lucas ladders, and the computational chronology shows a subtler phenomenon with no analogue in the proved cases: two ladders that are asymptotically \emph{tied}, with the record decision carried by a bounded lower-order term ($L_n^2-5F_n^2=\pm4$) rather than a multiplicative gap. Whether Conjecture~\ref{conj:phi} can be proved by exact bookkeeping of that term is, in our view, the sharpest question this note raises. The rational ratios complete the picture: attainable equipartition terminates the chronology outright, and unattainable rational equipartition produces a boundary-type dense chronology --- the crossover of Remark~\ref{rem:crossover}, which reproduces, and is calibrated against, the rational-versus-quadratic-irrational comparison of \cite{quartercircle}, together with that paper's caution that algebraic degree alone does not classify chronologies.
+
+Everything above is a statement about the exact arithmetic of the uncoupled spectrum, established or verified by exact-arithmetic computation under the stated three-tier discipline. The present note studies the mathematical structure of the uncoupled spectrum only, and leaves physical applications, if any, for future work.
+
+\appendix
+
+\section{Computational methodology}\label{app:method}
+
+Two programs accompany the note. \texttt{audit.py} performs: the congruence checks of Lemmas~\ref{lem:mod8}--\ref{lem:mod3} over integer grids; the verification that $A$ preserves $Q$; the full brute-force $\sqrt2$ scan ($14{,}141$ odd pairs, $u\le400$, including imprimitive pairs, confirming the scaling exclusion); the pruned $\sqrt2$ scan to $m\le2\times10^6$ with $|Q|\le60$ (17 records, matching the merged orbit, defects alternating); exact verification of the interlacing identities and of the four gap inequalities of Theorem~\ref{thm:complete} as integer statements ($36>32$, $3844>3200$, $4<32$); the envelope values $\tfrac14,\tfrac74$ at records and $\tfrac{9+4\sqrt2}4,\tfrac{57+40\sqrt2}{28}$ at cycle peaks; the generation of the thirty-record table with exact entries; and the boundary record scans at the fourteen values of $\alpha$ listed in Section~\ref{sec:thresholds}, with exact tie handling, each compared against the prediction $\B\cup\{(1,2n+1):n\in S(\alpha)\}$ with $S(\alpha)$ evaluated by exact floor and sign computations, and each confirming the absence of mixed records and the finiteness bound. \texttt{chronologies.py} performs the interior scans of Section~\ref{sec:interior}: the general quadratic scan (exact $\ZZ[\sqrt d]$ ordering and comparison, full enumeration plus pruned extension, with the $\sqrt2$ case rerun as a cross-check against the audited chronology), the rational scans with exact integer arithmetic and tie groups, and the $e,\pi$ scans with the two-precision surrogate protocol. Both programs use only the Python 3.12 standard library; all assertions are executed on every run; SHA-256 checksums of sources and outputs are emitted.
+
+Complexity is modest: the exact sign test costs two big-integer multiplications; a full scan of $10^5$--$10^6$ states runs in seconds to minutes; the pruned scans reduce the candidate set to $O(\log)$ density near the diagonal and reach heights beyond $10^6$ at negligible cost.
+
+\section{CSV outputs}\label{app:csv}
+
+The following files accompany the note; decimals in all files are displays, never inputs to comparisons.
+
+\begin{itemize}
+\item \texttt{records\_sqrt2\_first30.csv}: the first thirty $\sqrt2$ records, columns $j$, $(m,k)$, $(n_1,n_2)$, $Q$, $h$ exact as $(m\sqrt2+k)/2$ and as an 18-digit decimal, $\eb$ exact as $(2m^2+k^2-2mk\sqrt2)/|Q|$ and as a decimal, and the exact alternating ratios $h_{j+1}/h_j\in\{1+2\sqrt2,\ (5+4\sqrt2)/7\}$, $\varepsilon_{\mathrm{bal},j}/\varepsilon_{\mathrm{bal},j+1}\in\{(9+4\sqrt2)/7,\ (57+40\sqrt2)/7\}$.
+\item \texttt{chron\_phi.csv}, \texttt{chron\_1plus\_sqrt3.csv}: the chronologies of Tables~\ref{tab:phi}--\ref{tab:onesqrt3} with defect column $N$.
+\item \texttt{chron\_rational\_3\_2.csv}, \texttt{chron\_rational\_5\_3.csv}: the rational chronologies of Propositions~\ref{prop:32}--\ref{prop:53} (the former to $h\le200$; one record per odd $m$, numerator identically $1$; the latter terminating at $\eb=0$).
+\item \texttt{chron\_e.csv}, \texttt{chron\_pi.csv}: the chronologies of Observation~\ref{obs:epi}.
+\end{itemize}
+
+Software versions and SHA-256 checksums for every file are listed in \texttt{VERSIONS.txt} and \texttt{SHA256SUMS} in the repository accompanying the deposit.
+
+\section*{Acknowledgements}
+
+The author used AI assistance (Anthropic's Claude) for adversarial auditing, exact-arithmetic computational design and execution, proof checking, and manuscript preparation. In particular, the derivation of the exceptional set $S(\alpha)$ from the chronological comparison, the discovery of the exceptional window $(2,\sqrt5)$, the mod-$3$ exclusion closing the $\sqrt2$ completeness proof, and the identification of the asymptotically degenerate Lucas--Fibonacci competition at $\varphi$ arose through this iterative review. All conceptual choices, claims retained in the manuscript, and final responsibility for the work belong to the author.
+
+\begin{thebibliography}{9}
+
+\bibitem{quartercircle}
+E.~De~Jes\'us, \emph{Record density, rational versus quadratic-irrational targets, and record envelopes on the quarter circle}, Zenodo (2026). doi:10.5281/zenodo.21762285.
+
+\bibitem{pellspine}
+E.~De~Jes\'us, \emph{The Pell spine as an optimal rational separator: extremal resolution and smooth transport in primitive Pythagorean triples}, Zenodo (2026). doi:10.5281/zenodo.21674959.
+
+\bibitem{majorization}
+E.~De~Jes\'us, \emph{Pell-spine extremality on the binary majorization order: Pythagorean partitions, statistical functionals, and exact record transport}, Zenodo (2026). doi:10.5281/zenodo.21678483.
+
+\bibitem{hardywright}
+G.~H. Hardy and E.~M. Wright, \emph{An Introduction to the Theory of Numbers}, 6th ed., Oxford University Press, 2008.
+
+\bibitem{nzm}
+I.~Niven, H.~S. Zuckerman and H.~L. Montgomery, \emph{An Introduction to the Theory of Numbers}, 5th ed., Wiley, New York, 1991.
+
+\bibitem{khinchin}
+A.~Ya. Khinchin, \emph{Continued Fractions}, Dover, Mineola, NY, 1997.
+
+\end{thebibliography}
+
+\end{document}

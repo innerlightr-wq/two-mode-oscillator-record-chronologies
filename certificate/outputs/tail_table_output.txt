@@ -1,0 +1,10 @@
+alpha          p0  largest pre-tail H            cap  states<=cap
+--------------------------------------------------------------------
+phi             2  (29/2 + 7/2*sqrt5) = 22.3262     23          41
+                   attained at (m,k) = (7,11)
+1+sqrt3         2  (206 + 55*sqrt3) = 301.2628    302        4173
+                   attained at (m,k) = (55,151)
+sqrt3           3  (23 + 13*sqrt3) = 45.5167      46         152
+                   attained at (m,k) = (13,23)
+
+[exit=0, wall=2s]

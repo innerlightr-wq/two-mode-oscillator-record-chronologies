@@ -1,0 +1,12 @@
+H1: admissible unit power, M = 2  (|GL_2(Z/2)| = 6, so j <= 6)
+  slope     u            order of U mod 2       minimal j  u^j                    matches rho?
+  phi       phi          3                      3          (1, 2)                 True
+  1+sqrt3   2+sqrt3      2                      2          (7, 4)                 True
+  sqrt3     2+sqrt3      2                      1          (2, 1)                 True
+
+H3: bounded rectangle, no PID.  |a|,|b| bounds vs the search box actually used:
+  phi       |N| <= 18   rho = 4.2361    =>  |a| <= 16.09    |b| <= 9.94       search box used: 76
+  1+sqrt3   |N| <= 204  rho = 13.9282   =>  |a| <= 108.96   |b| <= 62.91      search box used: 448
+  sqrt3     |N| <= 27   rho = 3.7321    =>  |a| <= 15.37    |b| <= 8.87       search box used: 94
+
+[exit=0, wall=0s]

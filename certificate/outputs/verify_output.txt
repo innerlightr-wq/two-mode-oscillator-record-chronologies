@@ -1,0 +1,108 @@
+=== phi ===
+  [PASS] C1 norm identity and closed form for eps (phi)
+  [PASS] C2 congruence restrictions on N, 12360 states (phi)  -- []
+  [PASS] C3 imprimitive eps equals its reduction, at lower height (phi)
+  [PASS] C4 cutoff 18 bounds |N| on every unpruned record (max seen 5) (phi)
+  [PASS] C5 independent rectangle recount matches the reduction search: 4 orbits (phi)
+  [PASS] C6 classification equals the claimed families (phi)  -- got {'strict': [-1], 'alternating': [5]}
+  [PASS] C8 unpruned brute force == justified-pruned scan to 2h <= 3000 (phi)  -- 7 records
+  [PASS] C9 phi records == {(F_3j+1,F_3j+2)} U {(L_6j+4,L_6j+5)} to 2h <= 1e+12  -- 28 records; symmetric difference 0
+==============================================================================
+CERTIFICATE: phi
+==============================================================================
+  comparison ladder has |N| = 1 ; cutoff: every record with a preceding ladder member
+  has |N| <= 18
+  admissible primitive orbits with |N| <= 18 : 4
+  classification: 1 STRICT, 1 ALTERNATING (record every other period), 0 permanent-EQUALITY, 2 excluded
+      strict  : N=-1  eta=(1/2 + 1/2*sqrt5)
+      alternating: N=+5  eta=(5/2 + 1/2*sqrt5)  (records at one period parity)
+  (S)  sign ledger N_q = delta^q N_rep, delta = Norm(rho) = -1 : True
+  (W1) eps strictly decreasing along every orbit: True  [proved: G_next-G = 2a eta^2(rho^2-1) - tN(delta-1); dominant from 2h <= 15.09, earlier steps checked]
+  (W2) every representative lies in [1, rho): True
+  (W3-old) 2 alpha eta^2 > t|N| on every positive state: True  [INSUFFICIENT, see A13]
+  (W3') cross-orbit height ordering: every (pair,d) decided by sign(U) from period q = 1 onward
+        worst: N_A=-1 N_B=11 d=0
+        U == 0 is STRUCTURALLY impossible between distinct normalised reps; found 0
+        (and U == 0 would force V == 0, so it is an index shift, not a tie -- asserted)
+  (R)  representative invariance delta^q' N'_rep = delta^q N_rep: True
+  pairs with Gamma_d == 0 (no threshold; integer rule, reported per parity): 2
+     N_A=-1   N_B=5    d=0 : at p=d A beats B ; at p=d+1 B beats A
+     N_A=5    N_B=-1   d=0 : at p=d B beats A ; at p=d+1 A beats B
+  all other (pair,d) decided by sign(Gamma_d) from period p = 1 onward
+     worst: N_A=-1 N_B=-1 d=1
+  => every comparison AND ordering is decided for 2h >= 5.854 ; finite check covers below
+  [PASS] C10 certificate: finite check must cover 2h < 5.854, brute force reaches 3000 (phi)  -- 2 Gamma=0 tie pair(s); all else decided from period 1
+
+=== 1+sqrt3 ===
+  [PASS] C1 norm identity and closed form for eps (1+sqrt3)
+  [PASS] C2 congruence restrictions on N, 7321 states (1+sqrt3)  -- []
+  [PASS] C3 imprimitive eps equals its reduction, at lower height (1+sqrt3)
+  [PASS] C4 cutoff 204 bounds |N| on every unpruned record (max seen 11) (1+sqrt3)
+  [PASS] C5 independent rectangle recount matches the reduction search: 64 orbits (1+sqrt3)
+  [PASS] C6 classification equals the claimed families (1+sqrt3)  -- got {'strict': [-11, -3, 1]}
+  [PASS] C8 unpruned brute force == justified-pruned scan to 2h <= 3000 (1+sqrt3)  -- 8 records
+  [PASS] C9 1+sqrt3 records == the 3 stated unit-orbit families to 2h <= 1e+12  -- 31 records; symmetric difference 0
+==============================================================================
+CERTIFICATE: 1+sqrt3
+==============================================================================
+  comparison ladder has |N| = 1 ; cutoff: every record with a preceding ladder member
+  has |N| <= 204
+  admissible primitive orbits with |N| <= 204 : 64
+  classification: 3 STRICT, 0 ALTERNATING (record every other period), 0 permanent-EQUALITY, 61 excluded
+      strict  : N=-11  eta=(-4 + 3*sqrt3)
+      strict  : N=-3  eta=(0 + 1*sqrt3)
+      strict  : N=+1  eta=(2 + 1*sqrt3)
+  (S)  sign ledger N_q = delta^q N_rep, delta = Norm(rho) = +1 : True
+  (W1) eps strictly decreasing along every orbit: True  [proved: G_next-G = 2a eta^2(rho^2-1) - tN(delta-1); unconditional since delta=+1]
+  (W2) every representative lies in [1, rho): True
+  (W3-old) 2 alpha eta^2 > t|N| on every positive state: False  [INSUFFICIENT, see A13]
+  (W3') cross-orbit height ordering: every (pair,d) decided by sign(U) from period q = 2 onward
+        worst: N_A=-143 N_B=-39 d=0
+        U == 0 is STRUCTURALLY impossible between distinct normalised reps; found 0
+        (and U == 0 would force V == 0, so it is an index shift, not a tie -- asserted)
+  (R)  representative invariance delta^q' N'_rep = delta^q N_rep: True
+  pairs with Gamma_d == 0 (no threshold; integer rule, reported per parity): 0
+  all other (pair,d) decided by sign(Gamma_d) from period p = 2 onward
+     worst: N_A=-143 N_B=193 d=0
+  => every comparison AND ordering is decided for 2h >= 100.9 ; finite check covers below
+  [PASS] C10 certificate: finite check must cover 2h < 100.9, brute force reaches 3000 (1+sqrt3)  -- 0 Gamma=0 tie pair(s); all else decided from period 2
+
+=== sqrt3 ===
+  [PASS] C1 norm identity and closed form for eps (sqrt3)
+  [PASS] C2 congruence restrictions on N, 11546 states (sqrt3)  -- []
+  [PASS] C3 imprimitive eps equals its reduction, at lower height (sqrt3)
+  [PASS] C4 cutoff 27 bounds |N| on every unpruned record (max seen 2) (sqrt3)
+  [PASS] C5 independent rectangle recount matches the reduction search: 6 orbits (sqrt3)
+  [PASS] C6 classification equals the claimed families (sqrt3)  -- got {'equality': [6], 'strict': [-2]}
+  [PASS] C8 unpruned brute force == justified-pruned scan to 2h <= 2000 (sqrt3)  -- 6 records
+  [PASS] C9 sqrt3 records == the 1 stated unit-orbit families to 2h <= 1e+12  -- 21 records; symmetric difference 0
+==============================================================================
+CERTIFICATE: sqrt3
+==============================================================================
+  comparison ladder has |N| = 2 ; cutoff: every record with a preceding ladder member
+  has |N| <= 27
+  admissible primitive orbits with |N| <= 27 : 6
+  classification: 1 STRICT, 0 ALTERNATING (record every other period), 1 permanent-EQUALITY, 4 excluded
+      strict  : N=-2  eta=(1 + 1*sqrt3)
+      equality: N=+6  eta=(3 + -1*sqrt3)  (weak records forever, not strict)
+  (S)  sign ledger N_q = delta^q N_rep, delta = Norm(rho) = +1 : True
+  (W1) eps strictly decreasing along every orbit: True  [proved: G_next-G = 2a eta^2(rho^2-1) - tN(delta-1); unconditional since delta=+1]
+  (W2) every representative lies in [1, rho): True
+  (W3-old) 2 alpha eta^2 > t|N| on every positive state: True  [INSUFFICIENT, see A13]
+  (W3') cross-orbit height ordering: every (pair,d) decided by sign(U) from period q = 0 onward
+        worst: N_A=-26 N_B=-26 d=1
+        U == 0 is STRUCTURALLY impossible between distinct normalised reps; found 0
+        (and U == 0 would force V == 0, so it is an index shift, not a tie -- asserted)
+  (R)  representative invariance delta^q' N'_rep = delta^q N_rep: True
+  pairs with Gamma_d == 0 (no threshold; integer rule, reported per parity): 1
+     N_A=-2   N_B=6    d=1 : at p=d EXACTLY EQUAL (B not a strict record) ; at p=d+1 EXACTLY EQUAL (B not a strict record)
+  all other (pair,d) decided by sign(Gamma_d) from period p = 1 onward
+     worst: N_A=-26 N_B=-26 d=1
+  => every comparison AND ordering is decided for 2h >= 2.732 ; finite check covers below
+  [PASS] C10 certificate: finite check must cover 2h < 2.732, brute force reaches 2000 (sqrt3)  -- 1 Gamma=0 tie pair(s); all else decided from period 1
+
+  [PASS] C7 phi tie: N_B = -5 N_A and the integer rule predicts every comparison  -- checked n = 1,4,...,28 ; wins exactly when N_A = +1 (n even)
+
+VERIFY PASSED
+
+[exit=0, wall=317s]

@@ -60,8 +60,41 @@ envelope comparison):
 - `α = e, π`: parity-restricted convergent/semiconvergent chronologies
   (π ends at `(113, 355)`, i.e. 355/113, with `ε_bal ≈ 4.2×10⁻⁸`).
 
-**Conjectural.** Completeness of the φ and 1+√3 chronologies (Conjectures 5.8, 5.10 in
-the note).
+**Conjectural in the 2026-08 note — now proved.** Completeness of the φ and 1+√3
+chronologies (**Conjectures 5.11 and 5.13** of `paper/oscillator_records.pdf`; the numbers
+5.8/5.10 given in earlier versions of this README were wrong). Both are proved, together with
+a new classification at α = √3, in the companion note described below. One assertion of the
+2026-08 note is also corrected there — see [`docs/EARLIER_NOTE_STATUS.md`](docs/EARLIER_NOTE_STATUS.md).
+
+## Companion note (2026-11): odd/odd records for the relative error
+
+> E. De Jesús, *Odd/Odd Records for a Relative Approximation Error: Three Quadratic
+> Classifications and an Exact Certificate*, 2026. **Not yet deposited; no DOI.**
+
+- Note: [`paper/congruence_records_note.pdf`](paper/congruence_records_note.pdf) ·
+  source [`paper/congruence_records_note.tex`](paper/congruence_records_note.tex)
+- Certificate bundle: [`certificate/`](certificate/) — standalone, standard library only,
+  with captured outputs in `certificate/outputs/`. Start at
+  [`certificate/README.md`](certificate/README.md).
+- Release documentation: [`docs/CHANGELOG.md`](docs/CHANGELOG.md),
+  [`docs/REVIEW_SUMMARY.md`](docs/REVIEW_SUMMARY.md),
+  [`docs/RELEASE_MANIFEST.md`](docs/RELEASE_MANIFEST.md),
+  [`docs/ZENODO_METADATA.md`](docs/ZENODO_METADATA.md),
+  [`docs/LICENSE_AND_SOURCE_INVENTORY.md`](docs/LICENSE_AND_SOURCE_INVENTORY.md),
+  [`docs/EARLIER_NOTE_STATUS.md`](docs/EARLIER_NOTE_STATUS.md).
+
+**Proved there.** The strict records of `ε_bal` are classified completely at α = φ
+(Fibonacci pairs plus every other odd Lucas pair, defect cycle `(−1,+1,−5)`), at α = 1+√3
+(three orbits of `[[3,4],[8,11]]`, defects `−3,+1,−11`) and at α = √3 (one orbit of
+`[[2,1],[3,2]]`, defect `−2`, with `h²ε = 1/2` exactly). The norm cutoff that the 2026-08 note
+*assumed* for φ and 1+√3 is **derived**: `|N| ≤ 18`, `204`, `27`. At √3 a companion family
+`(m,k) ↦ (k,3m)` has **exactly** equal error at larger height, so it consists of weak records
+that are never strict.
+
+**Not claimed there.** A uniform theorem for general quadratic slopes and congruence classes;
+a classification of all weak records; novelty relative to the odd–odd continued fraction
+literature. The certificate is exact arithmetic, **not** formal verification, and the note has
+**not** been refereed.
 
 ## Repository layout
 
@@ -73,7 +106,11 @@ data/     records_sqrt2_first30.csv   — first 30 √2 records, exact algebraic
           chron_phi.csv, chron_1plus_sqrt3.csv
           chron_rational_3_2.csv, chron_rational_5_3.csv
           chron_e.csv, chron_pi.csv
-docs/     REPORT.md         — 16-section audit status report (source of truth for the note)
+docs/     REPORT.md         — 16-section audit status report (source of truth for the 2026-08 note)
+          CHANGELOG.md, RELEASE_MANIFEST.md, REVIEW_SUMMARY.md,
+          ZENODO_METADATA.md, LICENSE_AND_SOURCE_INVENTORY.md, EARLIER_NOTE_STATUS.md
+paper/    congruence_records_note.tex/.pdf              — the 2026-11 companion note
+certificate/  exact-arithmetic certificate bundle for the companion note
 SHA256SUMS, VERSIONS.txt
 ```
 
@@ -119,12 +156,21 @@ If you use this repository or the accompanying manuscript, please cite:
 
 > E. De Jesús, *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum*. Zenodo (2026). https://doi.org/10.5281/zenodo.21796640
 
-The repository includes a `CITATION.cff` file with the corresponding citation metadata. Please ensure the DOI in `CITATION.cff` is set to:
+The repository includes a `CITATION.cff` file with the corresponding citation metadata.
+**`CITATION.cff` currently holds the placeholder `doi: "10.5281/zenodo.XXXXXXXX"`**, which
+disagrees with the DOI quoted above. It has deliberately not been filled in here, because
+whether `10.5281/zenodo.21796640` is the concept DOI or a version DOI cannot be determined from
+this repository. See open item **O-1** in
+[`docs/LICENSE_AND_SOURCE_INVENTORY.md`](docs/LICENSE_AND_SOURCE_INVENTORY.md).
+
+The 2026-11 companion note is **not yet deposited** and has no DOI; cite it by this repository
+and the file path until it is.
 
 ## License
 
-- Manuscript (`paper/`): CC BY 4.0.
-- Code (`code/`) and data (`data/`): MIT (see `LICENSE`).
+- Manuscripts (`paper/`) and release documentation (`docs/`): CC BY 4.0.
+- Code (`code/`), data (`data/`) and the certificate bundle (`certificate/`): MIT (see
+  `LICENSE`; the header there names only `code/` and `data/` — open item **O-2**).
 
 ## Acknowledgements
 

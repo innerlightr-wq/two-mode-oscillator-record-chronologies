@@ -1,0 +1,824 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs,longtable,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\pr}{\varrho}
+\newcommand{\gam}{\Gamma}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\sgn}{sign}
+\newcommand{\mat}[4]{\left(\begin{smallmatrix}#1&#2\\#3&#4\end{smallmatrix}\right)}
+
+\title{Odd/Odd Records for a Relative Approximation Error:\\
+Three Quadratic Classifications and an Exact Certificate}
+\author{Elias De Jes\'us\\
+\small ORCID: \href{https://orcid.org/0009-0007-0190-9143}{0009-0007-0190-9143}}
+\date{7 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a quadratic irrational $\alpha>1$ and positive \emph{odd} integers $m,k$, set
+$H=m\alpha+k$ and $\varepsilon=|m\alpha-k|/(m\alpha+k)$. A state $(m,k)$ is a
+\emph{strict chronological record} if $\varepsilon$ is smaller than at every admissible state
+of smaller $H$. We classify the strict records completely for $\alpha=\varphi$,
+$\alpha=1+\sqrt3$ and $\alpha=\sqrt3$. In each case they are a finite explicit union of
+orbits of a single unimodular matrix, with signed defect cycles $(-1,+1,-5)$, $(-3,+1,-11)$
+and $(-2)$ respectively. The proofs rest on two exact identities that make $\varepsilon$ a
+function of the defect $N$ and the conjugate factor $\eta$ alone, on a norm cutoff
+$|N|\le 18,204,27$ derived from heights, and on a finite exact certificate that decides every
+remaining comparison. Two phenomena require care and are isolated: at $\varphi$ the
+competition between the Fibonacci and Lucas ladders is a genuine tie at leading order, decided
+by an integer identity $N_B=-5N_A$; and at $\sqrt3$ a companion family has \emph{exactly}
+equal error at larger height, so it is excluded by equality rather than by loss. The results
+resolve two conjectures of the author's earlier note and correct one assertion there. Nothing
+here is formally verified or refereed, and the uniform generalisation is left open.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Let $\alpha>1$ be irrational and consider pairs $(m,k)$ of positive odd integers. Write
+\begin{equation}\label{eq:Heps}
+H=H(m,k)=m\alpha+k,\qquad
+\varepsilon=\varepsilon(m,k)=\frac{|m\alpha-k|}{m\alpha+k}.
+\end{equation}
+Thus $\varepsilon$ is a \emph{relative} error, normalised by the same quantity $H$ that orders
+the states. Because $\alpha$ is irrational, distinct integer pairs have distinct $H$, so the
+states are linearly ordered by height with no ties.
+
+\begin{definition}[Records]\label{def:records}
+A state $(m,k)$ is a \emph{strict chronological record} if
+$\varepsilon(m,k)<\varepsilon(m',k')$ for every admissible state $(m',k')$ with $H(m',k')<H(m,k)$.
+It is a \emph{weak record} if $\varepsilon(m,k)\le\varepsilon(m',k')$ for all such states, with
+equality for at least one. Every strict record is a weak record; a weak record that is not
+strict ties the running minimum.
+\end{definition}
+
+Throughout, ``records'' without qualification means strict records. Section~\ref{sec:classify}
+states three complete classifications of them. We also exhibit, at $\alpha=\sqrt3$, an explicit
+infinite family of weak records that are not strict (Theorem~\ref{thm:C}\,(ii)); we do
+\emph{not} claim to classify all weak records, and in particular we do not treat imprimitive
+weak records.
+
+\paragraph{What this note does.}
+The three classifications are proved, not merely computed to a large height. The architecture
+is:
+\begin{enumerate}\itemsep2pt
+\item two exact identities (Lemma~\ref{lem:master}) reduce $\varepsilon$ and $H$ to functions
+of the defect $N$ and the conjugate factor $\eta$;
+\item imprimitive states are discarded (Lemma~\ref{lem:imprim}), the admissible unit step is
+identified (Section~\ref{sec:lattice}), and a \emph{height-only} cutoff bounds $|N|$ on every
+record (Theorem~\ref{thm:cutoff});
+\item the finitely many surviving unit orbits are enumerated exactly inside a bounded lattice
+rectangle, with no unique-factorisation hypothesis (Proposition~\ref{prop:enum});
+\item every cross-orbit comparison of error and of height is reduced to the sign of one
+algebraic quantity, constant along the orbits (Section~\ref{sec:compare}); and
+\item a finite exact check covers the initial segment, beyond which the pattern is proved
+to repeat (Section~\ref{sec:tail}).
+\end{enumerate}
+A machine-generated table of every orbit, its classification, and a checkable exclusion
+witness is given in Appendix~\ref{app:tables}.
+
+\paragraph{Relation to the author's earlier note.}
+This is a companion to \cite{DeJesus2026}, pinned at
+\begin{center}\small\ttfamily
+commit 10ea1c62c6866990ded0a85a531883841d38d034\\
+PDF SHA-256 f36c23ab099a7a0bca1e68dfe699ea02e15ef6e767bbc52428a77b272da247b3
+\end{center}
+\noindent In that note the
+$\sqrt2$ analogue is proved, while the $\varphi$ and $1+\sqrt3$ chronologies are
+\emph{computationally verified} with completeness left conjectural, and the note states
+explicitly that its norm cutoff for those two slopes is assumed rather than derived.
+Section~\ref{sec:earlier} records precisely which statements are resolved and which one is
+corrected. (Citations there use the numbering of the pinned PDF: the two conjectures are
+Conjecture 5.11 and Conjecture 5.13, and the competition remark is Remark 5.10. The
+repository \texttt{README} refers to them as ``Conjectures 5.8, 5.10''; that is a
+\texttt{README} error, not a different revision.)
+
+\paragraph{What this note does not do.}
+It does not prove a uniform theorem for general quadratic slopes and congruence classes;
+Section~\ref{sec:outlook} explains where the present argument uses $t\ge0$, $\alpha'<0$ and the
+odd/odd class specifically, and gives a counterexample to a naive generalisation. It does not
+determine novelty relative to the literature beyond the limited comparisons in
+Section~\ref{sec:related}. Nothing here is machine-checked in a proof assistant, nor refereed.
+
+\section{Setting and the two master identities}\label{sec:master}
+
+Let $\alpha$ satisfy $\alpha^2-t\alpha-s=0$ with $t,s\in\Z$, let $\alpha'$ be its conjugate,
+and put
+\[
+D_0=\alpha-\alpha'>0,\qquad
+\xi=k-m\alpha,\qquad \eta=k-m\alpha',\qquad
+N=\xi\eta=k^2-tkm-sm^2 .
+\]
+$N$ is the integral defect. For the three slopes of this note:
+\[
+\begin{aligned}
+\varphi:\quad &t=s=1, &&D_0=\sqrt5, &&N=k^2-km-m^2;\\
+1+\sqrt3:\quad &t=s=2, &&D_0=2\sqrt3, &&N=k^2-2km-2m^2;\\
+\sqrt3:\quad &t=0,\ s=3, &&D_0=2\sqrt3, &&N=k^2-3m^2 .
+\end{aligned}
+\]
+In all three, $t\ge0$ and $\alpha'<0$, so $\eta>0$ on every positive state. Set
+\begin{equation}\label{eq:G}
+G=2\alpha\eta^2-tN .
+\end{equation}
+
+\begin{lemma}[Master identities]\label{lem:master}
+For every state with $\eta>0$,
+\begin{equation}\label{eq:masters}
+H=\frac{G}{D_0\,\eta},\qquad
+\varepsilon=\frac{|N|\,D_0}{G},\qquad\text{and in particular}\qquad
+G>0 .
+\end{equation}
+Thus $\varepsilon$ and $H$ are determined by the pair $(N,\eta)$ alone.
+\end{lemma}
+
+\begin{proof}
+From $\xi=k-m\alpha$ and $\eta=k-m\alpha'$ we get $\eta-\xi=mD_0$ and
+$\alpha\eta-\alpha'\xi=kD_0$, hence $m=(\eta-\xi)/D_0$ and $k=(\alpha\eta-\alpha'\xi)/D_0$, so
+\[
+H=m\alpha+k=\frac{\alpha(\eta-\xi)+\alpha\eta-\alpha'\xi}{D_0}
+=\frac{2\alpha\eta-(\alpha+\alpha')\xi}{D_0}=\frac{2\alpha\eta-t\xi}{D_0}.
+\]
+Substituting $\xi=N/\eta$ gives $H=(2\alpha\eta^2-tN)/(D_0\eta)=G/(D_0\eta)$, and $H>0$ forces
+$G>0$. Then $\varepsilon=|\xi|/H=(|N|/\eta)\cdot D_0\eta/G=|N|D_0/G$.
+\end{proof}
+
+\begin{remark}[The error score, and why height is separate]\label{rem:score}
+Since $\varepsilon=|N|D_0/G$, records are the running minima of $|N|/G$, equivalently the
+running maxima of
+\[
+S:=\frac{G}{|N|}=2\alpha W-t\,\sgn(N),\qquad W:=\frac{\eta^2}{|N|} .
+\]
+So the \emph{error score} is $2\alpha W$ corrected by a bounded term depending only on the
+\emph{sign} of $N$. The height order is a different question and is treated separately
+(Section~\ref{sec:compare}): by \eqref{eq:masters}, $H=G/(D_0\eta)$ depends on $N$ as well as
+$\eta$, so it is not a function of $S$, and in particular $\eta$-order is \emph{not}
+height-order across different defects. Example: at $\alpha=\varphi$ the primitive odd/odd
+states $(3,1)$ and $(1,3)$ have
+$\eta=3\varphi-2\approx2.8541<3.618\approx\varphi+2=\eta$ respectively, while
+$H=3\varphi+1\approx5.8541>4.618\approx\varphi+3$. Any argument that infers one order from the
+other must be checked.
+\end{remark}
+
+\begin{lemma}[Imprimitive states never record]\label{lem:imprim}
+If $g=\gcd(m,k)>1$ then $(m/g,k/g)$ is again an odd state, has the same $\varepsilon$, and has
+strictly smaller $H$. Consequently no imprimitive state is a strict record, and $N$ may be
+assumed primitively represented.
+\end{lemma}
+
+\begin{proof}
+$m,k$ odd forces $g$ odd, so $m/g$ and $k/g$ are odd and the reduced pair is admissible. Both
+$|m\alpha-k|$ and $m\alpha+k$ scale by $g$, so $\varepsilon$ is unchanged, while
+$H$ is divided by $g>1$. A strict record must beat every state of smaller height, in
+particular this one, which it cannot.
+\end{proof}
+
+The proof of Lemma~\ref{lem:imprim} uses that the gcd of two odd numbers is odd. This is
+special to the odd/odd class; see Section~\ref{sec:outlook}.
+
+\section{The admissible lattice and the admissible unit}\label{sec:lattice}
+
+Write $\eta=a+b\omega$ with $\omega=\varphi$ or $\sqrt{D}$ as appropriate, so that the state is
+recovered by
+\[
+(m,k)=(b,\,a+b)\ \text{ for }\varphi\text{ and }1+\sqrt3,\qquad (m,k)=(b,\,a)\ \text{ for }\sqrt3 .
+\]
+Admissibility ($m,k$ both odd) becomes a congruence on $(a,b)$ modulo $2$: ``$a$ even, $b$
+odd'' in the first two cases, ``$a$ odd, $b$ odd'' for $\sqrt3$.
+
+\begin{proposition}[Admissible unit step]\label{prop:unit}
+Let $u$ be the fundamental unit of the relevant order and let $U\in GL_2(\Z)$ be the matrix of
+multiplication by $u$ on the basis $(1,\omega)$. Reducing modulo $2$ places $U$ in the finite
+group $GL_2(\Z/2)$ of order $6$, so some power $U^j$ fixes the admissibility class; the least
+such $j$ gives the \emph{admissible unit} $\pr=u^j$. Multiplication by $\pr$ preserves
+admissibility and primitivity, and multiplies $\eta$ by $\pr$ while multiplying $N$ by
+$\delta:=\Nm(\pr)$. On the column $(m,k)$ it acts by a matrix with positive entries:
+\[
+\varphi:\ \pr=\varphi^3=1+2\varphi,\ \ \begin{pmatrix}1&2\\2&3\end{pmatrix},\ \delta=-1;\qquad
+1+\sqrt3:\ \pr=(2+\sqrt3)^2,\ \ \begin{pmatrix}3&4\\8&11\end{pmatrix},\ \delta=+1;
+\]
+\[
+\sqrt3:\ \pr=2+\sqrt3,\ \ \begin{pmatrix}2&1\\3&2\end{pmatrix},\ \delta=+1 .
+\]
+\end{proposition}
+
+The minimal $j$ can be strictly smaller than the order of $U$ modulo $2$, because the class
+need only be \emph{fixed}, not acted on trivially: at $\sqrt3$ the class (odd,\,odd) is fixed by
+the swap $\mat{0}{1}{1}{0}$, so $j=1$ although $U\not\equiv I$. The values are $j=3,2,1$.
+
+\begin{remark}[$\varphi^3$ versus $\varphi^6$]\label{rem:phi3}
+The matrix $\mat{1}{2}{2}{3}$ sends $(1,1)\mapsto(3,5)$ and is the $\varphi^3$ step. The
+matrix $\mat{5}{8}{8}{13}$, which appears in \cite{DeJesus2026}, sends $(1,1)\mapsto(13,21)$
+and is the $\varphi^6$ step, i.e. the step \emph{within} a fixed-defect orbit. Both occur below
+and must not be interchanged.
+\end{remark}
+
+\begin{lemma}[Signed transport]\label{lem:transport}
+Along an orbit, with $\pr$ applied $p$ times to a chosen representative,
+\begin{equation}\label{eq:transport}
+N_p=\delta^p\,N_{\mathrm{rep}},\qquad \delta=\Nm(\pr).
+\end{equation}
+At $\varphi$, $\delta=-1$, so the \emph{sign} of $N$ alternates along a $\pr$-orbit and the
+fixed-defect orbits are the $\pr^2=\varphi^6$ orbits. Taking $|N|$ therefore discards exactly
+the parity of $p$ relative to the representative. Every comparison below that needs an
+orientation transports the signed $N$ by \eqref{eq:transport}; magnitudes are used only where
+the quantity is $\delta$-invariant.
+\end{lemma}
+
+Also useful later: the ladders have positive entries, so once a state has $m,k>0$ all its
+successors do, and their heights increase without bound. Each orbit therefore has a finite
+initial segment of non-positive states followed by an infinite positive tail.
+
+\section{The height-only cutoff}\label{sec:cutoff}
+
+Fix a \emph{comparison ladder}: an admissible orbit of known defect $\pm L$, whose positive
+members we denote $A,C,\dots$ in increasing height. For $\varphi$ and $1+\sqrt3$ we take
+$L=1$; for $\sqrt3$ no admissible state has $|N|=1$, because odd $m,k$ force
+$k^2-3m^2\equiv1-3\equiv6\pmod 8$, and we take $L=2$ with the orbit of $(1,1)$.
+
+\begin{theorem}[Cutoff]\label{thm:cutoff}
+Let $B$ be a strict record whose height exceeds that of some positive ladder member, and let
+$A,C$ be consecutive positive ladder members with $H_A<H_B\le H_C$. Put $Y=\eta_A^2$, $n=N_A$,
+$L=|n|$. Then
+\begin{equation}\label{eq:F}
+|N_B|<\frac{H_C^2\,\varepsilon_A\,(D_0+t\varepsilon_A)}{2\alpha}=:F(Y,n),
+\end{equation}
+where
+\[
+\varepsilon_A=\frac{L\,D_0}{2\alpha Y-tn},\qquad
+\frac{H_C}{H_A}=\frac{2\alpha \pr^2 Y-t\delta n}{\pr\,(2\alpha Y-tn)} .
+\]
+Consequently $|N_B|\le 18$ for $\alpha=\varphi$, $|N_B|\le204$ for $\alpha=1+\sqrt3$, and
+$|N_B|\le27$ for $\alpha=\sqrt3$.
+\end{theorem}
+
+\begin{proof}
+Write $z=(k-m\alpha)/H$, so $\varepsilon=|z|$. By Lemma~\ref{lem:master},
+$\eta=H(D_0+tz)/(2\alpha)$ and hence
+\begin{equation}\label{eq:Nheight}
+|N|=|\xi|\eta=H\varepsilon\cdot\frac{H(D_0+tz)}{2\alpha}=\frac{H^2\varepsilon(D_0+tz)}{2\alpha}.
+\end{equation}
+The ladder heights increase to infinity, so consecutive members bracket $B$ as stated. Since
+$B$ is a record, $\varepsilon_B<\varepsilon_A$; also $t\ge0$ and $|z_B|=\varepsilon_B$, so
+$D_0+tz_B\le D_0+t\varepsilon_B$, and $x\mapsto x(D_0+tx)$ is strictly increasing for $x\ge0$.
+Applying \eqref{eq:Nheight} to $B$ and then $H_B\le H_C$ gives \eqref{eq:F}. The displayed
+formulas for $\varepsilon_A$ and $H_C/H_A$ follow from \eqref{eq:masters} with $\eta_C=\pr\eta_A$,
+$N_C=\delta n$. Only heights were compared.
+
+It remains to bound $F$ over the \emph{whole} ladder. Put
+\[
+u=\frac{t}{2\alpha Y}\quad(\text{and }u=\tfrac1{2\alpha Y}\text{ at }\varphi,\text{ where }L=t=1).
+\]
+We have $0<u<1$: at the first ladder member $2\alpha Y>t$ in each case (an exact inequality,
+checked in the certificate), and $Y$ is multiplied by $\pr^2>1$ at each step while $t,\alpha$
+are fixed, so $u$ strictly decreases. All the closed forms below are used only on $0<u<1$.
+Substituting into \eqref{eq:F} and simplifying:
+\[
+\varphi,\ n=-1:\quad F=\pr^2\Bigl(1-\frac{u}{\pr^2}\Bigr)^{\!2}\frac{1+2u}{(1+u)^2}<\pr^2,
+\]
+because $(1-u/\pr^2)^2<1$ and $(1+2u)<(1+u)^2$ for $u>0$; and $\pr^2=\varphi^6=17.9442719\ldots$
+\[
+\varphi,\ n=+1:\quad F=\pr^2\frac{(1+u/\pr^2)^2}{(1-u)^2},
+\]
+which is increasing in $u$, hence decreasing in $Y$; its maximum over the ladder is attained at
+the first member with $n=+1$, namely $Y=\varphi^8$, where $F=18.1960225\ldots<19$.
+\[
+1+\sqrt3:\quad F=\pr^2\Bigl(\frac{1-u/\pr^2}{1-u}\Bigr)^{\!2},
+\]
+increasing in $u$, hence maximal at the first ladder member $Y=(2+\sqrt3)^2$, where
+$F=204.5520518\ldots<205$.
+\[
+\sqrt3:\quad t=0\ \Longrightarrow\ F=L\pr^2=2(2+\sqrt3)^2=27.8564064\ldots<28 .
+\]
+Taking integer parts gives the three bounds. The endpoint inequalities are decided exactly in
+the certificate; the decimals are display only.
+\end{proof}
+
+\begin{remark}[Why the signs must be separated]\label{rem:signsep}
+At $\varphi$ the two branches move in \emph{opposite} directions along the ladder: the $n=-1$
+values increase ($17.5116\ldots,17.9435\ldots,17.9443\ldots$) while the $n=+1$ values decrease
+($18.1960\ldots,17.9450\ldots,17.9443\ldots$), both towards $\pr^2$. So $F$ is not monotone in
+$Y$, and no finite sample of ladder states bounds the infinite ladder. The separation above
+does: one branch is bounded uniformly by $\pr^2$, the other attains its maximum at an explicit
+first member.
+\end{remark}
+
+Combining Theorem~\ref{thm:cutoff} with Lemma~\ref{lem:imprim} and the congruence restrictions
+on $N$ leaves very little at $\varphi$. There $N=k^2-km-m^2$ is \emph{odd}, since $m,k$ are;
+$4N=(2k-m)^2-5m^2$ forces $4N$ to be a square modulo $5$, i.e.\ $N\equiv0,1,4\pmod5$, which
+among the odd $|N|\le18$ leaves $|N|\in\{1,5,9,11,15\}$; and $3$ is inert in $\Z[\varphi]$
+(the discriminant $5$ is not a square modulo $3$), so $3\mid N$ forces $3\mid\gcd(m,k)$ and
+kills $|N|=9,15$ by Lemma~\ref{lem:imprim}. The admissible defects left at $\varphi$ are
+therefore $|N|\in\{1,5,11\}$, and the four orbits of Appendix~\ref{app:tables} realise exactly
+these.
+
+\section{Exhaustive enumeration of the surviving orbits}\label{sec:enum}
+
+\begin{proposition}[Bounded enumeration, no unique factorisation]\label{prop:enum}
+Let $|N|\le B$. Reduce $\eta$ by powers of $\pr$ until $1\le\eta<\pr$. Then
+$|\xi|=|N|/\eta\le B$ automatically, so $(\eta,\xi)$ lies in the rectangle
+$[1,\pr)\times[-B,B]$ in the two real embeddings, and since $m=(\eta-\xi)/D_0$ and
+$k=(\alpha\eta-\alpha'\xi)/D_0$ the integer coordinates of the representative are explicitly
+bounded. An exhaustive search over that box finds every orbit.
+\end{proposition}
+
+No class-group or principal-ideal hypothesis is used: this is the classical reduction theory of
+the generalised Pell equation, see \cite{Conrad}, Theorems 1.1 and 2.1. Reduced representatives may
+have $m\le0$ or $k\le0$; they must be retained, since the positive states appear later in the
+same orbit. The resulting counts are
+\[
+\varphi:\ 4\ \text{orbits at }|N|\le18,\qquad
+1+\sqrt3:\ 64\ \text{at }|N|\le204,\qquad
+\sqrt3:\ 6\ \text{at }|N|\le27 .
+\]
+
+\section{Exact comparisons: error and height}\label{sec:compare}
+
+Let $A,B$ be orbits with reduced representatives $r_A,r_B\in[1,\pr)$ and representative defects
+$n_A,n_B$. Consider $A$ at period $p-d$ and $B$ at period $p$, with offset $d\ge0$.
+
+\begin{proposition}[Error comparison]\label{prop:err}
+With $\gam:=|N_A|\eta_B^2-|N_B|\eta_A^2$,
+\begin{equation}\label{eq:crit}
+\varepsilon_B<\varepsilon_A
+\iff
+2\alpha\gam>t\bigl(|N_A|N_B-|N_B|N_A\bigr),
+\end{equation}
+and $\gam=\pr^{2p-2d}\gam_d$ with
+$\gam_d=|N_A|r_B^2\pr^{2d}-|N_B|r_A^2$ independent of $p$. Hence
+$\sgn\gam=\sgn\gam_d$ is one exact sign per pair $(A,B)$ and offset $d$. The right-hand side of
+\eqref{eq:crit} is bounded in absolute value by $2t|N_A||N_B|$, so if $\gam_d\neq0$ then
+\eqref{eq:crit} is decided by $\sgn\gam_d$ as soon as
+\begin{equation}\label{eq:thr}
+2\alpha\,\pr^{2p-2d}\,|\gam_d|\;>\;2t\,|N_A|\,|N_B| ,
+\end{equation}
+a strict inequality which first holds at an explicitly computable period $P(A,B,d)$. The
+threshold starts at $p=d$, where $\pr^{2p-2d}=1$.
+\end{proposition}
+
+\begin{proposition}[Degenerate case $\gam_d=0$]\label{prop:gamma0}
+If $\gam_d=0$ then \eqref{eq:crit} reduces to the integer condition
+$0>t(|N_A|N_B-|N_B|N_A)$ with the defects transported by \eqref{eq:transport}:
+$N_A=\delta^{p-d}n_A$, $N_B=\delta^{p}n_B$. Hence
+\begin{equation}\label{eq:tiesign}
+\sgn(\varepsilon_B-\varepsilon_A)=\sgn\bigl(t(|N_A|N_B-|N_B|N_A)\bigr)\in\{-1,0,+1\},
+\end{equation}
+a three-way outcome. If $\delta=-1$ this depends on the parity of $p$, so such a pair can give
+\emph{alternating} verdicts; if $t=0$ the right-hand side vanishes identically and the two
+states have \emph{exactly equal} error at every period.
+\end{proposition}
+
+\begin{proposition}[Height comparison]\label{prop:height}
+With $A$ at period $q$ and $B$ at period $q+d$, put
+\[
+U=2\alpha(r_B\pr^{d}-r_A)\,r_A\,r_B\pr^{d},\qquad
+V=\delta^{q}\,t\bigl(\delta^{d}n_B r_A-n_A r_B\pr^{d}\bigr).
+\]
+Then $\sgn(H_B-H_A)=\sgn(\pr^{2q}U-V)$. Here $U$ is independent of $q$, and $V$ depends on $q$
+only through $\delta^q$, hence only through the parity of $q$ when $\delta=-1$. If $U\neq0$ the
+sign is decided by $\sgn U$ once $\pr^{2q}|U|>|V|$, at an explicitly computable period.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:masters}, $D_0H=2\alpha\eta-tN/\eta$, so
+$D_0(H_B-H_A)=2\alpha(\eta_B-\eta_A)-t(N_B/\eta_B-N_A/\eta_A)$. Substitute
+$\eta_A=r_A\pr^{q}$, $\eta_B=r_B\pr^{q+d}$ and the transported defects, then clear the positive
+factor $\pr^{-q}r_Ar_B\pr^{d}$.
+\end{proof}
+
+\begin{proposition}[$U=0$ is an index shift, not a tie]\label{prop:U0}
+$U=0$ if and only if $r_A=r_B\pr^{d}$. With distinct representatives in $[1,\pr)$ this is
+impossible: for $d\ge1$ it forces $r_A\ge\pr$, and for $d=0$ it forces $r_A=r_B$, i.e. the same
+orbit. Moreover $U=0$ would imply $V=0$: taking norms of $r_A=r_B\pr^d$ gives
+$n_A=\delta^dn_B$, and substituting both identities annihilates $V$. Hence $U=0$ denotes the
+same arithmetic state after an index shift, in contrast to $\gam_d=0$, which does occur between
+distinct states.
+\end{proposition}
+
+When the two thresholds are combined one must convert period coordinates:
+Proposition~\ref{prop:err} places $A$ at $p-d$ and $B$ at $p$, while
+Proposition~\ref{prop:height} places $A$ at $q$ and $B$ at $q+d$, so $q=p-d$ and the height
+threshold must be shifted by $+d$ before taking a maximum.
+
+\section{From a finite check to the infinite tail}\label{sec:tail}
+
+\begin{lemma}[Error monotonicity]\label{lem:mono}
+Along any orbit, $\varepsilon$ strictly decreases. Indeed $\varepsilon=|N|D_0/G$ and one unit
+step gives
+\begin{equation}\label{eq:Ginc}
+G_{\mathrm{next}}-G=2\alpha\eta^2(\pr^2-1)-tN(\delta-1).
+\end{equation}
+If $\delta=+1$ the second term vanishes and the first is positive, so $G$ increases at every
+step unconditionally. If $\delta=-1$ the second term is bounded by $2t|N|$ while the first grows
+like $\pr^{2p}$, so once $2\alpha\eta^2(\pr^2-1)>2t|N|$ it holds at every later step; the
+finitely many earlier steps are checked directly.
+\end{lemma}
+
+\begin{proposition}[Only offsets $d\in\{0,1\}$ matter]\label{prop:window}
+Fix an orbit $B$ at period $p$. For each orbit $A$, the latest $A$-state strictly below $B$ in
+height occurs at period $p$ or $p-1$. If $B$ beats all of those, it beats every earlier state.
+\end{proposition}
+
+\begin{proof}
+Three ingredients. (i) Normalisation: all representatives lie in $[1,\pr)$, so for any orbits
+$A,A'$ one has $r_A\pr^{p-1}<r_{A'}\pr^{p}$, because $r_A/r_{A'}<\pr$; hence the period-$(p-1)$
+state of any orbit precedes the period-$p$ state of any other in the variable $\eta$.
+(ii) Certified height order: the \emph{height} comparison is supplied by
+Proposition~\ref{prop:height}, pairwise and exactly --- not inferred from $\eta$
+(Remark~\ref{rem:score}). (iii) Monotonicity: by Lemma~\ref{lem:mono}, a state of orbit $A$ at
+period $q\le p-2$ has larger $\varepsilon$ than the period-$(p-1)$ state of $A$, which by (i)
+and (ii) lies below $B$ and which $B$ already beats.
+\end{proof}
+
+Consequently the classification of an orbit is determined by finitely many exact signs: for each
+competitor and each $d\in\{0,1\}$, the sign of $\gam_d$, or the three-way rule
+\eqref{eq:tiesign} when $\gam_d=0$, together with the height order of
+Proposition~\ref{prop:height}. Each orbit receives one of four verdicts:
+\emph{strict} (beats every earlier competitor at every period parity), \emph{alternating}
+(beats them at one parity, loses at the other), \emph{equality} (ties exactly with some earlier
+competitor, hence not a strict record), or \emph{excluded}.
+
+\paragraph{The finite segment.}
+Everything below the period at which all those signs become decisive is covered by
+\emph{unpruned} enumeration: all odd pairs with $H$ below an exact bound, with no defect
+restriction. Taking a conservative global tail start $p_0$ --- the maximum over all pairs and
+offsets of the thresholds above, raised until every orbit has a positive state at period
+$p_0-1$ so that the predecessor window of Proposition~\ref{prop:window} is populated --- gives
+The table is generated by \texttt{certificate/tail\_table.py}, which also reports the state at
+which each maximum is attained.
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+$\alpha$ & tail start $p_0$ & largest pre-tail $H$ & unpruned cap \\
+\midrule
+$\varphi$ & $2$ & $(29+7\sqrt5)/2=22.3262\ldots$ & $23$ \\
+$1+\sqrt3$ & $2$ & $206+55\sqrt3=301.2628\ldots$ & $302$ \\
+$\sqrt3$ & $3$ & $23+13\sqrt3=45.5167\ldots$ & $46$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The unpruned enumerations below these caps (41, 4173 and 152 admissible states respectively)
+agree with the claimed families, and the surviving orbits are identified by their actual
+recurrences, not merely by their defect labels. Larger unpruned brute-force runs were also performed --- to
+$H\le3000$ at $\varphi$ and $1+\sqrt3$ and to $H\le2000$ at $\sqrt3$, each cross-checked against
+an independently pruned scan, and the record families compared with their recurrences out to
+$H\le10^{12}$ --- but these are supporting verification, not part of the argument.
+
+\section{The three classifications}\label{sec:classify}
+
+Let $F_0=0,F_1=1$ and $L_0=2,L_1=1$.
+
+\begin{theorem}[$\alpha=\varphi$]\label{thm:A}
+The strict chronological records are exactly the states
+\[
+(F_{3j+1},F_{3j+2}),\quad j\ge0,\qquad\text{together with}\qquad (L_{6j+4},L_{6j+5}),\quad j\ge0,
+\]
+merged in increasing $H$. The signed defect cycle along the merged sequence is
+$(-1,+1,-5)$, repeating. The first ladder is the orbit of $(1,1)$ under $\varphi^3$,
+i.e. under $\mat{1}{2}{2}{3}$; within it the defect alternates between $-1$ and $+1$, and the
+fixed-defect step is $\varphi^6=\mat{5}{8}{8}{13}$.
+\end{theorem}
+
+\begin{theorem}[$\alpha=1+\sqrt3$]\label{thm:B}
+The strict chronological records are exactly the three orbits of
+$\mat{3}{4}{8}{11}$ seeded at $(1,1)$, $(1,3)$ and $(5,13)$, merged in increasing $H$.
+Their defects are constant along each orbit, equal to $-3$, $+1$ and $-11$, and the merged
+defect cycle is $(-3,+1,-11)$, repeating. Here $\pr=7+4\sqrt3$ and $\delta=+1$.
+\end{theorem}
+
+\begin{theorem}[$\alpha=\sqrt3$]\label{thm:C}
+\emph{(i)} The strict chronological records are exactly the orbit of $(1,1)$ under
+$\mat{2}{1}{3}{2}$, that is
+\[
+(1,1),(3,5),(11,19),(41,71),(153,265),(571,989),\dots,
+\]
+all of defect $-2$. Here $t=0$, so $H=\eta$ and $h^2\varepsilon=\tfrac12$ exactly on every
+strict record, where $h=H/2$.
+\emph{(ii)} For each such state $A=(m,k)$ the companion $B=(k,3m)$ satisfies
+\[
+\eta_B=\sqrt3\,\eta_A,\qquad N_B=+6,\qquad H_B=\sqrt3\,H_A,\qquad \varepsilon_B=\varepsilon_A ,
+\]
+and $B$ is again an admissible primitive state. Hence the companion family
+$(1,3)$, $(5,9)$, $(19,33)$, $(71,123)$, $(265,459),\dots$ consists of \emph{weak} records
+that are not strict.
+\end{theorem}
+
+\begin{proof}[Proof of (ii)]
+$\eta_A=k+m\sqrt3$ and $\sqrt3\,\eta_A=3m+k\sqrt3=\eta_B$ with $(m_B,k_B)=(k,3m)$. Norms
+multiply: $N_B=\Nm(\sqrt3)N_A=(-3)(-2)=6$. Since $t=0$, $H=\eta$ by \eqref{eq:masters}, so
+$H_B=\sqrt3H_A$; and $\varepsilon=|N|/H^2$ gives
+$\varepsilon_B=6/(3H_A^2)=2/H_A^2=\varepsilon_A$. Admissibility: $k$ is odd and $3m$ is odd.
+Primitivity: $k^2-3m^2=-2$ forces $3\nmid k$ (else $0\equiv1\bmod3$) and $\gcd(k,m)=1$, so
+$\gcd(k,3m)=1$. Since $\varepsilon_B=\varepsilon_A$ with $H_B>H_A$, $B$ is not a strict record
+but ties the running minimum.
+\end{proof}
+
+We emphasise that Theorem~\ref{thm:C}\,(ii) exhibits one infinite family of non-strict weak
+records; it is \emph{not} a classification of all weak records, and imprimitive weak records are
+not considered.
+
+\subsection{\texorpdfstring{The $\varphi$ tie, resolved by an integer}{The phi tie, resolved by an integer}}\label{sec:tie}
+
+The $|N|=1$ admissible states are exactly $(F_n,F_{n+1})$ with $n\equiv1\pmod3$: $\eta$ is then
+a unit $\pm\varphi^{\,n}$, the class condition modulo $2$ forces $n\equiv1\pmod3$, and $F_n$ and
+$F_{n+1}$ are both odd precisely when $3\nmid n(n+1)$. The $|N|=5$ admissible states are
+$\eta=\pm\sqrt5\,\varphi^{\,n}$ with the same congruence on $n$, since $5$ ramifies and
+$(\sqrt5)=(2\varphi-1)$ is the only ideal of norm $5$; their defect is $N=-5(-1)^n$.
+
+For such $\eta$ we abbreviate $\varepsilon(\eta)$ for the error of the corresponding state, by
+Lemma~\ref{lem:master} a function of $(N,\eta)$.
+
+\begin{theorem}[The tie and its resolution]\label{thm:tie}
+For $n\equiv1\pmod3$ put $A$ the unit state at $\eta_A=\varphi^{\,n}$ and $B$ the norm-$5$ state
+at $\eta_B=\sqrt5\,\varphi^{\,n}$. Then $\eta_B/\eta_A=\sqrt5$, so
+$(\eta_B/\eta_A)^2=5=|N_B|$: the leading terms cancel exactly and
+\begin{equation}\label{eq:tiepair}
+\varepsilon(\varphi^{\,n})=\frac{\sqrt5}{2\varphi^{\,2n+1}-(-1)^n},\qquad
+\varepsilon(\sqrt5\,\varphi^{\,n})=\frac{\sqrt5}{2\varphi^{\,2n+1}+(-1)^n}.
+\end{equation}
+Moreover $N_A=(-1)^n$ and $N_B=-5N_A$, so by \eqref{eq:tiesign} $B$ beats $A$ if and only if
+$N_A=+1$, i.e. $n$ even. Among $n\equiv1\pmod3$ this is $n\equiv4\pmod6$, and those states are
+exactly the Lucas pairs $(L_{6j+4},L_{6j+5})$.
+\end{theorem}
+
+So the competition is decided not by a multiplicative gap but by the bounded term $\pm1$ in
+\eqref{eq:tiepair}, equivalently by the integer identity $N_B=-5N_A$. The normalised
+representative of the norm-$5$ orbit has $N_{\mathrm{rep}}=+5$; the states that actually win are
+those with $N=-5$, reached at the other period parity. This is the ``asymptotically degenerate
+competition'' of \cite[Remark 5.10]{DeJesus2026}.
+
+\begin{remark}[Method note]\label{rem:signmethod}
+Two of the comparisons above are invisible to $|N|$: the alternating verdict of
+Proposition~\ref{prop:gamma0} when $\delta=-1$, and the $V$-term of
+Proposition~\ref{prop:height}. In the course of this work, asking of each computed quantity
+which distinctions it discards --- and whether a later step needs them --- located exactly these
+two places, and the certificate now transports signed defects by \eqref{eq:transport} and uses
+magnitudes only where the quantity is $\delta$-invariant. The mechanism itself is arithmetic:
+$N_B=-5N_A$, and the exact cancellation in \eqref{eq:tiepair}.
+\end{remark}
+
+\subsection{Classification summary}\label{sec:summary}
+
+\begin{center}
+\begin{tabular}{lrrcccc}
+\toprule
+$\alpha$ & cutoff & orbits & strict & alternating & equality & excluded \\
+\midrule
+$\varphi$     & $18$  & $4$  & $1$ & $1$ & $0$ & $2$ \\
+$1+\sqrt3$    & $204$ & $64$ & $3$ & $0$ & $0$ & $61$ \\
+$\sqrt3$      & $27$  & $6$  & $1$ & $0$ & $1$ & $4$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+At $\varphi$ the alternating orbit is the norm-$5$ (Lucas) family of Theorem~\ref{thm:tie}; at
+$\sqrt3$ the equality orbit is the companion family of Theorem~\ref{thm:C}\,(ii). Appendix
+\ref{app:tables} lists every orbit with its representative, signed defect, verdict, and --- for
+each excluded orbit --- a competitor, an offset, the deciding sign and the period from which it
+is certified.
+
+\section{Relation to the earlier note}\label{sec:earlier}
+
+All references are to the pinned version of \cite{DeJesus2026} identified in
+Section~\ref{sec:intro}.
+
+\paragraph{Resolved.}
+Conjecture 5.11 ($\varphi$-completeness) is Theorem~\ref{thm:A}; Conjecture 5.13
+($(1+\sqrt3)$-completeness) is Theorem~\ref{thm:B}. The earlier note states that for these two
+slopes its pruned search range is labelled computational ``precisely because the analogous bound
+is'' those conjectures: that is, the norm cutoff was assumed. Theorem~\ref{thm:cutoff} derives
+it.
+
+Remark 5.10 of the baseline already identifies the mechanism of the degenerate competition
+correctly --- that $|N|=5$ is compensated to leading order, that the decision falls to the
+bounded term in $L_n^2-5F_n^2=4(-1)^n$, and that its sign selects the odd Lucas pairs with
+$n\equiv4\pmod6$ --- and says explicitly that this is ``an observed pattern with an identified
+finite mechanism, not a proved theorem''. Theorem~\ref{thm:tie} proves it, for every admissible
+$n$ at once, from the closed forms \eqref{eq:tiepair}; and it places the phenomenon in a general
+frame, as the case $\gam_d=0$ of Proposition~\ref{prop:gamma0}, where the same three-way integer
+rule also produces the permanent equality at $\sqrt3$.
+
+\paragraph{Corrected.}
+Observation 5.9 of the baseline describes the $\varphi$ chronology as having ``three records
+per multiplicative period $\varphi^6$ in height'', and Observation 5.12 says the same of
+$1+\sqrt3$ with period $(2+\sqrt3)^2$; both are labelled computationally verified. Exact
+multiplicativity holds for $\eta$, not for $H$: by \eqref{eq:masters},
+\begin{equation}\label{eq:heightper}
+H_{\mathrm{next}}-\pr H=\frac{tN\,(\pr-\delta/\pr)}{D_0\,\eta},
+\end{equation}
+which vanishes only when $tN=0$. Concretely, with $\mat{3}{4}{8}{11}(1,1)=(7,19)$ and
+$\varphi^6\cdot(1,1)=(13,21)$,
+\[
+H(7,19)-\pr H(1,1)=-8\sqrt3,\qquad
+H(13,21)-\varphi^6H(1,1)=4-4\sqrt5,
+\]
+both nonzero. What is true is that $H_{\mathrm{next}}/H\to\pr$ along each orbit, by
+\eqref{eq:heightper}, since $\eta\to\infty$; the baseline's observed record lists are not in
+question, only the exactness of the height period. We do \emph{not} assert that every sufficiently large multiplicative height
+window contains exactly three records; that is a statement about the interleaving of three
+orbits with different multiplicative phases and would require a separate argument. At
+$\alpha=\sqrt3$, where $t=0$, one has $H=\eta$ and the height period $2+\sqrt3$ \emph{is} exact
+(Theorem~\ref{thm:C}).
+
+\paragraph{New.}
+The slope $\sqrt3$ does not appear in \cite{DeJesus2026}. It is the cleanest of the three: $t=0$
+collapses the master identities to $H=\eta$ and $\varepsilon=|N|/H^2$, so $h^2\varepsilon$ is
+exactly $|N|/4$, and it is also the case in which no admissible state has $|N|=1$, which is why
+the cutoff is stated for a ladder of arbitrary known defect.
+
+\section{The certificate}\label{sec:cert}
+
+The finite content of the proofs is isolated in a small standalone bundle
+(\texttt{certificate/}; see its \texttt{README}). Two programs are run:
+\texttt{certificate.py} prints the cutoff, the orbit enumeration, the classification and the
+threshold data; \texttt{verify\_records.py} runs 28 checks and reports \texttt{VERIFY PASSED}.
+The bundle uses the Python standard library only, reads no data files at runtime, and
+recomputes everything from the definitions.
+
+All ordering and comparison decisions are exact: arithmetic is carried out in $\Z[\sqrt D]$ with
+integer or rational coordinates, and signs are decided by integer comparisons. Floating point
+appears only as a presort key --- after which the sorted order is re-verified exactly --- and for
+display. The checks include the master identities, the congruence restrictions on $N$ for each
+slope, the imprimitivity reduction, the cutoff bound against every record found by unpruned
+search, an independent recount of the orbits by direct rectangle enumeration, the four-way
+classification against the claimed families, set equality of the record list with the
+recurrences of Theorems~\ref{thm:A}--\ref{thm:C}, the signed-transport ledger
+\eqref{eq:transport} and its invariance under change of representative, and the threshold data
+of Section~\ref{sec:tail}.
+
+\paragraph{Status of the verification.}
+The certificate is exact arithmetic, not a formal proof: it is not machine-checked in a proof
+assistant, and this note has not been refereed. Two independent audits of earlier versions of
+the bundle were carried out with assistance of an automated reviewer; they re-derived the
+classifications by separate orbit enumeration and tail logic, and they found and prompted the
+repair of several defects in the written proof and in the implementation, including the
+incorrect monotonicity justification repaired in Remark~\ref{rem:signsep} and a threshold
+initialisation error. Those audits re-used this bundle's arithmetic module, so they are
+independent in logic and in control flow but not in the underlying arithmetic implementation.
+The release history in \texttt{docs/CHANGELOG.md} records the versions and what changed.
+
+\section{Related work}\label{sec:related}
+
+The objective studied here --- a relative error $|m\alpha-k|/(m\alpha+k)$, with the states
+ordered by the same denominator $m\alpha+k$ --- is not one of the standard best-approximation
+notions, and we make only comparisons that the cited definitions support.
+
+Kim, Lee and Liao \cite{KLL2022} introduce the odd--odd continued fraction and prove that the
+best \emph{$1$-rational} approximations of an irrational $x$ --- their Definition 1.1: $p/q$
+with $p,q$ odd and coprime such that $|qx-p|<|bx-a|$ for every $a/b$ of the same parity type
+with $0<b\le q$ --- are exactly its principal convergents (their Theorem 1.2). That objective is
+$|qx-p|$ ordered by $q$, which is not \eqref{eq:Heps}; the two notions select different sets.
+For instance at $\alpha=\varphi$ the state $(7,11)$ is a strict record here, while
+$|3\varphi-5|=0.1459\ldots<0.3262\ldots=|7\varphi-11|$ with $3\le7$, so $11/7$ is not a best
+$1$-rational approximation. A companion paper \cite{KLL2025} studies the three parity types and
+best signed approximations with the same $|qx-p|$ objective. We make no claim that our
+classifications do or do not follow from that machinery; establishing either would require an
+argument we have not given.
+
+Hurwitz-type theorems \emph{with} congruence conditions on numerator and denominator are a
+separate line. Elsner's introduction \cite{Elsner} records it as beginning with Hartman, who
+first imposed congruence conditions on $u$ and $v$, with a weaker theorem of Koksma (1951) and
+with Uchiyama's result the sharpest before his own. Elsner's Theorem 1.1 requires the modulus
+$s$ to have an odd prime divisor, and he records that the corresponding Corollary 1.1 fails for
+$s=2$ with $h=1$ --- that is, for the odd/odd class --- giving $\xi=12+\sqrt{145}$ as a
+witness. So the restriction studied here is the acknowledged
+exceptional case of that line of work. Those results bound an approximation constant; they do
+not enumerate a record set.
+
+Cha and Kim \cite{ChaKim} determine the small values and the smallest accumulation point of the
+Lagrange spectrum of intrinsic approximation on the unit circle, with height the denominator of
+a primitive integer vector, and classify the very badly approximable points by Romik digit
+expansions. That is an asymptotic spectrum on a different space with a different height, and we
+draw no reduction in either direction. By contrast the accumulation values of
+$h^2\varepsilon$ along the records here follow immediately from \eqref{eq:masters}:
+$h^2\varepsilon\to\alpha|N|/(2D_0)$ along a fixed-defect orbit, which at $\sqrt3$ is exactly
+$|N|/4$. These are values \emph{at} records and are not the same quantity as the staircase
+envelope of $H\mapsto H^2\varepsilon$ between records.
+
+The reduction theory used in Section~\ref{sec:enum} --- finiteness of the orbits of a given norm
+under the unit group, and the bounded search that exhibits representatives --- is classical; see
+\cite{Conrad}, Theorems 1.1 and 2.1. Our contribution is the three exact chronologies for the error and height
+\eqref{eq:Heps}, the two equality mechanisms isolated in Theorems~\ref{thm:tie} and
+\ref{thm:C}\,(ii), and the effective certificate that makes the passage from a finite
+computation to the infinite tail explicit.
+
+\section{Outlook, with its hypotheses stated}\label{sec:outlook}
+
+It is natural to ask for a uniform statement: for a quadratic $\alpha$ and a congruence class on
+$(m,k)$, are the strict records always a finite explicit union of unit orbits beyond an
+effectively computable height? The present argument does not prove this, and three of its steps
+use the particular setting.
+
+\begin{itemize}\itemsep3pt
+\item \textbf{Signs.} Theorem~\ref{thm:cutoff} uses $t\ge0$ and $\alpha'<0$, so that $\eta>0$ on
+positive states and $x\mapsto x(D_0+tx)$ is increasing. Other sign patterns need separate
+treatment.
+\item \textbf{Imprimitivity.} Lemma~\ref{lem:imprim} uses that the gcd of two odd numbers is
+odd, so dividing it preserves the class. This fails for a general class: at $\alpha=\sqrt6$ with
+the class $(m,k)\equiv(1,1)\pmod3$, the state $(4,10)$ is a strict record within the class
+although $\gcd=2$, and its reduction $(2,5)$ leaves the class. A general statement must quantify
+over primitive states or retain imprimitive bounded-defect orbits.
+\item \textbf{The comparison ladder.} Theorem~\ref{thm:cutoff} needs an admissible state of
+\emph{known} defect $L$. Existence of some primitive seed in an ordinary residue pair
+$(a,b)\bmod M$ with $\gcd(a,b,M)=1$ follows from a short construction: choose $m\equiv a$, let
+$P$ be the product of the primes dividing $m$ but not $M$, and use the Chinese remainder theorem
+to choose $k\equiv b\pmod M$ with $k\equiv1\pmod P$; common primes of $m$ and $M$ cannot divide
+$b$, so $\gcd(m,k)=1$, and a large enough $k$ makes $\eta>0$. Its defect is nonzero and
+computable. Obtaining a \emph{prescribed} or \emph{minimal} $|L|$ is a different and harder
+question; the values $L=1,1,2$ used here were found by inspection.
+\end{itemize}
+
+Assembling these into a theorem, with the quantifiers in order and the finite region described
+in general, is left as future work. Three worked slopes do not establish it.
+
+\section*{Acknowledgements and AI-assistance disclosure}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+Anthropic's Claude was used throughout as an assistant: for exact-arithmetic computational
+design and execution, for drafting and revising this note and the certificate code, and as an
+adversarial reviewer of both. Several of the mathematical repairs recorded in
+\texttt{docs/CHANGELOG.md} originated in that review process, including the sign-separated
+cutoff argument of Theorem~\ref{thm:cutoff}, the pairwise height certificate of
+Proposition~\ref{prop:height}, and the correction of \eqref{eq:heightper}. All conceptual
+choices, and final responsibility for every claim here, belong to the author. No human referee
+has reviewed this note, and no part of it is formally verified.
+
+\begin{thebibliography}{9}
+
+\bibitem{ChaKim} B.~Cha and D.~H.~Kim.
+\emph{Intrinsic Diophantine approximation on the unit circle and its Lagrange spectrum.}
+Ann. Inst. Fourier (Grenoble) \textbf{73} (2023), no.~1, 101--161.
+\href{https://doi.org/10.5802/aif.3522}{doi:10.5802/aif.3522}.
+
+\bibitem{Conrad} \emph{Generalized Pell equation.} Math 154 course handout, Stanford
+University. Theorem 1.1: finiteness of the equivalence classes of solutions of $x^2-dy^2=n$
+under the norm-one units. Theorem 2.1: an explicit bounded region of $\mathbb{R}^2$ containing
+a representative of every class.
+\url{https://virtualmath1.stanford.edu/~conrad/154Page/handouts/genpell.pdf}.
+The handout carries no printed author line; it is cited here by title, course and URL.
+
+\bibitem{DeJesus2026} E.~De Jes\'us.
+\emph{Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum.}
+Zenodo (2026). \href{https://doi.org/10.5281/zenodo.21796640}{doi:10.5281/zenodo.21796640}.
+Cited at repository commit \texttt{10ea1c62c6866990ded0a85a531883841d38d034}.
+
+\bibitem{Elsner} C.~Elsner.
+\emph{On Diophantine approximations with rationals restricted by arithmetical conditions.}
+Fibonacci Quart. \textbf{38} (2000), no.~1, 24--33.
+\url{https://www.fq.math.ca/Scanned/38-1/elsner.pdf}.
+
+\bibitem{KLL2022} D.~H.~Kim, S.~B.~Lee and L.~Liao.
+\emph{Odd-odd continued fraction algorithm.}
+Monatsh. Math. \textbf{198} (2022), 323--344.
+\href{https://doi.org/10.1007/s00605-022-01704-2}{doi:10.1007/s00605-022-01704-2}.
+Read in the author version arXiv:2002.06310v2.
+
+\bibitem{KLL2025} D.~H.~Kim, S.~B.~Lee and L.~Liao.
+\emph{Diophantine approximation by rational numbers of certain parity types.}
+Mathematika \textbf{71} (2025), e12285.
+\href{https://doi.org/10.1112/mtk.12285}{doi:10.1112/mtk.12285}.
+Read in the author version arXiv:2403.12341v1.
+
+\end{thebibliography}
+
+\appendix
+\section{Machine-generated orbit tables}\label{app:tables}
+
+The tables below are generated by \texttt{certificate/tables.py} and are reproduced verbatim;
+the same data is available as CSV in \texttt{certificate/tables/}. In the first table,
+$N_{\mathrm{rep}}$ is the defect of the \emph{normalised representative} (reduced into
+$[1,\pr)$); by \eqref{eq:transport} the defect at period $p$ is $\delta^pN_{\mathrm{rep}}$, so
+at $\varphi$ the sign alternates. ``first positive state'' is the first $(m,k)$ with both
+coordinates positive.
+
+In the exclusion table, each row names a competitor orbit $A$ (by its representative defect),
+the offset $d$ at which the comparison is taken, and the period from which the deciding sign is
+certified by \eqref{eq:thr}. A reader can re-derive any row from
+Propositions~\ref{prop:err}--\ref{prop:height} without re-running a search.
+
+\bigskip
+\noindent\textbf{Classification of all admissible primitive orbits below the cutoff.}
+{\small\input{../certificate/tables/classification.tex}}
+
+\bigskip
+\noindent\textbf{Exclusion witnesses.}
+{\small\input{../certificate/tables/exclusions_summary.tex}}
+
+\end{document}

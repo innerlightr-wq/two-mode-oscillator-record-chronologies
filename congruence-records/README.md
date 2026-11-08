@@ -6,7 +6,9 @@ conjectures that note left open, adds a third slope, and corrects one assertion 
 > E. De Jesús, *Odd/Odd Records for a Relative Approximation Error: Three Quadratic
 > Classifications and an Exact Certificate*, 2026.
 > ORCID [0009-0007-0190-9143](https://orcid.org/0009-0007-0190-9143).
-> **Not yet deposited — no DOI.** Release tag: `congruence-records-v1.0.0`.
+> Zenodo (2026). doi:[10.5281/zenodo.24046651](https://doi.org/10.5281/zenodo.24046651) — the version DOI of the deposit, published
+> 2026-11-08, CC BY 4.0. Concept DOI (all versions): [10.5281/zenodo.24046650](https://doi.org/10.5281/zenodo.24046650).
+> Release tag: `congruence-records-v1.0.0`.
 
 | | |
 |---|---|
@@ -70,8 +72,9 @@ cd paper && latexmk -pdf congruence_records_note.tex
 * **Not claimed:** a uniform theorem for general quadratic slopes and congruence classes; a
   classification of all weak records; novelty relative to the odd–odd continued fraction
   literature. See §11 and §12 of the note.
-* Open administrative items before deposit are listed in
-  [`docs/REVIEW_SUMMARY.md`](docs/REVIEW_SUMMARY.md) §6.
+* The deposited file is the PDF only. The LaTeX source, this certificate and the data live
+  here and in the tagged release; see [`docs/REVIEW_SUMMARY.md`](docs/REVIEW_SUMMARY.md) §6
+  for the remaining open items.
 
 ## Relationship to the 2026-08 note
 

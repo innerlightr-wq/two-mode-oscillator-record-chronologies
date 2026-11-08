@@ -9,7 +9,9 @@ Pinned baseline:
 
 ```
 deposit            E. De Jesús, "Boundary and Interior Record Chronologies for the
-                   Two-Mode Oscillator Spectrum", Zenodo, doi:10.5281/zenodo.21796640
+                   Two-Mode Oscillator Spectrum", Zenodo, 2026-08-04
+                   version DOI  10.5281/zenodo.21796640
+                   concept DOI  10.5281/zenodo.21796540
 repository commit  10ea1c62c6866990ded0a85a531883841d38d034
 oscillator_records.pdf  sha256 f36c23ab099a7a0bca1e68dfe699ea02e15ef6e767bbc52428a77b272da247b3
 oscillator_records.tex  sha256 6b616f79602393fd4560c0adbc2f789f47e9c8b13ca771ebe9d6f70e599295cd

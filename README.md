@@ -5,7 +5,7 @@ This repository holds **two notes** and their reproducibility material.
 | | note | status |
 |---|---|---|
 | **1** | *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum* (2026-08) | deposited, doi:[10.5281/zenodo.21796640](https://doi.org/10.5281/zenodo.21796640) |
-| **2** | *Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classifications and an Exact Certificate* (2026-11) | **not yet deposited**, in [`congruence-records/`](congruence-records/) |
+| **2** | *Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classifications and an Exact Certificate* (2026-11) | deposited 2026-11-08, doi:[10.5281/zenodo.24046651](https://doi.org/10.5281/zenodo.24046651), in [`congruence-records/`](congruence-records/) |
 
 Note 2 is a companion to note 1: it **proves** note 1's two open completeness conjectures
 (Conjectures 5.11 and 5.13), **derives** the norm cutoff that note 1 assumed, adds a third
@@ -89,8 +89,10 @@ a new classification at α = √3, in the companion note described below. One as
 ## Note 2 (2026-11): the companion — [`congruence-records/`](congruence-records/)
 
 > E. De Jesús, *Odd/Odd Records for a Relative Approximation Error: Three Quadratic
-> Classifications and an Exact Certificate*, 2026. **Not yet deposited; no DOI.**
-> Release tag `congruence-records-v1.0.0`.
+> Classifications and an Exact Certificate*. Zenodo (2026).
+> doi:[10.5281/zenodo.24046651](https://doi.org/10.5281/zenodo.24046651) ·
+> concept DOI (all versions) [10.5281/zenodo.24046650](https://doi.org/10.5281/zenodo.24046650) ·
+> release tag `congruence-records-v1.0.0`.
 
 Start at [`congruence-records/README.md`](congruence-records/README.md). The folder is
 self-contained: the note and its LaTeX source in `paper/`, the exact-arithmetic verification
@@ -175,15 +177,18 @@ If you use this repository or the accompanying manuscript, please cite:
 
 > E. De Jesús, *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum*. Zenodo (2026). https://doi.org/10.5281/zenodo.21796640
 
-The repository includes a `CITATION.cff` file with the corresponding citation metadata.
-**`CITATION.cff` currently holds the placeholder `doi: "10.5281/zenodo.XXXXXXXX"`**, which
-disagrees with the DOI quoted above. It has deliberately not been filled in here, because
-whether `10.5281/zenodo.21796640` is the concept DOI or a version DOI cannot be determined from
-this repository. See open item **O-1** in
-[`congruence-records/docs/LICENSE_AND_SOURCE_INVENTORY.md`](congruence-records/docs/LICENSE_AND_SOURCE_INVENTORY.md).
+The repository includes a `CITATION.cff` file with metadata for **both** notes.
 
-The 2026-11 companion note is **not yet deposited** and has no DOI; cite it by this repository
-and the file path until it is.
+Each note has two DOIs. The **version** DOI identifies one deposit and is what to cite when a
+result depends on the exact files; the **concept** DOI always resolves to the latest version.
+
+| note | version DOI | concept DOI |
+|---|---|---|
+| 1 (2026-08) | [10.5281/zenodo.21796640](https://doi.org/10.5281/zenodo.21796640) | [10.5281/zenodo.21796540](https://doi.org/10.5281/zenodo.21796540) |
+| 2 (2026-11) | [10.5281/zenodo.24046651](https://doi.org/10.5281/zenodo.24046651) | [10.5281/zenodo.24046650](https://doi.org/10.5281/zenodo.24046650) |
+
+For the computations behind note 2, cite the tagged release
+`congruence-records-v1.0.0` rather than the branch.
 
 ## License
 

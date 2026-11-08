@@ -1,7 +1,8 @@
-# Release manifest — `congruence-records-v1.0.0` (rc2)
+# Release manifest — `congruence-records-v1.0.0`
 
-Release candidate for the companion technical note. **Nothing here has been published, pushed
-or deposited.** Prepared 2026-11-07.
+The companion technical note and its certificate. The note is **deposited** at
+doi:10.5281/zenodo.24046651 (2026-11-08); this repository holds the source, the
+certificate and the data that the deposit does not. Prepared 2026-11-07.
 
 ---
 
@@ -10,7 +11,7 @@ or deposited.** Prepared 2026-11-07.
 | field | value |
 |---|---|
 | manuscript | *Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classifications and an Exact Certificate* |
-| manuscript version | `1.0.0` (release candidate 2; rc1 superseded, see `CHANGELOG.md`) |
+| manuscript version | `1.0.0` (rc1 superseded before deposit, see `CHANGELOG.md`) |
 | certificate bundle version | `1.0.0`, derived from internal package v3 |
 | author | Elias De Jesús, ORCID 0009-0007-0190-9143 |
 | branch | `companion-odd-odd-records` |
@@ -18,7 +19,9 @@ or deposited.** Prepared 2026-11-07.
 | release commit | not quoted here — a commit hash covers this file, so it cannot name itself. Resolve it with `git rev-parse congruence-records-v1.0.0^{commit}`, and cite the **tag** rather than the branch. |
 | folder | `congruence-records/` (self-contained: `paper/`, `certificate/`, `tables/`, `docs/`) |
 | source baseline | commit `10ea1c62c6866990ded0a85a531883841d38d034` ("Update README.md"), clean tree |
-| DOI | **none** — not deposited; see `ZENODO_METADATA.md` |
+| DOI (version) | **10.5281/zenodo.24046651** — deposited 2026-11-08, CC BY 4.0 |
+| DOI (concept) | 10.5281/zenodo.24046650 — resolves to the latest version |
+| deposited file | `congruence_records_note.pdf`, 331326 bytes, md5 `45f52bbe39ba3bef82c064060c5d56e1` — **byte-identical to the PDF in this release** |
 
 ## 2. Source baseline, unchanged by this release
 

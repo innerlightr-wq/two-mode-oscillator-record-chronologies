@@ -1,17 +1,60 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite the accompanying note."
-title: "Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum"
+message: >-
+  If you use this repository, please cite the note your work relies on; both are listed
+  under "references" below. Each has a version DOI (the specific deposit) and a concept
+  DOI (all versions); cite the version DOI when reproducibility depends on the exact files.
+title: "Record chronologies for odd/odd Diophantine approximation — reproducibility material"
+abstract: >-
+  Exact-arithmetic computations, certificates and data supporting two technical notes on
+  chronological record minima for odd/odd rational approximation of quadratic irrationals.
 authors:
   - family-names: "De Jesús"
     given-names: "Elias"
     orcid: "https://orcid.org/0009-0007-0190-9143"
-date-released: 2026-08-04
-version: "1.0.0"
-doi: "10.5281/zenodo.XXXXXXXX"  # update after Zenodo deposit
+repository-code: "https://github.com/innerlightr-wq/two-mode-oscillator-record-chronologies"
+date-released: 2026-11-08
+version: "congruence-records-v1.0.0"
+license:
+  - MIT
+  - CC-BY-4.0
 keywords:
   - record sequences
-  - Pell equation
   - Diophantine approximation
+  - quadratic irrationals
+  - congruence conditions
+  - Pell equation
   - two-mode oscillator spectrum
   - exact arithmetic
-license: MIT
+references:
+  - type: report
+    title: "Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum"
+    authors:
+      - family-names: "De Jesús"
+        given-names: "Elias"
+        orcid: "https://orcid.org/0009-0007-0190-9143"
+    year: 2026
+    month: 8
+    publisher:
+      name: Zenodo
+    doi: "10.5281/zenodo.21796640"
+    identifiers:
+      - type: doi
+        value: "10.5281/zenodo.21796540"
+        description: "Concept DOI — resolves to the latest version"
+  - type: report
+    title: >-
+      Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classifications
+      and an Exact Certificate
+    authors:
+      - family-names: "De Jesús"
+        given-names: "Elias"
+        orcid: "https://orcid.org/0009-0007-0190-9143"
+    year: 2026
+    month: 11
+    publisher:
+      name: Zenodo
+    doi: "10.5281/zenodo.24046651"
+    identifiers:
+      - type: doi
+        value: "10.5281/zenodo.24046650"
+        description: "Concept DOI — resolves to the latest version"

@@ -6,7 +6,41 @@ for the relative error is new. Dates are the dates the work was done, not public
 
 ---
 
-## [companion-1.0.0-rc2] — 2026-11-07 — release candidate, not published
+## [congruence-records-v1.0.0] — 2026-11-08 — **deposited**
+
+The companion note is published on Zenodo:
+
+| | |
+|---|---|
+| version DOI | `10.5281/zenodo.24046651` |
+| concept DOI | `10.5281/zenodo.24046650` |
+| published | 2026-11-08, CC BY 4.0, resource type "Technical note" |
+| file | `congruence_records_note.pdf`, md5 `45f52bbe39ba3bef82c064060c5d56e1` |
+
+The deposited PDF is **byte-identical** to `paper/congruence_records_note.pdf` at this tag, so
+the deposit carries all five rc2 repairs. No source file changed for the deposit; only
+metadata was added to the repository.
+
+### Changed
+
+* `CITATION.cff` rewritten: **open item O-1 resolved.** It now describes the repository and
+  lists both notes under `references`, each with its version DOI and its concept DOI. The
+  concept/version question was settled by reading the Zenodo API, not inferred — note 1 is
+  version `10.5281/zenodo.21796640` / concept `10.5281/zenodo.21796540`.
+* `README.md`, `congruence-records/README.md`, `RELEASE_MANIFEST.md`, `ZENODO_METADATA.md`,
+  `REVIEW_SUMMARY.md` and `LICENSE_AND_SOURCE_INVENTORY.md` carry the DOIs and distinguish
+  version from concept throughout.
+
+### Known gap in the deposit (not a defect in the note)
+
+The Zenodo record holds **only the PDF**: the LaTeX source and the certificate archive were
+not uploaded, and no related identifiers were set, so the record on its own is not
+reproducible. Fixable with a Zenodo *New version*, which keeps the concept DOI and leaves the
+existing version DOI valid. See `ZENODO_METADATA.md`.
+
+---
+
+## [companion-1.0.0-rc2] — 2026-11-07 — release candidate, superseded by the deposit
 
 Pre-upload review of rc1 by an external reviewer. Five repairs; **no classification changed**,
 and the counts 4/64/6 orbits and 1+1 / 3 / 1+1 non-excluded are unaltered.
@@ -83,7 +117,7 @@ Classifications and an Exact Certificate*, plus its certificate bundle.
 ### Known open items
 
 * `CITATION.cff` still carries the placeholder `doi: "10.5281/zenodo.XXXXXXXX"`.
-  **Not resolved in this release** — see `LICENSE_AND_SOURCE_INVENTORY.md`, item O-1.
+  *(Historical: resolved on 2026-11-08 — see the top entry.)*
 * Novelty relative to the odd–odd continued fraction literature is unresolved.
 * The uniform theorem is unproved.
 

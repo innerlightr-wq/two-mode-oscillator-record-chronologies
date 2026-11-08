@@ -111,16 +111,21 @@ Earlier rounds:
   of congruence-restricted Hurwitz theory (his Corollary 1.1 fails at `s = 2`, `h = 1`, witness
   `12 + sqrt(145)`); it does not establish that the present record set is new.
 
-## 6. Blockers for deposit
+## 6. Open items
 
-| id | item | owner |
+The note is **deposited**: doi:10.5281/zenodo.24046651 (version), concept 10.5281/zenodo.24046650,
+published 2026-11-08, CC BY 4.0. The deposited PDF is byte-identical to the one in this
+release. What remains:
+
+| id | item | status |
 |---|---|---|
-| **O-1** | `CITATION.cff` holds `doi: "10.5281/zenodo.XXXXXXXX"`, disagreeing with the `10.5281/zenodo.21796640` in `README.md`. It cannot be resolved from inside the repository — whether that is the concept or the version DOI is not determinable here. **Not guessed.** | author |
-| **O-2** | `LICENSE` header scopes MIT to "code/ and data/"; `certificate/` is new MIT code and is not named. | author |
-| **O-3** | Root `SHA256SUMS` covers the baseline files only; the release list is in `RELEASE_MANIFEST.md` rather than overwriting it. | author |
-| **O-4** | Publication date, DOI reservation, and the upload itself. | author |
+| **O-1** | `CITATION.cff` DOI placeholder | **RESOLVED.** Both notes' version and concept DOIs were read from the Zenodo API, not inferred: note 1 is version `10.5281/zenodo.21796640` / concept `10.5281/zenodo.21796540`, note 2 is version `10.5281/zenodo.24046651` / concept `10.5281/zenodo.24046650`. `CITATION.cff` now carries both notes under `references`. |
+| **O-2** | `LICENSE` header scopes MIT to "code/ and data/" and does not name `congruence-records/certificate/` or `congruence-records/tables/` | open — the author's call |
+| **O-3** | Root `SHA256SUMS` covers the baseline files only; the companion has its own `congruence-records/SHA256SUMS` over 33 files | by design |
+| **O-4** | **The deposit holds only the PDF.** The LaTeX source and the certificate archive were not uploaded, and no related identifiers were set, so the Zenodo record alone is not reproducible. | open — fixable with a Zenodo *New version*, which keeps the concept DOI; see `ZENODO_METADATA.md` |
+| **O-5** | Push the branch and publish the GitHub release `congruence-records-v1.0.0` | open |
 
-No blocker is mathematical.
+No open item is mathematical.
 
 ## 7. One-line verdict
 

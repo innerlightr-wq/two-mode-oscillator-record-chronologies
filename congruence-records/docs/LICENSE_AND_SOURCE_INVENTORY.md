@@ -53,30 +53,26 @@ paraphrased.
 | Kim, Lee & Liao, Monatsh. Math. 198 (2022), 323–344, doi:10.1007/s00605-022-01704-2 | **arXiv:2002.06310v2** | the arXiv version carries no journal line; the journal line comes from indexing metadata, not from a page the author read. The bibliography says so explicitly. |
 | Kim, Lee & Liao, Mathematika 71 (2025), e12285, doi:10.1112/mtk.12285 | **arXiv:2403.12341v1** | same caveat, stated in the bibliography |
 | *Generalized Pell equation*, Math 154 handout, Stanford University | the handout at the URL given; Theorems 1.1 and 2.1 read | **the handout carries no printed author line.** An earlier draft attributed it to "K. Conrad"; that attribution was removed because it could not be confirmed from the document. Cited by title, course and URL. |
-| De Jesús, doi:10.5281/zenodo.21796640 | the pinned local PDF, sha256 `f36c23ab…` | the DOI is as printed in the repository `README.md` |
+| De Jesús, doi:10.5281/zenodo.21796640 | the pinned local PDF, sha256 `f36c23ab…` | version DOI confirmed against the Zenodo API; concept DOI is `10.5281/zenodo.21796540` |
 
 No citation, theorem number, page range or quotation in the note was supplied from memory.
 Where a detail could not be confirmed from a source the author read, the bibliography records
 what was read instead.
 
-## 5. Open items (blockers for deposit)
+## 5. Open items
 
-**O-1 — `CITATION.cff` DOI placeholder. UNRESOLVED; deliberately not guessed.**
-`CITATION.cff` line 11 reads
+**O-1 — `CITATION.cff` DOI placeholder. RESOLVED 2026-11-08.**
+The placeholder is gone. The ambiguity that blocked it — whether `10.5281/zenodo.21796640` was
+the concept or the version DOI — was settled by reading the Zenodo API rather than by guessing:
 
-```yaml
-doi: "10.5281/zenodo.XXXXXXXX"  # update after Zenodo deposit
-```
+| note | version DOI | concept DOI |
+|---|---|---|
+| 1, *Boundary and Interior Record Chronologies…* (2026-08-04) | `10.5281/zenodo.21796640` | `10.5281/zenodo.21796540` |
+| 2, *Odd/Odd Records…* (2026-11-08) | `10.5281/zenodo.24046651` | `10.5281/zenodo.24046650` |
 
-while `README.md` cites `10.5281/zenodo.21796640` for the same manuscript. The two disagree.
-It is not determinable from anything in this repository whether `10.5281/zenodo.21796640` is
-the **concept** DOI or the **version** DOI of the baseline deposit, and `CITATION.cff`
-semantics differ between the two. The author must set this from the Zenodo record itself. It
-has not been filled in here, because filling it in would amount to guessing which DOI is meant.
-
-A second question arises with this release: `CITATION.cff` describes the **baseline** note. The
-author should decide whether to (a) leave it pointing at the baseline, (b) repoint it at the
-companion note once deposited, or (c) add a `references:` entry so both are citable.
+So the number previously quoted in `README.md` was the **version** DOI. `CITATION.cff` now
+describes the repository and lists both notes under `references`, each with its version DOI in
+`doi:` and its concept DOI under `identifiers:`.
 
 **O-2 — `LICENSE` scope line.** The header says the MIT grant "applies to code/ and data/".
 `congruence-records/certificate/` is new code and `congruence-records/tables/` new data, both

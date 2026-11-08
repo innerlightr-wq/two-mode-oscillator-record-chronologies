@@ -64,9 +64,10 @@ states are linearly ordered by height with no ties.
 \begin{definition}[Records]\label{def:records}
 A state $(m,k)$ is a \emph{strict chronological record} if
 $\varepsilon(m,k)<\varepsilon(m',k')$ for every admissible state $(m',k')$ with $H(m',k')<H(m,k)$.
-It is a \emph{weak record} if $\varepsilon(m,k)\le\varepsilon(m',k')$ for all such states, with
-equality for at least one. Every strict record is a weak record; a weak record that is not
-strict ties the running minimum.
+It is a \emph{weak record} if $\varepsilon(m,k)\le\varepsilon(m',k')$ for every such state.
+Every strict record is therefore a weak record, and a weak record that is \emph{not} strict
+is one for which equality holds at some lower state: it ties the running minimum instead of
+improving it.
 \end{definition}
 
 Throughout, ``records'' without qualification means strict records. Section~\ref{sec:classify}
@@ -286,9 +287,12 @@ It remains to bound $F$ over the \emph{whole} ladder. Put
 \[
 u=\frac{t}{2\alpha Y}\quad(\text{and }u=\tfrac1{2\alpha Y}\text{ at }\varphi,\text{ where }L=t=1).
 \]
-We have $0<u<1$: at the first ladder member $2\alpha Y>t$ in each case (an exact inequality,
-checked in the certificate), and $Y$ is multiplied by $\pr^2>1$ at each step while $t,\alpha$
-are fixed, so $u$ strictly decreases. All the closed forms below are used only on $0<u<1$.
+Two cases. If $t=0$ then $u=0$ identically, $\varepsilon_A=LD_0/(2\alpha Y)$ and
+$H_C/H_A=\pr$, so \eqref{eq:F} collapses to $F=L\pr^2$, a constant: no bound on $u$ is needed
+or available, and this is the only case used at $\sqrt3$. If $t>0$ then $0<u<1$: at the first
+ladder member $2\alpha Y>t$ (an exact inequality, checked in the certificate), and $Y$ is
+multiplied by $\pr^2>1$ at each step while $t,\alpha$ are fixed, so $u$ strictly decreases.
+The three closed forms with a $u$ in them are used only on $0<u<1$.
 Substituting into \eqref{eq:F} and simplifying:
 \[
 \varphi,\ n=-1:\quad F=\pr^2\Bigl(1-\frac{u}{\pr^2}\Bigr)^{\!2}\frac{1+2u}{(1+u)^2}<\pr^2,
@@ -431,9 +435,13 @@ like $\pr^{2p}$, so once $2\alpha\eta^2(\pr^2-1)>2t|N|$ it holds at every later 
 finitely many earlier steps are checked directly.
 \end{lemma}
 
-\begin{proposition}[Only offsets $d\in\{0,1\}$ matter]\label{prop:window}
-Fix an orbit $B$ at period $p$. For each orbit $A$, the latest $A$-state strictly below $B$ in
-height occurs at period $p$ or $p-1$. If $B$ beats all of those, it beats every earlier state.
+\begin{proposition}[Only offsets $d\in\{0,1\}$ matter, in the tail]\label{prop:window}
+Let $p_0$ be any period such that \emph{(a)} every orbit has a positive state at some period
+$\le p_0-1$, and \emph{(b)} every pairwise ordering threshold of
+Proposition~\ref{prop:height} is already decisive. Then for every orbit $B$ and every
+$p\ge p_0$, and for each orbit $A$, the latest $A$-state strictly below the period-$p$ state of
+$B$ in height occurs at period $p$ or $p-1$. If $B$ beats both of those, it beats every earlier
+state of $A$.
 \end{proposition}
 
 \begin{proof}
@@ -442,10 +450,24 @@ $A,A'$ one has $r_A\pr^{p-1}<r_{A'}\pr^{p}$, because $r_A/r_{A'}<\pr$; hence the
 state of any orbit precedes the period-$p$ state of any other in the variable $\eta$.
 (ii) Certified height order: the \emph{height} comparison is supplied by
 Proposition~\ref{prop:height}, pairwise and exactly --- not inferred from $\eta$
-(Remark~\ref{rem:score}). (iii) Monotonicity: by Lemma~\ref{lem:mono}, a state of orbit $A$ at
-period $q\le p-2$ has larger $\varepsilon$ than the period-$(p-1)$ state of $A$, which by (i)
-and (ii) lies below $B$ and which $B$ already beats.
+(Remark~\ref{rem:score}) --- and hypothesis (b) is exactly what makes its sign the constant
+$\sgn U$. (iii) Monotonicity: by Lemma~\ref{lem:mono}, a state of orbit $A$ at period
+$q\le p-2$ has larger $\varepsilon$ than the period-$(p-1)$ state of $A$, which by (i) and (ii)
+lies below $B$ and which $B$ already beats. Hypothesis (a) guarantees that the period-$(p-1)$
+state of $A$ exists and is positive, so the window is populated.
 \end{proof}
+
+\begin{remark}[Both hypotheses are needed]\label{rem:windowfails}
+Without (a) the conclusion is false, and not only vacuously. At $\alpha=1+\sqrt3$ take $B$ to
+be the orbit through $(7,1)$, of defect $-111$, at its period $p=0$, where
+$H=8+7\sqrt3=20.1244\ldots$. The orbit of defect $+193$ has no positive state at period $0$;
+its first is $(1,15)$ at period $1$, with $H=16+\sqrt3=17.7320\ldots<H(7,1)$. So the latest
+competitor state below $B$ sits at period $p+1$, outside the window. There are $13$ such pairs
+at $1+\sqrt3$, all at $p=0$, and none at $\varphi$ or $\sqrt3$. Every one of them lies inside
+the region $H\le302$ that the unpruned enumeration of Section~\ref{sec:tail} covers, which is
+why the global tail start is raised to the least $p_0$ satisfying (a) and (b) --- the values
+$p_0=2,2,3$ in the table below.
+\end{remark}
 
 Consequently the classification of an orbit is determined by finitely many exact signs: for each
 competitor and each $d\in\{0,1\}$, the sign of $\gam_d$, or the three-way rule
@@ -458,11 +480,10 @@ competitor, hence not a strict record), or \emph{excluded}.
 \paragraph{The finite segment.}
 Everything below the period at which all those signs become decisive is covered by
 \emph{unpruned} enumeration: all odd pairs with $H$ below an exact bound, with no defect
-restriction. Taking a conservative global tail start $p_0$ --- the maximum over all pairs and
-offsets of the thresholds above, raised until every orbit has a positive state at period
-$p_0-1$ so that the predecessor window of Proposition~\ref{prop:window} is populated --- gives
-The table is generated by \texttt{certificate/tail\_table.py}, which also reports the state at
-which each maximum is attained.
+restriction. Take for $p_0$ the least period satisfying both hypotheses of
+Proposition~\ref{prop:window}: the maximum over all pairs and offsets of the error and
+ordering thresholds above (hypothesis (b)), raised until every orbit has a positive state at
+some period $\le p_0-1$ (hypothesis (a)). This gives:
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
@@ -474,7 +495,8 @@ $\sqrt3$ & $3$ & $23+13\sqrt3=45.5167\ldots$ & $46$ \\
 \bottomrule
 \end{tabular}
 \end{center}
-The unpruned enumerations below these caps (41, 4173 and 152 admissible states respectively)
+\noindent The table is generated by \texttt{certificate/tail\_table.py}, which also reports the
+state at which each maximum is attained. The unpruned enumerations below these caps (41, 4173 and 152 admissible states respectively)
 agree with the claimed families, and the surviving orbits are identified by their actual
 recurrences, not merely by their defect labels. Larger unpruned brute-force runs were also performed --- to
 $H\le3000$ at $\varphi$ and $1+\sqrt3$ and to $H\le2000$ at $\sqrt3$, each cross-checked against
@@ -515,9 +537,14 @@ strict record, where $h=H/2$.
 \[
 \eta_B=\sqrt3\,\eta_A,\qquad N_B=+6,\qquad H_B=\sqrt3\,H_A,\qquad \varepsilon_B=\varepsilon_A ,
 \]
-and $B$ is again an admissible primitive state. Hence the companion family
-$(1,3)$, $(5,9)$, $(19,33)$, $(71,123)$, $(265,459),\dots$ consists of \emph{weak} records
-that are not strict.
+and $B$ is again an admissible primitive state. Moreover $B$ lies strictly between $A$ and the
+next strict record $\pr A$:
+\begin{equation}\label{eq:companionwindow}
+H_A<\sqrt3\,H_A<(2+\sqrt3)H_A=H_{\pr A},
+\end{equation}
+so the running minimum of $\varepsilon$ over all states of height $<H_B$ is $\varepsilon_A$
+itself. Hence the companion family $(1,3)$, $(5,9)$, $(19,33)$, $(71,123)$,
+$(265,459),\dots$ consists of \emph{weak} records that are not strict.
 \end{theorem}
 
 \begin{proof}[Proof of (ii)]
@@ -526,8 +553,10 @@ multiply: $N_B=\Nm(\sqrt3)N_A=(-3)(-2)=6$. Since $t=0$, $H=\eta$ by \eqref{eq:ma
 $H_B=\sqrt3H_A$; and $\varepsilon=|N|/H^2$ gives
 $\varepsilon_B=6/(3H_A^2)=2/H_A^2=\varepsilon_A$. Admissibility: $k$ is odd and $3m$ is odd.
 Primitivity: $k^2-3m^2=-2$ forces $3\nmid k$ (else $0\equiv1\bmod3$) and $\gcd(k,m)=1$, so
-$\gcd(k,3m)=1$. Since $\varepsilon_B=\varepsilon_A$ with $H_B>H_A$, $B$ is not a strict record
-but ties the running minimum.
+$\gcd(k,3m)=1$. Finally \eqref{eq:companionwindow} holds because $1<\sqrt3<2+\sqrt3$, and by part~(i) the
+strict records are exactly the $\pr$-orbit of $A$, so no state of height below $H_B$ has error
+smaller than $\varepsilon_A$. Since $\varepsilon_B=\varepsilon_A$ and $H_B>H_A$, the state $B$
+meets the running minimum without improving it: it is a weak record and not a strict one.
 \end{proof}
 
 We emphasise that Theorem~\ref{thm:C}\,(ii) exhibits one infinite family of non-strict weak
@@ -646,9 +675,13 @@ the cutoff is stated for a ladder of arbitrary known defect.
 \section{The certificate}\label{sec:cert}
 
 The finite content of the proofs is isolated in a small standalone bundle
-(\texttt{certificate/}; see its \texttt{README}). Two programs are run:
+: the directory \texttt{certificate/} of the companion
+folder in the repository, documented by its own \texttt{README}. It is released under the tag
+\begin{center}\texttt{congruence-records-v1.0.0}\end{center}
+\noindent whose commit and per-file hashes are recorded in
+\texttt{docs/RELEASE\_MANIFEST.md}. Two programs are run:
 \texttt{certificate.py} prints the cutoff, the orbit enumeration, the classification and the
-threshold data; \texttt{verify\_records.py} runs 28 checks and reports \texttt{VERIFY PASSED}.
+threshold data; \texttt{verify\_records.py} runs 31 checks and reports \texttt{VERIFY PASSED}.
 The bundle uses the Python standard library only, reads no data files at runtime, and
 recomputes everything from the definitions.
 
@@ -802,23 +835,35 @@ Read in the author version arXiv:2403.12341v1.
 \section{Machine-generated orbit tables}\label{app:tables}
 
 The tables below are generated by \texttt{certificate/tables.py} and are reproduced verbatim;
-the same data is available as CSV in \texttt{certificate/tables/}. In the first table,
-$N_{\mathrm{rep}}$ is the defect of the \emph{normalised representative} (reduced into
+the same data is available as CSV in \texttt{tables/}.
+
+\textbf{Orbit identity.} Each orbit carries a stable identifier --- \texttt{P}, \texttt{T} or
+\texttt{S} for $\varphi$, $1+\sqrt3$ or $\sqrt3$, followed by its index in the canonical
+enumeration, which is sorted by the representative $\eta$. The identifier is necessary, because
+$N_{\mathrm{rep}}$ is \emph{not} unique: at $1+\sqrt3$ thirty values each label two distinct
+orbits and $N_{\mathrm{rep}}=-143$ labels four, and at $\sqrt3$ two values label two each.
+Here $N_{\mathrm{rep}}$ is the defect of the \emph{normalised representative} (reduced into
 $[1,\pr)$); by \eqref{eq:transport} the defect at period $p$ is $\delta^pN_{\mathrm{rep}}$, so
 at $\varphi$ the sign alternates. ``first positive state'' is the first $(m,k)$ with both
 coordinates positive.
 
-In the exclusion table, each row names a competitor orbit $A$ (by its representative defect),
-the offset $d$ at which the comparison is taken, and the period from which the deciding sign is
-certified by \eqref{eq:thr}. A reader can re-derive any row from
-Propositions~\ref{prop:err}--\ref{prop:height} without re-running a search.
+\textbf{What an exclusion row asserts.} A row ``$B$ excluded by $A$ at offset $d$ from period
+$P$'' asserts that for \emph{every} $p\ge P$, the state of $A$ at period $p-d$ lies below the
+state of $B$ at period $p$ in height and has strictly smaller error. Accordingly $P$ is the
+maximum of the error threshold \eqref{eq:thr} in $B$-period coordinates, the ordering threshold
+of Proposition~\ref{prop:height} converted by $+d$, and the first period at which both states
+are positive. The two states at $p=P$ are printed, so a reader can re-derive any row from
+Propositions~\ref{prop:err}--\ref{prop:height} without re-running a search. Every row is
+re-verified exactly at $p=P,P+1,P+2$ before it is emitted, and check C11 of
+\texttt{verify\_records.py} re-derives all $67$ rows independently from the orbit each one
+names and tests them at $p=P,\dots,P+11$.
 
 \bigskip
 \noindent\textbf{Classification of all admissible primitive orbits below the cutoff.}
-{\small\input{../certificate/tables/classification.tex}}
+{\small\input{../tables/classification.tex}}
 
 \bigskip
 \noindent\textbf{Exclusion witnesses.}
-{\small\input{../certificate/tables/exclusions_summary.tex}}
+{\small\input{../tables/exclusions_summary.tex}}
 
 \end{document}

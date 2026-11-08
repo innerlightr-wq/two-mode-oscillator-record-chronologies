@@ -1,4 +1,24 @@
-# Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum
+# Record chronologies for odd/odd Diophantine approximation
+
+This repository holds **two notes** and their reproducibility material.
+
+| | note | status |
+|---|---|---|
+| **1** | *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum* (2026-08) | deposited, doi:[10.5281/zenodo.21796640](https://doi.org/10.5281/zenodo.21796640) |
+| **2** | *Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classifications and an Exact Certificate* (2026-11) | **not yet deposited**, in [`congruence-records/`](congruence-records/) |
+
+Note 2 is a companion to note 1: it **proves** note 1's two open completeness conjectures
+(Conjectures 5.11 and 5.13), **derives** the norm cutoff that note 1 assumed, adds a third
+slope `alpha = sqrt(3)`, and **corrects** note 1's claim that the record height scales exactly
+by the fundamental unit. Note 1 is left byte-identical as the published version; what has
+changed about its claims is recorded in
+[`congruence-records/docs/EARLIER_NOTE_STATUS.md`](congruence-records/docs/EARLIER_NOTE_STATUS.md).
+
+Everything below, until the companion section, describes **note 1**.
+
+---
+
+## Note 1 (2026-08)
 
 Reproducibility companion for the note:
 
@@ -66,30 +86,25 @@ chronologies (**Conjectures 5.11 and 5.13** of `paper/oscillator_records.pdf`; t
 a new classification at α = √3, in the companion note described below. One assertion of the
 2026-08 note is also corrected there — see [`docs/EARLIER_NOTE_STATUS.md`](docs/EARLIER_NOTE_STATUS.md).
 
-## Companion note (2026-11): odd/odd records for the relative error
+## Note 2 (2026-11): the companion — [`congruence-records/`](congruence-records/)
 
 > E. De Jesús, *Odd/Odd Records for a Relative Approximation Error: Three Quadratic
 > Classifications and an Exact Certificate*, 2026. **Not yet deposited; no DOI.**
+> Release tag `congruence-records-v1.0.0`.
 
-- Note: [`paper/congruence_records_note.pdf`](paper/congruence_records_note.pdf) ·
-  source [`paper/congruence_records_note.tex`](paper/congruence_records_note.tex)
-- Certificate bundle: [`certificate/`](certificate/) — standalone, standard library only,
-  with captured outputs in `certificate/outputs/`. Start at
-  [`certificate/README.md`](certificate/README.md).
-- Release documentation: [`docs/CHANGELOG.md`](docs/CHANGELOG.md),
-  [`docs/REVIEW_SUMMARY.md`](docs/REVIEW_SUMMARY.md),
-  [`docs/RELEASE_MANIFEST.md`](docs/RELEASE_MANIFEST.md),
-  [`docs/ZENODO_METADATA.md`](docs/ZENODO_METADATA.md),
-  [`docs/LICENSE_AND_SOURCE_INVENTORY.md`](docs/LICENSE_AND_SOURCE_INVENTORY.md),
-  [`docs/EARLIER_NOTE_STATUS.md`](docs/EARLIER_NOTE_STATUS.md).
+Start at [`congruence-records/README.md`](congruence-records/README.md). The folder is
+self-contained: the note and its LaTeX source in `paper/`, the exact-arithmetic verification
+programs and their captured outputs in `certificate/`, the orbit data and exclusion witnesses
+in `tables/`, and the changelog, release manifest, review summary, Zenodo metadata and licence
+inventory in `docs/`.
 
-**Proved there.** The strict records of `ε_bal` are classified completely at α = φ
-(Fibonacci pairs plus every other odd Lucas pair, defect cycle `(−1,+1,−5)`), at α = 1+√3
-(three orbits of `[[3,4],[8,11]]`, defects `−3,+1,−11`) and at α = √3 (one orbit of
-`[[2,1],[3,2]]`, defect `−2`, with `h²ε = 1/2` exactly). The norm cutoff that the 2026-08 note
-*assumed* for φ and 1+√3 is **derived**: `|N| ≤ 18`, `204`, `27`. At √3 a companion family
-`(m,k) ↦ (k,3m)` has **exactly** equal error at larger height, so it consists of weak records
-that are never strict.
+**Proved there.** The strict records of `eps_bal` are classified completely at `alpha = phi`
+(odd Fibonacci pairs plus every other odd Lucas pair, defect cycle `(-1,+1,-5)`), at
+`alpha = 1+sqrt(3)` (three orbits of `[[3,4],[8,11]]`, defects `-3,+1,-11`) and at
+`alpha = sqrt(3)` (one orbit of `[[2,1],[3,2]]`, defect `-2`, with `h^2 eps = 1/2` exactly).
+The norm cutoff assumed in note 1 for `phi` and `1+sqrt(3)` is derived: `|N| <= 18`, `204`,
+`27`. At `sqrt(3)` the companion family `(m,k) -> (k,3m)` has **exactly** equal error at larger
+height — weak records that are never strict.
 
 **Not claimed there.** A uniform theorem for general quadratic slopes and congruence classes;
 a classification of all weak records; novelty relative to the odd–odd continued fraction
@@ -106,12 +121,16 @@ data/     records_sqrt2_first30.csv   — first 30 √2 records, exact algebraic
           chron_phi.csv, chron_1plus_sqrt3.csv
           chron_rational_3_2.csv, chron_rational_5_3.csv
           chron_e.csv, chron_pi.csv
-docs/     REPORT.md         — 16-section audit status report (source of truth for the 2026-08 note)
-          CHANGELOG.md, RELEASE_MANIFEST.md, REVIEW_SUMMARY.md,
-          ZENODO_METADATA.md, LICENSE_AND_SOURCE_INVENTORY.md, EARLIER_NOTE_STATUS.md
-paper/    congruence_records_note.tex/.pdf              — the 2026-11 companion note
-certificate/  exact-arithmetic certificate bundle for the companion note
+docs/     REPORT.md         — 16-section audit status report (source of truth for note 1)
 SHA256SUMS, VERSIONS.txt
+
+congruence-records/          — note 2, self-contained
+  README.md
+  paper/        congruence_records_note.tex, .pdf
+  certificate/  exact-arithmetic verification programs, instructions, captured outputs
+  tables/       per-orbit classification and exclusion witnesses (CSV and LaTeX)
+  docs/         CHANGELOG, RELEASE_MANIFEST, REVIEW_SUMMARY, ZENODO_METADATA,
+                LICENSE_AND_SOURCE_INVENTORY, EARLIER_NOTE_STATUS
 ```
 
 ## Reproducing everything
@@ -161,16 +180,18 @@ The repository includes a `CITATION.cff` file with the corresponding citation me
 disagrees with the DOI quoted above. It has deliberately not been filled in here, because
 whether `10.5281/zenodo.21796640` is the concept DOI or a version DOI cannot be determined from
 this repository. See open item **O-1** in
-[`docs/LICENSE_AND_SOURCE_INVENTORY.md`](docs/LICENSE_AND_SOURCE_INVENTORY.md).
+[`congruence-records/docs/LICENSE_AND_SOURCE_INVENTORY.md`](congruence-records/docs/LICENSE_AND_SOURCE_INVENTORY.md).
 
 The 2026-11 companion note is **not yet deposited** and has no DOI; cite it by this repository
 and the file path until it is.
 
 ## License
 
-- Manuscripts (`paper/`) and release documentation (`docs/`): CC BY 4.0.
-- Code (`code/`), data (`data/`) and the certificate bundle (`certificate/`): MIT (see
-  `LICENSE`; the header there names only `code/` and `data/` — open item **O-2**).
+- Manuscripts (`paper/`, `congruence-records/paper/`) and documentation (`docs/`,
+  `congruence-records/docs/`): CC BY 4.0.
+- Code (`code/`, `congruence-records/certificate/`) and data (`data/`,
+  `congruence-records/tables/`): MIT (see `LICENSE`; its header names only `code/` and
+  `data/` — open item **O-2**).
 
 ## Acknowledgements
 

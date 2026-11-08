@@ -26,7 +26,7 @@ Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classificati
 
 **Language:** eng
 
-**Version:** `1.0.0`
+**Version:** `1.0.0` (matching the GitHub tag `congruence-records-v1.0.0`)
 
 **Description / abstract**
 
@@ -70,7 +70,7 @@ reproducibility
 ```
 
 **License:** Creative Commons Attribution 4.0 International (CC BY 4.0) — for the note.
-The accompanying certificate bundle is MIT; see `docs/LICENSE_AND_SOURCE_INVENTORY.md`.
+The accompanying certificate bundle is MIT; see `LICENSE_AND_SOURCE_INVENTORY.md`.
 
 **Subjects (optional, MSC 2020):** 11J04 (homogeneous approximation to one number),
 11J70 (continued fractions and generalizations), 11D09 (quadratic and bilinear Diophantine
@@ -86,7 +86,7 @@ Only identifiers confirmed from the sources themselves are listed.
 | relation | identifier | what it is |
 |---|---|---|
 | continues | `10.5281/zenodo.21796640` | the author's earlier note, whose Conjectures 5.11 and 5.13 this resolves |
-| is supplemented by | `https://github.com/innerlightr-wq/two-mode-oscillator-record-chronologies` | the repository holding the source, the certificate bundle and the outputs |
+| is supplemented by | `https://github.com/innerlightr-wq/two-mode-oscillator-record-chronologies/releases/tag/congruence-records-v1.0.0` | the tagged release holding the source, the certificate bundle and the outputs. Cite the **tag**, not the branch: Zenodo's own guidance is to pin a version when reproducibility depends on the exact files. |
 | references | `10.5802/aif.3522` | Cha & Kim, Ann. Inst. Fourier 73 (2023) 101–161 |
 | references | `10.1007/s00605-022-01704-2` | Kim, Lee & Liao, Monatsh. Math. 198 (2022) 323–344 |
 | references | `10.1112/mtk.12285` | Kim, Lee & Liao, Mathematika 71 (2025) e12285 |
@@ -103,18 +103,20 @@ bibliography.
 
 | file | source path |
 |---|---|
-| `congruence_records_note.pdf` | `paper/congruence_records_note.pdf` |
-| `congruence_records_note.tex` | `paper/congruence_records_note.tex` |
-| `certificate-bundle-1.0.0.zip` | built from `certificate/` — see `docs/RELEASE_MANIFEST.md` |
+| `congruence_records_note.pdf` | `congruence-records/paper/congruence_records_note.pdf` |
+| `congruence_records_note.tex` | `congruence-records/paper/congruence_records_note.tex` |
+| `congruence-records-v1.0.0.zip` | the frozen `congruence-records/` folder — see `RELEASE_MANIFEST.md` |
 
 ---
 
 ## Remaining steps, to be done by the author
 
+0. Push the branch and publish the GitHub release `congruence-records-v1.0.0`, so the
+   related identifier above resolves.
 1. Decide whether to reserve a DOI before upload or accept the minted one.
 2. Set the publication date.
 3. Upload the three files, paste the fields above, add the related identifiers.
 4. Publish, then record the **version** DOI and the **concept** DOI separately.
 5. Update `CITATION.cff` — it currently holds the placeholder
    `doi: "10.5281/zenodo.XXXXXXXX"` (open item O-1).
-6. Update `README.md` and `docs/RELEASE_MANIFEST.md` with the minted DOI, and tag the commit.
+6. Update `README.md` and `RELEASE_MANIFEST.md` with the minted DOI, and tag the commit.

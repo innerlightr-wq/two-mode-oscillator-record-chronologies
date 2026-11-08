@@ -1,0 +1,7 @@
+classification rows: 74   exclusion rows: 67   (every exclusion re-verified exactly at P, P+1, P+2)
+  phi       4 orbits: {'strict': 1, 'excluded': 2, 'alternating': 1}
+  1+sqrt3   64 orbits: {'excluded': 61, 'strict': 3}
+  sqrt3     6 orbits: {'excluded': 4, 'equality': 1, 'strict': 1}
+-> ../tables/{classification,exclusions}.csv, ../tables/{classification,exclusions_summary}.tex
+
+[exit=0, wall=1s]

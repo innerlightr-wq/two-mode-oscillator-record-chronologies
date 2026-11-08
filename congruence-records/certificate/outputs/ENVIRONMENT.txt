@@ -1,0 +1,12 @@
+Environment of the clean-extraction run
+=======================================
+date (UTC)      : 2026-11-08T01:39:42Z
+platform        : Linux 7.2.5-3-omarchy x86_64
+distribution    : Omarchy
+python          : Python 3.14.7 (main, Aug 10 2026, 07:46:56) [GCC 16.1.1 20260728] 
+third-party pkgs: none (standard library only)
+network         : not used
+data files read : ../tables/exclusions.csv, by check C11 only (written by tables.py in the
+                  same run; every other program reads nothing at runtime)
+working dir     : a clean extraction: certificate/ holding only the bundle files, plus an
+                  empty sibling tables/.  No __pycache__.

@@ -253,6 +253,58 @@ def c10(S, B):
         %(hmax,cap,S.name), hmax_exact_below(S, orbs, worst, cap),
         "%d Gamma=0 tie pair(s); all else decided from period %d"%(len(ties),worst[0]))
 
+def c11(S, B):
+    """C11: every emitted exclusion row is a VALID witness over a run of consecutive periods.
+
+    The appendix table claims, for each excluded orbit B at offset d and certified period P,
+    that for all p >= P the state of A at period p-d is BELOW the state of B at period p in
+    height and has strictly smaller error.  A pre-release audit found this was not checked:
+    the reported period came from the error threshold alone, ignoring the ordering threshold
+    and positivity, and the competitor was named by N_rep, which is NOT unique (at 1+sqrt(3)
+    one value labels four distinct orbits).  Rows now carry an orbit ID; this check re-derives
+    every row from the orbit it names and tests it exactly at P..P+HORIZON-1.
+    """
+    import csv, os
+    from orbits import admissible_primitive_orbits, state_from_ab, mul, rho
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tables",
+                        "exclusions.csv")
+    if not os.path.exists(path):
+        chk("C11 exclusion witnesses (%s)" % S.name, False, "../tables/exclusions.csv missing "
+            "-- run `python3 tables.py` first")
+        return
+    orbs = admissible_primitive_orbits(S, B)
+    def state_at(o, q):
+        a, b = o[2], o[3]
+        R = rho(S)
+        for _ in range(q):
+            a, b = mul(S, (a, b), R)
+        return state_from_ab(S, a, b)
+    HORIZON = 12
+    rows = [r for r in csv.DictReader(open(path)) if r["slope"] == S.name]
+    bad = []
+    for r in rows:
+        bi, ai = int(r["orbit_id"][1:]), int(r["competitor_id"][1:])
+        d, P = int(r["offset_d"]), int(r["certified_from_period"])
+        if orbs[bi][1] != int(r["N_rep"]) or orbs[ai][1] != int(r["competitor_N_A"]):
+            bad.append((r["orbit_id"], "orbit ID does not carry the stated N_rep")); continue
+        if ("(%d,%d)" % state_at(orbs[ai], P - d) != r["A_state"]
+                or "(%d,%d)" % state_at(orbs[bi], P) != r["B_state"]):
+            bad.append((r["orbit_id"], "printed state != the named orbit at that period")); continue
+        for p in range(P, P + HORIZON):
+            amk, bmk = state_at(orbs[ai], p - d), state_at(orbs[bi], p)
+            if min(amk + bmk) <= 0:
+                bad.append((r["orbit_id"], "non-positive state at p=%d" % p)); break
+            if (S.den_err(*bmk) - S.den_err(*amk)).sign() <= 0:
+                bad.append((r["orbit_id"], "A not below B in height at p=%d" % p)); break
+            n1, d1 = S.eps_parts(*amk); n2, d2 = S.eps_parts(*bmk)
+            if cmp_frac(n1, d1, n2, d2) >= 0:
+                bad.append((r["orbit_id"], "A does not beat B in error at p=%d" % p)); break
+    ids = [r["orbit_id"] for r in rows]
+    uniq = len(set(ids)) == len(ids)
+    chk("C11 every exclusion witness verified exactly over P..P+%d, IDs unique (%s)"
+        % (HORIZON - 1, S.name), not bad and uniq,
+        "%d rows%s" % (len(rows), "" if not bad else "; first failure: %s %s" % bad[0]))
+
 if __name__=="__main__":
     for S in (PHI,S3,SQ3):
         print("=== %s ==="%S.name)
@@ -262,6 +314,7 @@ if __name__=="__main__":
         c8(S, B)
         c9(S, B)
         c10(S, B)
+        c11(S, B)
         print()
     c7()
     print()

@@ -8,7 +8,7 @@ Reproducibility bundle for the technical note
 > Source: `paper/congruence_records_note.tex`, PDF: `paper/congruence_records_note.pdf`.
 
 The bundle is **self-contained**: Python standard library only, no third-party packages, no
-network access, no data files read at runtime. Everything is recomputed from the definitions.
+network access, no data file read at runtime except by check C11, which reads the exclusion table that `tables.py` writes. Everything is recomputed from the definitions.
 
 ## Problem
 
@@ -34,18 +34,20 @@ python3 certificate.py    > outputs/certificate_output.txt     # ~4 s    the pro
 python3 verify_records.py > outputs/verify_output.txt          # ~5 min  28 independent checks
 python3 tail_table.py     > outputs/tail_table_output.txt      # ~2 s    Section 7 finite-check table
 python3 hypotheses.py     > outputs/hypotheses_output.txt      # ~1 s    H1/H3 side checks
-python3 tables.py                                              # ~1 s    regenerates tables/
+python3 tables.py                                              # ~1 s    regenerates ../tables/
 ```
 
-`verify_records.py` prints one `[PASS]`/`[FAIL]` line per check and ends with `VERIFY PASSED`;
+`verify_records.py` prints one `[PASS]`/`[FAIL]` line per check (31 of them) and ends with
+`VERIFY PASSED`;
 it exits non-zero on any failure. The shipped `outputs/` were captured by running the four
 programs in a **clean extraction** of this bundle (an empty directory holding only the files
 listed below, with no `__pycache__` and no pre-existing `tables/`).
 
-To check file integrity:
+To check file integrity, from the parent folder (the checksum list covers all of
+`congruence-records/`, not just this directory):
 
 ```sh
-sha256sum -c SHA256SUMS
+cd .. && sha256sum -c SHA256SUMS
 ```
 
 ## Files
@@ -56,16 +58,16 @@ sha256sum -c SHA256SUMS
 | `setups.py` | the three slopes, the defect form `N`, the admissible lattice and the admissible unit |
 | `orbits.py` | bounded-rectangle enumeration of admissible primitive unit orbits |
 | `certificate.py` | **proof-bearing**: cutoff, `Gamma_d`, the tie rule, the `U`/`V` height order, the four-way classification |
-| `verify_records.py` | **independent verifier**: 28 checks C1–C10 across the three slopes |
+| `verify_records.py` | **independent verifier**: 31 checks C1–C11 across the three slopes, including C11, which re-derives every exclusion row in `../tables/exclusions.csv` from the orbit it names and tests it at twelve consecutive periods |
 | `brute.py` | independent unpruned enumeration, written from the problem statement only |
 | `candidates.py` | justified-pruned scan (solves for `k` from `N`), cross-checked against `brute.py` |
 | `tail_table.py` | the finite-check table of Section 7 of the note |
-| `tables.py` | emits `tables/` (per-orbit classification and exclusion witnesses) |
+| `tables.py` | emits `../tables/` (per-orbit classification and exclusion witnesses); every exclusion row is re-verified exactly before it is written |
 | `hypotheses.py` | side checks of H1 (admissible unit power) and H3 (box bounds); **not** proof-bearing |
 | `PROOF_OR_OBSTRUCTION.md` | the proofs, sections 0–8 |
 | `THEOREM_TARGET.md` | the proposed uniform theorem, **stated as a target, not proved**, with its scope restrictions |
 | `README_PACKAGE.md` | audit lineage v1 → v2 → v3 and what each re-audit changed |
-| `tables/` | `classification.csv/.tex`, `exclusions.csv/.tex` (74 and 67 rows) |
+| `../tables/` | `classification.csv/.tex`, `exclusions.csv/.tex` (74 and 67 rows), written by `tables.py` |
 | `outputs/` | captured outputs of the clean-extraction run, plus `ENVIRONMENT.txt` |
 
 ## Results

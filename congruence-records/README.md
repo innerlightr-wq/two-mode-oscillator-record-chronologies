@@ -72,9 +72,9 @@ cd paper && latexmk -pdf congruence_records_note.tex
 * **Not claimed:** a uniform theorem for general quadratic slopes and congruence classes; a
   classification of all weak records; novelty relative to the odd–odd continued fraction
   literature. See §11 and §12 of the note.
-* The deposited file is the PDF only. The LaTeX source, this certificate and the data live
-  here and in the tagged release; see [`docs/REVIEW_SUMMARY.md`](docs/REVIEW_SUMMARY.md) §6
-  for the remaining open items.
+* The deposited file is the PDF only; the record links here for the LaTeX source, the
+  certificate and the data. See [`docs/REVIEW_SUMMARY.md`](docs/REVIEW_SUMMARY.md) §6 for the
+  remaining open items.
 
 ## Relationship to the 2026-08 note
 

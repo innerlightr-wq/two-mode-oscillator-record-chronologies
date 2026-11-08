@@ -33,10 +33,13 @@ metadata was added to the repository.
 
 ### Known gap in the deposit (not a defect in the note)
 
-The Zenodo record holds **only the PDF**: the LaTeX source and the certificate archive were
-not uploaded, and no related identifiers were set, so the record on its own is not
-reproducible. Fixable with a Zenodo *New version*, which keeps the concept DOI and leaves the
-existing version DOI valid. See `ZENODO_METADATA.md`.
+The Zenodo record holds **only the PDF**. It *does* link to this repository — the URL is set in
+Zenodo's software custom field `code:codeRepository` — so a reader can reach the source, the
+certificate and the data. Three narrower things are missing: the link is not version-pinned to
+the tag, no DataCite related identifiers are set (in particular no `continues` relation to
+note 1), and the archive itself is not self-contained. Not urgent; fix opportunistically with a
+Zenodo *New version*, which keeps the concept DOI and leaves the existing version DOI valid.
+See `ZENODO_METADATA.md`.
 
 ---
 

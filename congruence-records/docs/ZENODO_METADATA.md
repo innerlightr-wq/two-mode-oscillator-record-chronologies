@@ -15,19 +15,37 @@ The deposited PDF was checked against this repository and is **byte-identical** 
 `../paper/congruence_records_note.pdf` at tag `congruence-records-v1.0.0` — that is, it is the
 corrected build, with all five pre-upload repairs of `CHANGELOG.md` rc2 included.
 
-## What the deposit does *not* contain
+## What the deposit does and does not contain
 
-Verified against the Zenodo API on 2026-11-08:
+Verified against the Zenodo API on 2026-11-08.
 
-1. **Only the PDF was uploaded.** The LaTeX source and the certificate archive were not. They
-   live here and in the tagged GitHub release; the deposit alone is not reproducible.
-2. **No related identifiers were set.** The record does not link to the repository, to the
-   baseline note, or to the literature.
+**It does link to the repository.** The record carries
 
-Neither is an error in the note. Both are worth fixing with a **new version** of the record,
-which keeps the concept DOI %s and mints a fresh version DOI; the
-existing version DOI %s stays valid and keeps pointing at the PDF
-as cited. The fields below are what to use when doing that.
+```
+code:codeRepository = https://github.com/innerlightr-wq/two-mode-oscillator-record-chronologies
+```
+
+in Zenodo's software ("codemeta") custom fields, so a reader of the record can reach the LaTeX
+source, the certificate and the data. That is the substantive job, and it is done.
+
+**Three narrower things are still missing.**
+
+1. **The repository link is not version-pinned.** It resolves to the default branch, which
+   moves. Section 10 of the note cites the tag `congruence-records-v1.0.0`; the record does
+   not. Zenodo's own versioning guidance is to pin when reproducibility depends on exact files.
+2. **No DataCite related identifiers are set.** `code:codeRepository` is a Zenodo custom field,
+   not a `relatedIdentifier`, so the link does not propagate into DataCite/OpenAIRE relation
+   metadata. In particular there is **no `continues` relation to note 1**
+   (10.5281/zenodo.21796640), even though the description refers to it in prose — so someone
+   who finds note 1 first will not be pointed here.
+3. **Only the PDF is deposited.** The source and the certificate live on GitHub, not in the
+   archive. The repository link mitigates this but does not replace it: a repository can be
+   renamed, made private or deleted, and the archival copy is the point of a deposit.
+
+None of this is an error in the note, and none of it is urgent. Fix it opportunistically with a
+Zenodo **New version**, which keeps the concept DOI 10.5281/zenodo.24046650 and leaves the
+existing version DOI 10.5281/zenodo.24046651 valid for anyone who has already cited it. The
+fields below are what to use when doing that.
 
 ## Core fields
 
@@ -138,10 +156,12 @@ The deposit exists; what is left is completing it.
 
 1. Push the branch and publish the GitHub release `congruence-records-v1.0.0`, so the
    repository related identifier resolves.
-2. On the Zenodo record, choose **New version** and add the two missing files:
+2. On the Zenodo record, choose **New version** and add the two missing files (the repository
+   link is already set; see above):
    `congruence_records_note.tex` and `congruence-records-v1.0.0.zip` (its sha256 is recorded
    at the repository root in `congruence-records-v1.0.0.zip.sha256`). Keep the PDF unchanged.
-3. Add the related identifiers from the table above.
+3. Add the related identifiers from the table above — especially `continues`
+   10.5281/zenodo.21796640 — and point the repository field at the **tag**, not the branch.
 4. Record the new version DOI here and in `RELEASE_MANIFEST.md`; the concept DOI
    10.5281/zenodo.24046650 does not change, and the existing version DOI
    10.5281/zenodo.24046651 remains valid for anyone who already cited it.

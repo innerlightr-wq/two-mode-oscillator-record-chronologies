@@ -1,0 +1,47 @@
+==============================================================================
+O1.  alpha = (3+sqrt5)/2 : P^{-1}(1,1) = (13,5) has G > 0 and eps < sqrt(D)/|B|
+==============================================================================
+  PASS  P^{-1}(1,1) = (13,5)   (13, 5)
+  PASS  Q = -1
+  PASS  sgn(eta) = sgn(alpha-alpha'): the orbit HAS a forward tail
+  PASS  G > 0 on this state   G = 3.006211
+  PASS  eps(13,5) < sqrt(Delta)/|B| -- the G<0 floor does NOT apply here   eps = 0.743816 < 0.745356
+  PASS  and so does every further backward state of that ray
+
+==============================================================================
+O1 repair.  On G > 0:  eps = |Q| sqrt(D) / (2 alpha A^2 eta^2 + B Q), so
+    eps >= eps_0   <=>   eta^2 <= Ystar := (|Q| sqrt(D)/eps_0 - B Q)/(2 alpha A^2).
+    This is an explicit BACKWARD-LEVEL cutoff, valid on the G>0 branch.
+==============================================================================
+    bound = min(1, sqrt(Delta)/(2|B|)) = 0.37267800
+    chosen state w = (5, 13), ATTAINED eps_0 = eps(w) = 0.00345609
+  PASS  eps(w) < the bound, strictly
+    (1, 1): Q=-1 eps=0.447214  Y<=Ystar:True  eps>=eps_0:True
+    (13, 5): Q=-1 eps=0.743816  Y<=Ystar:True  eps>=eps_0:True
+    (1, 3): Q=+1 eps=0.067989  Y<=Ystar:True  eps>=eps_0:True
+    (3, 7): Q=-5 eps=0.057499  Y<=Ystar:True  eps>=eps_0:True
+    (5, 13): Q=-1 eps=0.003456  Y<=Ystar:True  eps>=eps_0:True
+    (5, 13): Q=-1 eps=0.003456  Y<=Ystar:True  eps>=eps_0:True
+    (89, 233): Q=-1 eps=0.000011  Y<=Ystar:False  eps>=eps_0:False
+    (1597, 4181): Q=-1 eps=0.000000  Y<=Ystar:False  eps>=eps_0:False
+    (13, 5): Q=-1 eps=0.743816  Y<=Ystar:True  eps>=eps_0:True
+  PASS  the equivalence Y <= Ystar  <=>  eps >= eps_0 holds on every tested G>0 state   20 states, 12 with Y<=Ystar and 8 with Y>Ystar
+  PASS  both sides of the cutoff are exercised
+
+    The STRICT inequality eps(w) < sqrt(D)/(2|B|) is exactly what is needed:
+    Ystar > Y_min = B Q/(2 alpha) (when B Q > 0) iff |Q| sqrt(D)/eps_0 > 2 B Q,
+    which holds strictly for the attained eps_0 and only with EQUALITY if
+    eps_0 is taken to be the bound itself.
+  PASS  Ystar > eta^2_min for every defect with B Q > 0, so the height is strictly increasing on the surviving region eta^2 > Ystar
+
+==============================================================================
+O2.  exact-comparator fallback for the height sort
+==============================================================================
+  PASS  the exact comparator alone sorts correctly (the fallback path)
+  PASS  a constant (degenerate) key is caught by the adjacent-pair verification
+  PASS  sort_heights returns the exactly-sorted list
+  PASS  and still does so when key generation is forced to fail
+
+==============================================================================
+review4: 14/14 checks passed, 0 failures
+==============================================================================

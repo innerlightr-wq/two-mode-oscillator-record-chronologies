@@ -1,0 +1,34 @@
+==============================================================================
+P1.  alpha = phi, unrestricted.  b = (15,24); orbit (5,8) -> (13,21) -> (34,55).
+==============================================================================
+  PASS  the fundamental automorph is ((1,1),(1,2))   ((1, 1), (1, 2))
+  PASS  (5,8) -> (13,21) -> (34,55)   (13, 21), (34, 55)
+  PASS  b = 3*(5,8), so eps(b) = eps(5,8) exactly
+  PASS  eps(b) = eps(5,8)   (exact)
+  PASS  H(5,8) < H(13,21) < H(b) < H(34,55)   16.0902 < 42.0344 < 48.2705 < 110.0132
+  PASS  eps(13,21) < eps(5,8) = eps(b)   0.00081937 < 0.00560404
+  PASS  the eps-minimal state below H(b) is (13,21)   (13, 21)
+  PASS  yet the EARLIER state (5,8) also blocks b (it ties)
+  => the published sentence "a state below the binding level ... cannot block" is FALSE.
+  PASS  SUFFICIENCY: some state blocks, and the eps-minimal state blocks too   2 blockers of 2 states below
+  PASS  the eps-minimal rule and an exhaustive scan give the SAME verdict here   lost
+
+==============================================================================
+P1b. the sufficiency rule reproduces an exhaustive scan on a large population
+==============================================================================
+  PASS  eps-minimal verdict == exhaustive verdict on every sampled candidate   6832 states, 976 candidates tested; mismatches []
+
+==============================================================================
+P4.  negative offsets: a competitor one level LATER is above the candidate
+==============================================================================
+  PASS  H_A(p+1) > H_B(p) for every tested ordered pair at the evaluation level, so no competitor at a later level can block   violations []
+
+==============================================================================
+Lemma 6.3 sign: the clearing factor must use |dd| and |eta| (smaller root)
+==============================================================================
+  PASS  for the smaller root dd = alpha - alpha' < 0   dd = -2.236068
+  PASS  but eta*dd > 0 on the retained states, so A^2 |dd| |eta| is the positive factor
+
+==============================================================================
+review5: 14/14 checks passed, 0 failures
+==============================================================================

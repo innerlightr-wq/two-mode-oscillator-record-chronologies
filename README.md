@@ -1,11 +1,20 @@
 # Record chronologies for odd/odd Diophantine approximation
 
-This repository holds **two notes** and their reproducibility material.
+This repository holds **three notes** and their reproducibility material.
 
 | | note | status |
 |---|---|---|
 | **1** | *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum* (2026-08) | deposited, doi:[10.5281/zenodo.21796640](https://doi.org/10.5281/zenodo.21796640) |
 | **2** | *Odd/Odd Records for a Relative Approximation Error: Three Quadratic Classifications and an Exact Certificate* (2026-11) | deposited 2026-11-08, doi:[10.5281/zenodo.24046651](https://doi.org/10.5281/zenodo.24046651), in [`congruence-records/`](congruence-records/) |
+| **3** | *An Effective Classification of Congruence-Restricted Quadratic Relative-Error Records* (2026-11) | deposited 2026-11-17, doi:[10.5281/zenodo.24297228](https://doi.org/10.5281/zenodo.24297228), in [`general-classification/`](general-classification/) |
+
+Note 3 **generalises** note 2: the same relative error and the same weighted height, but for an
+arbitrary real quadratic `alpha > 0` given by any primitive integral `Ax^2+Bx+C`, either root,
+either sign of the conjugate, `alpha` above or below 1, and an arbitrary nonempty set of
+residue classes modulo any `M` — with no coprimality on the pairs, so imprimitive records are
+admitted and do occur. All five hypotheses note 2 worked under are removed. Note 2's three
+theorems remain true and are reproduced there as controls; note 3 neither corrects nor
+supersedes them.
 
 Note 2 is a companion to note 1: it **proves** note 1's two open completeness conjectures
 (Conjectures 5.11 and 5.13), **derives** the norm cutoff that note 1 assumed, adds a third
@@ -113,6 +122,65 @@ a classification of all weak records; novelty relative to the odd–odd continue
 literature. The certificate is exact arithmetic, **not** formal verification, and the note has
 **not** been refereed.
 
+## Note 3 (2026-11): the general classification — [`general-classification/`](general-classification/)
+
+> E. De Jesús, *An Effective Classification of Congruence-Restricted Quadratic Relative-Error
+> Records*. Zenodo (2026).
+> doi:[10.5281/zenodo.24297228](https://doi.org/10.5281/zenodo.24297228) ·
+> concept DOI (all versions) [10.5281/zenodo.24297227](https://doi.org/10.5281/zenodo.24297227) ·
+> release tag `general-classification-v1.0.0`.
+
+Start at [`general-classification/README.md`](general-classification/README.md). The folder is
+self-contained: the note and its LaTeX source in `paper/`, the algorithm and the independent
+checker in `scripts/`, the 26 machine-readable certificates in `certificates/`, the complete run
+logs in `results/`, and the claim ledger, release manifest, Zenodo metadata, provenance and
+working notes in `docs/`. `paper/main.pdf` is byte-identical to the deposited file.
+
+**Proved there, for arbitrary admissible input.** Let `A,B,C` be coprime with `A > 0` and
+`Delta = B^2-4AC > 0` nonsquare, let `alpha = (-B + s sqrt(Delta))/(2A) > 0` for either sign
+`s`, fix any `M >= 1` and any nonempty `R` in `(Z/MZ)^2`, and call `(m,k)` of positive integers
+admissible when `(m,k) mod M` lies in `R` — **no coprimality is imposed**. Order admissible
+states by `H = m alpha + k` and measure them by `eps = |m alpha - k|/(m alpha + k)`. Then the
+strict records always consist of an explicitly bounded finite region, decided directly, together
+with finitely many complete forward orbits of one integral matrix `P`, each rebased at a computed
+starting level — and there is a terminating exact-arithmetic algorithm that outputs this data
+with an independently checkable certificate. The mechanism is the proper automorph of the
+integral defect `Q = Ak^2 + Bmk + Cm^2`, which a power `P` of it preserves while fixing every
+residue class mod `M`; an explicit cutoff bounds `|Q|` on records; classical reduction theory of
+indefinite binary quadratic forms makes the surviving orbits finite; and finitely many exact
+comparisons decide each orbit's tail.
+
+Two phenomena absent from the monic negative-conjugate case are isolated. When the conjugate is
+positive, **no** power of the automorph has non-negative entries, the positive cone is not
+forward invariant, and the height is U-shaped along an orbit, so "later" does not mean "higher".
+And the natural error floor `eps >= sqrt(Delta)/|B|` is **false** on the resulting
+doubly-infinite orbits — their backward rays approach it from below — so the backward exclusion
+splits into two cases with different certificates, one of them an explicit level cutoff.
+
+A separate negative result (Proposition 2.7): **a strict record need not be a vertex of the
+convex hull of the admissible points of its cone**, so the records cannot in general be read off
+a Klein/Arnold sail. At `alpha = 2+sqrt(2)`, `M = 3`, `R = {(1,1)}`, the record `(7,25)` lies
+strictly inside the triangle spanned by the admissible cone points `(1,4)`, `(31,106)`, `(1,7)`,
+with barycentric coordinates `3/5, 1/5, 1/5`. That refutes this one geometric reduction and
+rules out no other.
+
+**Not claimed there.** A classification of all *weak* records; any bound on the running time;
+any `alpha` of degree > 2; equality in the comparison with class best approximation; and any
+bridge to the **denominator**-ordered notion of best approximation, which is a different
+ordering. Effectiveness, generality and certificate completeness are stated as the *proposed*
+contribution, pending a fuller literature comparison, while the classical finite-orbit input is
+credited as classical. The certificates are exact arithmetic, **not** formal verification, and
+the note has **not** been refereed.
+
+**Verification.** `scripts/check.py` shares no code, no data representation and no decision
+routine with the classifier, and does not use the blocker bound, so all competitor comparisons
+are unpruned: **1707/1707 exact checks, 0 failures** over the 26 certificates, reproduced from
+the committed tree. `emit.py` run inside the frozen bundle regenerates all 26 certificates
+byte-identically. Four regression controls (`review3`–`review6_sail`, 67 checks) each pin an
+exact counterexample to a statement that was wrong in an earlier draft. Per-statement support
+and the ten open obligations are in
+[`general-classification/docs/CLAIM_LEDGER.md`](general-classification/docs/CLAIM_LEDGER.md).
+
 ## Repository layout
 
 ```
@@ -133,6 +201,16 @@ congruence-records/          — note 2, self-contained
   tables/       per-orbit classification and exclusion witnesses (CSV and LaTeX)
   docs/         CHANGELOG, RELEASE_MANIFEST, REVIEW_SUMMARY, ZENODO_METADATA,
                 LICENSE_AND_SOURCE_INVENTORY, EARLIER_NOTE_STATUS
+
+general-classification/      — note 3, self-contained
+  README.md
+  paper/        main.tex, main.pdf (22 pp., byte-identical to the deposit), references.bib
+  scripts/      gq.py (exact arithmetic + the algorithm), emit.py, check.py (independent
+                checker), qr_general.py, lit_bridge.py, review3/4/5.py, review6_sail.py
+  certificates/ the 26 machine-readable certificates, one per instance
+  results/      the complete logs of every run quoted in the note
+  docs/         CLAIM_LEDGER, RELEASE_MANIFEST, ZENODO_METADATA, PROVENANCE.txt, notes/
+  SHA256SUMS
 ```
 
 ## Reproducing everything
@@ -177,7 +255,7 @@ If you use this repository or the accompanying manuscript, please cite:
 
 > E. De Jesús, *Boundary and Interior Record Chronologies for the Two-Mode Oscillator Spectrum*. Zenodo (2026). https://doi.org/10.5281/zenodo.21796640
 
-The repository includes a `CITATION.cff` file with metadata for **both** notes.
+The repository includes a `CITATION.cff` file with metadata for **all three** notes.
 
 Each note has two DOIs. The **version** DOI identifies one deposit and is what to cite when a
 result depends on the exact files; the **concept** DOI always resolves to the latest version.
@@ -186,16 +264,19 @@ result depends on the exact files; the **concept** DOI always resolves to the la
 |---|---|---|
 | 1 (2026-08) | [10.5281/zenodo.21796640](https://doi.org/10.5281/zenodo.21796640) | [10.5281/zenodo.21796540](https://doi.org/10.5281/zenodo.21796540) |
 | 2 (2026-11) | [10.5281/zenodo.24046651](https://doi.org/10.5281/zenodo.24046651) | [10.5281/zenodo.24046650](https://doi.org/10.5281/zenodo.24046650) |
+| 3 (2026-11) | [10.5281/zenodo.24297228](https://doi.org/10.5281/zenodo.24297228) | [10.5281/zenodo.24297227](https://doi.org/10.5281/zenodo.24297227) |
 
-For the computations behind note 2, cite the tagged release
-`congruence-records-v1.0.0` rather than the branch.
+For the computations behind note 2 cite the tagged release `congruence-records-v1.0.0`, and for
+note 3 the tag `general-classification-v1.0.0`, rather than the branch.
 
 ## License
 
-- Manuscripts (`paper/`, `congruence-records/paper/`) and documentation (`docs/`,
-  `congruence-records/docs/`): CC BY 4.0.
-- Code (`code/`, `congruence-records/certificate/`) and data (`data/`,
-  `congruence-records/tables/`): MIT (see `LICENSE`; its header names only `code/` and
+- Manuscripts (`paper/`, `congruence-records/paper/`, `general-classification/paper/`) and
+  documentation (`docs/`, `congruence-records/docs/`, `general-classification/docs/`):
+  CC BY 4.0.
+- Code (`code/`, `congruence-records/certificate/`, `general-classification/scripts/`) and data
+  (`data/`, `congruence-records/tables/`, `general-classification/certificates/`,
+  `general-classification/results/`): MIT (see `LICENSE`; its header names only `code/` and
   `data/` — open item **O-2**).
 
 ## Acknowledgements

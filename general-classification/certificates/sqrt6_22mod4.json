@@ -1,0 +1,8692 @@
+{
+ "name": "sqrt6_22mod4",
+ "A": 1,
+ "B": 0,
+ "C": -6,
+ "s": 1,
+ "M": 4,
+ "R": [
+  [
+   2,
+   2
+  ]
+ ],
+ "Delta": 24,
+ "Dsqfree": 6,
+ "T": 10,
+ "U": 2,
+ "X0": [
+  [
+   5,
+   2
+  ],
+  [
+   12,
+   5
+  ]
+ ],
+ "j": 2,
+ "P": [
+  [
+   49,
+   20
+  ],
+  [
+   120,
+   49
+  ]
+ ],
+ "pruning": true,
+ "family": [
+  [
+   -14,
+   -34
+  ],
+  [
+   -6,
+   -14
+  ],
+  [
+   -2,
+   -6
+  ],
+  [
+   -2,
+   -2
+  ],
+  [
+   -2,
+   2
+  ],
+  [
+   -2,
+   6
+  ],
+  [
+   2,
+   -6
+  ],
+  [
+   2,
+   -2
+  ],
+  [
+   2,
+   2
+  ],
+  [
+   2,
+   6
+  ],
+  [
+   6,
+   14
+  ],
+  [
+   14,
+   34
+  ]
+ ],
+ "D": 20,
+ "family_floor": [
+  2,
+  2
+ ],
+ "Bcut": 113,
+ "maxF_pair": [
+  [
+   5185791317526,
+   12702542640494
+  ],
+  [
+   12341124900734,
+   30229458858754
+  ]
+ ],
+ "cutoff_periods": 8,
+ "cutoff_tail_from": 6,
+ "Bcomp": 113,
+ "Bcomp_uniform": 339,
+ "box": [
+  27,
+  181
+ ],
+ "nclass": 206,
+ "W": 24,
+ "orbits": [
+  {
+   "rep": [
+    -10,
+    26
+   ],
+   "Q": 76,
+   "fwd": true,
+   "enter": 1,
+   "win_lo": 1,
+   "win_hi": 24,
+   "double": false,
+   "tail": "excluded",
+   "case": "ii",
+   "lvl_eps0": 1,
+   "Lstar": 0,
+   "T": 3,
+   "Ystar_num": [
+    532,
+    5,
+    152,
+    5
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    2,
+    10
+   ],
+   "Q": 76,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "excluded",
+   "case": "ii",
+   "lvl_eps0": 0,
+   "Lstar": -1,
+   "T": 2,
+   "Ystar_num": [
+    532,
+    5,
+    152,
+    5
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    -6,
+    18
+   ],
+   "Q": 108,
+   "fwd": true,
+   "enter": 1,
+   "win_lo": 1,
+   "win_hi": 24,
+   "double": false,
+   "tail": "excluded",
+   "case": "ii",
+   "lvl_eps0": 1,
+   "Lstar": 0,
+   "T": 3,
+   "Ystar_num": [
+    756,
+    5,
+    216,
+    5
+   ],
+   "gcd": 6
+  },
+  {
+   "rep": [
+    6,
+    18
+   ],
+   "Q": 108,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "excluded",
+   "case": "ii",
+   "lvl_eps0": 0,
+   "Lstar": -1,
+   "T": 2,
+   "Ystar_num": [
+    756,
+    5,
+    216,
+    5
+   ],
+   "gcd": 6
+  },
+  {
+   "rep": [
+    -2,
+    6
+   ],
+   "Q": 12,
+   "fwd": true,
+   "enter": 1,
+   "win_lo": 1,
+   "win_hi": 24,
+   "double": false,
+   "tail": "record",
+   "case": "ii",
+   "lvl_eps0": 1,
+   "Lstar": 0,
+   "T": 3,
+   "Ystar_num": [
+    84,
+    5,
+    24,
+    5
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    2,
+    6
+   ],
+   "Q": 12,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "record",
+   "case": "ii",
+   "lvl_eps0": 0,
+   "Lstar": -1,
+   "T": 2,
+   "Ystar_num": [
+    84,
+    5,
+    24,
+    5
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    -2,
+    10
+   ],
+   "Q": 76,
+   "fwd": true,
+   "enter": 1,
+   "win_lo": 1,
+   "win_hi": 24,
+   "double": false,
+   "tail": "excluded",
+   "case": "ii",
+   "lvl_eps0": 1,
+   "Lstar": 0,
+   "T": 3,
+   "Ystar_num": [
+    532,
+    5,
+    152,
+    5
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    10,
+    26
+   ],
+   "Q": 76,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "excluded",
+   "case": "ii",
+   "lvl_eps0": 0,
+   "Lstar": -1,
+   "T": 2,
+   "Ystar_num": [
+    532,
+    5,
+    152,
+    5
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    2,
+    -2
+   ],
+   "Q": -20,
+   "fwd": true,
+   "enter": 1,
+   "win_lo": 1,
+   "win_hi": 24,
+   "double": false,
+   "tail": "record",
+   "case": "ii",
+   "lvl_eps0": 1,
+   "Lstar": 0,
+   "T": 3,
+   "Ystar_num": [
+    28,
+    1,
+    8,
+    1
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    6,
+    14
+   ],
+   "Q": -20,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "record",
+   "case": "ii",
+   "lvl_eps0": 0,
+   "Lstar": -1,
+   "T": 2,
+   "Ystar_num": [
+    28,
+    1,
+    8,
+    1
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    2,
+    2
+   ],
+   "Q": -20,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "record",
+   "case": "ii",
+   "lvl_eps0": 1,
+   "Lstar": 0,
+   "T": 2,
+   "Ystar_num": [
+    28,
+    1,
+    8,
+    1
+   ],
+   "gcd": 2
+  },
+  {
+   "rep": [
+    14,
+    34
+   ],
+   "Q": -20,
+   "fwd": true,
+   "enter": 0,
+   "win_lo": 0,
+   "win_hi": 24,
+   "double": false,
+   "tail": "record",
+   "case": "ii",
+   "lvl_eps0": 0,
+   "Lstar": -1,
+   "T": 2,
+   "Ystar_num": [
+    28,
+    1,
+    8,
+    1
+   ],
+   "gcd": 2
+  }
+ ],
+ "p_cert": 2,
+ "p_cert_binding": [
+  "eps",
+  [
+   30,
+   74
+  ],
+  [
+   30,
+   74
+  ],
+  2
+ ],
+ "dmax": 2,
+ "d_star": 2,
+ "p_noblock": 0,
+ "observed_binding_offsets": [
+  0,
+  1
+ ],
+ "observed_blocking_offsets": [
+  0
+ ],
+ "observed_binding_offsets_Gpos": [
+  0,
+  1
+ ],
+ "eps0_state": [
+  2,
+  2
+ ],
+ "window_covers_blockers": true,
+ "p1_states": 1,
+ "p1_records": [
+  [
+   2,
+   2
+  ]
+ ],
+ "sort_fallbacks": 0,
+ "eps0_num": [
+  -2,
+  1,
+  2,
+  1
+ ],
+ "blocker_fallback_calls": 0,
+ "verdict_calls": 35,
+ "ledger": [
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -10,
+    26
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    10
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -6,
+    18
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    18
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 108,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    6
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    6
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 12,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    -2,
+    10
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    10,
+    26
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": 76,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    -2
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    6,
+    14
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 0,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 0,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    2,
+    2
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    6,
+    18
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 108,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    6
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 12,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    -2,
+    10
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    10,
+    26
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": 76,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    -2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    6,
+    14
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": -1,
+   "eps_threshold": 0,
+   "eps_verdict": "A_beats_B",
+   "h_threshold": 0,
+   "h_verdict": "H_B_lt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    2,
+    2
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 0,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 0,
+   "eps_threshold": 0,
+   "eps_verdict": "equal",
+   "h_threshold": 0,
+   "h_verdict": "same_orbit_index_shift"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 1,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 1,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 1,
+   "h_verdict": "H_B_gt_H_A"
+  },
+  {
+   "A": [
+    14,
+    34
+   ],
+   "B": [
+    14,
+    34
+   ],
+   "d": 2,
+   "QA": -20,
+   "QB": -20,
+   "rhs": 0,
+   "Gd_sign": 1,
+   "eps_threshold": 2,
+   "eps_verdict": "B_beats_A",
+   "h_threshold": 2,
+   "h_verdict": "H_B_gt_H_A"
+  }
+ ],
+ "record_tails": [
+  [
+   -2,
+   6
+  ],
+  [
+   2,
+   6
+  ],
+  [
+   2,
+   -2
+  ],
+  [
+   6,
+   14
+  ],
+  [
+   2,
+   2
+  ],
+  [
+   14,
+   34
+  ]
+ ],
+ "ties": [],
+ "initial_exceptions": []
+}

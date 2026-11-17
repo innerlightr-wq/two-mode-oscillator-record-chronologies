@@ -1,0 +1,25 @@
+(L1) eps = |tanh( log(k/(m alpha))/2 )|
+  PASS  phi, odd/odd: identity holds   max deviation 2.22e-16
+  PASS  1+sqrt3, odd/odd: identity holds   max deviation 1.11e-16
+  PASS  sqrt3, odd/odd: identity holds   max deviation 2.22e-16
+  PASS  sqrt2, odd/odd: identity holds   max deviation 2.22e-16
+  PASS  3x^2-x-1, odd/odd: identity holds   max deviation 2.22e-16
+  PASS  sqrt6, (1,1) mod 3: identity holds   max deviation 2.22e-16
+
+(L2) classical congruence-restricted best approximations vs eps-records
+  PASS  phi, odd/odd: every classical best approximation in the class is an eps-record   5 classical, 7 eps-records
+        containment STRICT; extra eps-records: [(7, 11), (123, 199)]
+  PASS  1+sqrt3, odd/odd: every classical best approximation in the class is an eps-record   5 classical, 7 eps-records
+        containment STRICT; extra eps-records: [(5, 13), (67, 183)]
+  PASS  sqrt3, odd/odd: every classical best approximation in the class is an eps-record   5 classical, 5 eps-records
+        containment is an EQUALITY below this cap; extra eps-records: []
+  PASS  sqrt2, odd/odd: every classical best approximation in the class is an eps-record   4 classical, 7 eps-records
+        containment STRICT; extra eps-records: [(3, 5), (19, 27), (111, 157)]
+  PASS  3x^2-x-1, odd/odd: every classical best approximation in the class is an eps-record   5 classical, 8 eps-records
+        containment STRICT; extra eps-records: [(5, 3), (7, 5), (241, 185)]
+  PASS  sqrt6, (1,1) mod 3: every classical best approximation in the class is an eps-record   5 classical, 11 eps-records
+        containment STRICT; extra eps-records: [(1, 4), (4, 7), (19, 46), (25, 61)]
+  PASS  the inclusion is strict for at least one instance   strict: phi, odd/odd, 1+sqrt3, odd/odd, sqrt2, odd/odd, 3x^2-x-1, odd/odd, sqrt6, (1,1) mod 3
+  PASS  and for at least one instance there is NO extra eps-record below the cap, so strictness is NOT a theorem (this is a finite range, NOT an equality of sets)   no extra below cap: sqrt3, odd/odd
+======================================================================
+lit_bridge: 14/14 checks passed, 0 failures

@@ -1,0 +1,1465 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{booktabs,array,longtable}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={An Effective Classification of Congruence-Restricted Quadratic Relative-Error Records},
+  pdfauthor={Elias De Jesus},
+  pdfsubject={Diophantine approximation; quadratic irrationals; record sequences},
+  pdfkeywords={Diophantine approximation, quadratic irrationals, record sequences,
+    congruence conditions, binary quadratic forms, Pell equation, automorph group,
+    reduction theory, relative error, exact arithmetic, certificates, effective algorithms}
+}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\adm}{\mathcal{A}}
+\newcommand{\dd}{\delta}
+\newcommand{\epsbar}{\overline{\varepsilon}}
+\newcommand{\epsw}{\varepsilon_w}
+\newcommand{\sgn}{\operatorname{sgn}}
+\DeclareMathOperator{\Nm}{N}
+
+\title{An Effective Classification of Congruence-Restricted\\
+Quadratic Relative-Error Records}
+\author{Elias De Jes\'us\\
+\small Independent Researcher\\
+\small ORCID: \href{https://orcid.org/0009-0007-0190-9143}{0009-0007-0190-9143}\\
+\small \texttt{dejesuselias10@gmail.com}}
+\date{16 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a terminating exact-arithmetic algorithm, with independently checkable certificates,
+for classifying strict quadratic relative-error records under arbitrary congruence
+restrictions; the classification includes imprimitive states, and the positive-conjugate cases
+that require explicit backward exclusions.
+
+Let $\alpha>0$ be a real quadratic irrational, given as either root of a primitive integral
+quadratic $Ax^2+Bx+C$ with $A>0$ and nonsquare discriminant $\Delta=B^2-4AC$. For pairs of
+positive integers $(m,k)$ whose residue $(m,k)\bmod M$ lies in a prescribed nonempty set
+$\mathcal R\subseteq(\Z/M\Z)^2$, order the pairs by the weighted height $H=m\alpha+k$ and
+measure them by the \emph{relative} error $\varepsilon=|m\alpha-k|/(m\alpha+k)$. A pair is a
+\emph{strict record} if its error is smaller than at every admissible pair of smaller height.
+We prove that the strict records always form a finite, explicitly decided part together with
+finitely many certified forward orbits of one integral matrix, each starting at a computed
+level, and we give a terminating algorithm that outputs this data with an exact certificate.
+No coprimality restriction is imposed on the admissible pairs, and no sign or monicity
+hypothesis on the polynomial: $\alpha$ may be the
+smaller root, its conjugate may be positive, $\alpha$ may be less than $1$, $A$ may exceed $1$,
+$\mathcal R$ may be any union of residue classes, and imprimitive records occur and are
+classified. The mechanism is the proper automorph of the integral defect form
+$Q=Ak^2+Bmk+Cm^2$: a power $P$ of it fixes every residue class modulo $M$ and preserves $Q$, an
+explicit cutoff bounds $|Q|$ on records, classical reduction theory makes the surviving orbits
+finite, and finitely many exact comparisons decide each orbit's tail. Two phenomena absent from
+the monic negative-conjugate case require separate treatment and are isolated: when the
+conjugate is positive the positive cone is not forward invariant and the height is not monotone
+along an orbit, and the backward exclusion then splits into two cases with different
+certificates. A separate negative result is isolated: a strict record need not be a vertex of
+the convex hull of the admissible points of its cone, so the records cannot in general be read
+off a Klein--Arnold sail; the witness is exact. That all sufficiently late records lie in
+finitely many automorph orbits is classical once the defect is bounded; what is offered here as
+a \emph{proposed} contribution is the effectiveness, the generality, and the completeness of the
+certificates. Computations are used only to instantiate and audit the proof, not to establish
+it; all arithmetic is exact. The note is part of an ongoing programme, and independent
+verification, corrections and counterexamples are welcome.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Fix an irrational $\alpha>0$. Among pairs of positive integers $(m,k)$, how well can $k/m$
+approximate $\alpha$ relative to the size of the pair, and which pairs are the successive
+record holders? If ``size'' is the denominator $m$ and ``error'' is $|m\alpha-k|$, the answer is
+classical: the records are the convergents of the continued fraction of $\alpha$. This note
+concerns a different pairing, which arises when both coordinates carry weight:
+\[
+H(m,k)=m\alpha+k,\qquad
+\varepsilon(m,k)=\frac{|m\alpha-k|}{m\alpha+k},
+\]
+so that the ordering quantity and the normalisation are the same. Two features make the
+resulting record problem genuinely different from the classical one.
+
+First, $\varepsilon$ is a monotone function of the \emph{multiplicative} error:
+$\varepsilon=\bigl|\tanh\bigl(\tfrac12\log(k/(m\alpha))\bigr)\bigr|$, so records minimise
+$|\log(k/m)-\log\alpha|$ under the weighted height. Proposition~\ref{prop:classical} compares
+this with the \emph{absolute}-error criterion \emph{under the same height order} and gives the
+one implication that holds, with a witness for its strictness. It says nothing about the
+denominator-ordered notion of classical and parity-restricted best approximation: that is a
+different ordering and no bridge to it is established here (Remark~\ref{rem:order2}). What is
+established, and is of a geometric kind, is that records of this objective need not be
+vertices of the convex hull of their own residue coset
+(Proposition~\ref{prop:sail}) --- so the natural ``read the records off a sail'' reduction
+fails.
+
+Second, we restrict the admissible pairs by a congruence: $(m,k)\bmod M$ must lie in a
+prescribed nonempty $\mathcal R\subseteq(\Z/M\Z)^2$. This is not a cosmetic restriction. An
+arbitrary $\mathcal R$ is a \emph{union of cosets} of $M\Z^2$, not a sublattice, so one cannot
+simply rescale; the gcd of an admissible pair need not be reducible inside the class, so
+\emph{imprimitive records occur}; and the automorph group of the defect form must be replaced
+by the finite-index subgroup fixing the classes.
+
+The record set is infinite, and the question is whether it is \emph{finitely describable and
+computable}. Theorem~\ref{thm:main} says it is, for every admissible input. The record set
+always consists of an explicitly bounded finite region, decided directly, together with
+finitely many complete forward orbits of one integral matrix $P$, each rebased at a computed
+starting level. The proof is a chain of elementary steps around one invariant, the integral
+defect
+\[
+Q(m,k)=Ak^2+Bmk+Cm^2,
+\]
+which $P$ preserves exactly; the finiteness comes from the classical reduction theory of
+indefinite binary quadratic forms.
+
+The work generalises three worked classifications in the author's earlier note
+\cite{DeJesus2026oddodd} --- for $\alpha=\varphi$, $1+\sqrt3$ and $\sqrt3$ with $m,k$ both odd
+--- which were proved one slope at a time under the hypotheses $B\le0$ (``$t\ge0$''),
+$\alpha'<0$, $\alpha>1$, $A=1$, and the specific odd/odd class. All five hypotheses are removed
+here. Two places where removing them is not routine are worth announcing, because they are
+where the monic negative-conjugate intuition fails:
+
+\begin{itemize}\itemsep2pt
+\item When $\alpha'>0$ \emph{no power of the automorph has non-negative entries}, the positive
+cone is not forward invariant, and an orbit of negative defect is positive in \emph{both}
+directions (Lemma~\ref{lem:window}). Along such an orbit the height is U-shaped in the level,
+so ``later'' does not mean ``higher''.
+\item The natural error floor $\varepsilon\ge\sqrt\Delta/|B|$, which excludes the backward
+portions in the negative-conjugate case, is \emph{false} on those doubly-infinite orbits: their
+backward rays approach the floor from below. The exclusion therefore splits into two cases with
+different certificates (Lemma~\ref{lem:backward}), one of them an explicit level cutoff
+(Lemma~\ref{lem:cutlevel}).
+\end{itemize}
+
+\paragraph{What is classical, and what is proposed here.}
+It is worth separating two statements that are easily conflated. The first is:
+
+\begin{quote}
+(a) all sufficiently late records lie in finitely many orbits of the automorph group of $Q$.
+\end{quote}
+
+This follows from the classical reduction theory of indefinite binary quadratic forms
+\cite{BuellBQF,Cohen1993,ConradGenPell} once the defect is bounded --- Theorem~\ref{thm:cutoff}
+supplies the bound, and Proposition~\ref{prop:box} is then a finiteness statement of a thoroughly
+standard kind. We claim no novelty for it, and the Pell solution, the proper automorph, the
+$Q$-invariance and the reduction box are all classical inputs used as such. The second
+statement is:
+
+\begin{quote}
+(b) \emph{which} orbit tails are records; at \emph{which} level each one begins; and a finite
+certificate that the finitely many exceptions have been completely enumerated.
+\end{quote}
+
+Statement (b) does not follow from (a). It is what the comparison formulas of
+Section~\ref{sec:compare}, the finite ledger with both of its endpoints justified
+(Section~\ref{sec:ledger}), the binding-state sufficiency lemma
+(Lemma~\ref{lem:binding}) and the disjoint partition of Section~\ref{sec:partition} are for, and
+it is what makes the output of Theorem~\ref{thm:main} an answer rather than a reduction.
+
+The \emph{proposed} contribution of this note is therefore threefold: effectiveness --- a
+terminating algorithm with exact arithmetic that outputs the record set itself, not a bound on
+where it stabilises; generality --- arbitrary $(A,B,C)$, either root, $\alpha'>0$, $\alpha<1$,
+arbitrary $\mathcal R$ and imprimitive states, all of which are excluded by the hypotheses of
+\cite{DeJesus2026oddodd}; and certificate completeness --- an explicit, independently
+checkable list of the quantities that a verifier needs in order to confirm that nothing was
+missed. ``Proposed'' is meant literally: these are three claims awaiting a fuller comparison
+with the literature, not established firsts. Congruence-restricted approximation has been studied from several
+directions that the author has not exhausted: parity and odd/odd continued fractions
+\cite{KimLeeLiao2022,KimLeeLiao2025}, rationals with restricted numerator and denominator
+\cite{Elsner2000}, best approximation in a prime-power congruence setting
+\cite{KushwahaSarma}, metric and counting results for approximation with congruence conditions
+on the pair \cite{HanLee2025}, and the geometry of sails and rivers attached to indefinite
+binary forms \cite{Karpenkov2013,SpaldingVeselov}. None of them treats the present objective
+under the present order, as far as the author can tell; the specific distinctions are set out in
+Section~\ref{sec:limits}, item~6. The absence of a result in the works consulted is not a
+priority claim, and corrections of this reading are explicitly invited.
+
+Computation plays a fixed and limited role. The theorem and every lemma are proved for
+arbitrary admissible input; the computations instantiate the algorithm on $26$ inputs, emit a
+machine-readable certificate for each, and audit those certificates with a separately written
+checker. Section~\ref{sec:repro} states exactly what was run and what it does and does not
+establish. All arithmetic is exact: elements of $\Q(\sqrt\Delta)$ are pairs of rationals and
+every sign is decided by an integer comparison.
+
+\paragraph{Open engagement.}
+This technical note forms part of an ongoing research program. Independent verification,
+corrections, related references, and suggestions for extensions are welcome. In particular,
+feedback on the universal scope of the classification, the certificate completeness conditions,
+and connections with congruence-restricted approximation theory would be valuable.
+
+\section{Setting}\label{sec:setting}
+
+Let $A,B,C$ be coprime integers with $A>0$ and $\Delta=B^2-4AC>0$ not a perfect square. Fix
+$s\in\{+1,-1\}$ and set
+\[
+\alpha=\frac{-B+s\sqrt\Delta}{2A},\qquad
+\alpha'=\frac{-B-s\sqrt\Delta}{2A},\qquad
+\dd=\alpha-\alpha'=\frac{s\sqrt\Delta}{A},
+\]
+and require only $\alpha>0$. Thus $\alpha$ may be either root, $\alpha'$ may have either sign,
+$\alpha$ may be smaller or larger than $1$, and $\alpha$ need not be an algebraic integer. Note
+$A|\dd|=\sqrt\Delta$.
+
+Fix $M\ge1$ and a nonempty $\mathcal R\subseteq(\Z/M\Z)^2$. The set of \emph{admissible states}
+is
+\[
+\adm=\bigl\{(m,k)\in\Z_{>0}^2:\ (m\bmod M,\,k\bmod M)\in\mathcal R\bigr\}.
+\]
+\emph{No coprimality is imposed.} For a state put
+\[
+H=m\alpha+k>0,\quad
+\xi=k-m\alpha,\quad
+\eta=k-m\alpha',\quad
+Q=Ak^2+Bmk+Cm^2=A\,\xi\eta,\quad
+\varepsilon=\frac{|\xi|}{H}.
+\]
+$Q$ is the integral defect; $Q\ne0$ because $\alpha$ is irrational. Also set
+\[
+G=2\alpha A^2\eta^2+BQ,\qquad Y=A^2\eta^2 .
+\]
+
+\begin{lemma}[Basic identities]\label{lem:ident}
+For every state,
+\begin{equation}\label{eq:ident}
+H=\frac{G}{A^2\eta\,\dd},\qquad
+G=A^2\eta\,\dd\,H,\qquad
+\varepsilon=\frac{|Q|\sqrt\Delta}{|G|},\qquad
+H=\frac{2\alpha\eta}{\dd}\Bigl(1+u\Bigr),\quad u:=\frac{BQ}{2\alpha Y}.
+\end{equation}
+In particular $\sgn G=\sgn(\eta\,\dd)$, and with $z=\xi/H$ (so $|z|=\varepsilon$),
+\begin{equation}\label{eq:Qz}
+Q=\frac{H^2z\,(A\dd-Bz)}{2\alpha},\qquad\text{hence}\qquad
+|Q|\le\frac{H^2\varepsilon\bigl(\sqrt\Delta+|B|\varepsilon\bigr)}{2\alpha}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+From $\xi=k-m\alpha$ and $\eta=k-m\alpha'$ we get $\eta-\xi=m\dd$ and
+$\alpha\eta-\alpha'\xi=k\dd$, so $m=(\eta-\xi)/\dd$, $k=(\alpha\eta-\alpha'\xi)/\dd$ and
+\[
+H=m\alpha+k=\frac{2\alpha\eta-(\alpha+\alpha')\xi}{\dd}
+ =\frac{2\alpha\eta+(B/A)\xi}{\dd}.
+\]
+Substituting $\xi=Q/(A\eta)$ gives the first identity and the fourth; the second is a
+restatement, and $H>0$ forces $\sgn G=\sgn(\eta\dd)$. For the third,
+$\varepsilon=|\xi|/H=\bigl(|Q|/(A|\eta|)\bigr)\cdot A^2|\eta|\,|\dd|/|G|=A|\dd|\,|Q|/|G|$ and
+$A|\dd|=\sqrt\Delta$. For \eqref{eq:Qz}, solve the displayed $H$-identity for $\eta$ and
+substitute into $Q=A\xi\eta$ with $\xi=zH$; the bound follows from
+$|A\dd-Bz|\le A|\dd|+|B|\,|z|$.
+\end{proof}
+
+\begin{definition}[Records]\label{def:records}
+A state is a \emph{strict record} if $\varepsilon$ is strictly smaller than at every admissible
+state of smaller $H$, and a \emph{weak record} if $\le$ holds. A state whose error exactly
+equals the running minimum at a strictly larger height is a weak record that is not strict; we
+call such a coincidence a \emph{tie}.
+\end{definition}
+
+\begin{remark}[$H$ is a strict total order]\label{rem:order}
+If $m\alpha+k=m'\alpha+k'$ with $(m,k)\ne(m',k')$ then $(m-m')\alpha=k'-k$, which forces
+$m=m'$ and then $k=k'$ because $\alpha$ is irrational. So distinct states have distinct heights
+and $\adm$ is linearly ordered by $H$ with no ties in the ordering; the running minimum of
+$\varepsilon$ is therefore well defined, and Definition~\ref{def:records} is unambiguous.
+\end{remark}
+
+\subsection{What the objective is, and is not}\label{sec:objective}
+
+Since $\varepsilon=|m\alpha-k|/(m\alpha+k)=|x-\alpha|/(x+\alpha)$ for $x=k/m$, and
+$(x-\alpha)/(x+\alpha)=\tanh\bigl(\tfrac12\log(x/\alpha)\bigr)$, we have
+\begin{equation}\label{eq:tanh}
+\varepsilon=\Bigl|\tanh\Bigl(\tfrac12\log\frac{k}{m\alpha}\Bigr)\Bigr| .
+\end{equation}
+So records minimise the multiplicative error $|\log(k/m)-\log\alpha|$ under the weighted height
+$m\alpha+k$. This is \emph{not} the classical objective, and no transfer in either direction
+should be assumed. What does hold is one inclusion.
+
+\begin{proposition}\label{prop:classical}
+Call $(m,k)\in\adm$ a \emph{class best approximation} if $|\xi(m,k)|$ is smaller than at every
+admissible state of smaller $H$. Every class best approximation is a strict
+$\varepsilon$-record, and the inclusion can be strict.
+\end{proposition}
+
+\begin{proof}
+If $|\xi|$ strictly decreases while $H$ increases then $\varepsilon=|\xi|/H$ strictly
+decreases. For strictness of the inclusion: at $\alpha=\varphi$ with $m,k$ odd, $(7,11)$ is a
+strict $\varepsilon$-record while $|3\varphi-5|=0.1459\ldots<0.3262\ldots=|7\varphi-11|$ with
+$3\le7$, so $(7,11)$ is not a class best approximation.
+\end{proof}
+
+\begin{remark}[Not a claim]\label{rem:noteq}
+Whether the inclusion is ever an \emph{equality} of the two infinite sets is not settled here.
+At $\alpha=\sqrt3$ with $m,k$ odd the two sets agreed at every height tested, but that is an
+observation about a finite range and no equality of infinite sets follows from it; see
+Section~\ref{sec:limits}.
+\end{remark}
+
+\begin{remark}\label{rem:order2}
+Proposition~\ref{prop:classical} compares two notions that are \emph{both} ordered by $H$. The
+classical and parity-restricted literature \cite{KimLeeLiao2022,KimLeeLiao2025,KushwahaSarma}
+orders by the denominator instead, and no bridge between the two orders is established here;
+see Section~\ref{sec:limits}. In particular the witness $(7,11)$ in the proof above speaks only
+to the $H$-ordered comparison.
+\end{remark}
+
+In the geometric picture of Klein and Arnold, best approximations of a real number are the
+lattice points on the \emph{sail} --- the boundary of the convex hull of the lattice points in a
+specified cone \cite{Karpenkov2013,SpaldingVeselov}. Since an admissible set here is a union of
+cosets of $M\Z^2$, the natural reduction to try is: take the cone, take the admissible points
+inside it, and read the records off the vertices of their convex hull. That reduction
+\emph{fails}, and it fails on an exact finite witness.
+
+\begin{proposition}[A record need not be a vertex of its coset hull]\label{prop:sail}
+Let $\alpha=2+\sqrt2$, i.e. $(A,B,C,s)=(1,-4,2,+1)$, with $M=3$ and
+$\mathcal R=\{(1,1)\}$. Then $(7,25)$ is a strict record: there are exactly $42$ admissible
+states of smaller height, the best of them is $(4,13)$, and
+\[
+\varepsilon(7,25)=0.02250545\ldots\ <\ \varepsilon(4,13)=0.02464110\ldots
+\]
+Nevertheless
+\begin{equation}\label{eq:sail}
+(7,25)=\tfrac35\,(1,4)+\tfrac15\,(31,106)+\tfrac15\,(1,7),
+\end{equation}
+an exact identity whose three vertices are admissible, lie in the open cone $k>\alpha m$
+together with $(7,25)$ itself, and span a nondegenerate triangle $(\det=90)$. All three
+barycentric coordinates are strictly positive, so $(7,25)$ lies \emph{strictly inside} that
+triangle and is therefore interior to the convex hull of the admissible points of the cone:
+neither a hull vertex nor an edge point.
+\end{proposition}
+
+\begin{proof}
+Each assertion is a finite exact computation, carried out in
+\texttt{scripts/review6\_sail.py} ($14/14$ checks): the enumeration of the $42$ lower states
+and the two error comparisons in $\Z[\sqrt2]$; the identity \eqref{eq:sail} over $\Q$; the
+residues $(1,4),(31,106),(1,7)\equiv(1,1)\bmod3$; the cone memberships
+$k-\alpha m=0.585786\ldots,\ 0.159380\ldots,\ 3.585786\ldots$ and $1.100505\ldots$; and
+$\det=90$. Strict positivity of all three barycentric coordinates together with
+nondegeneracy is exactly interiority.
+\end{proof}
+
+\begin{remark}[What Proposition~\ref{prop:sail} does and does not do]\label{rem:sailscope}
+It refutes \emph{this} reduction --- records as hull vertices of the admissible points of a
+cone --- on a single exact witness, and no amount of further data can undo a finite witness. It
+does \emph{not} rule out other geometric descriptions of the record set, and it does not by
+itself establish that the classification below is new. The sails of \cite{SpaldingVeselov} are
+moreover attached to a specified pair of lines, a precision that matters when comparing their
+construction with the present record problem.
+\end{remark}
+
+\section{The main theorem}\label{sec:main}
+
+Throughout, orbits are orbits of the cyclic group $\langle P\rangle$ generated by the matrix of
+Lemma~\ref{lem:automorph}, acting on column vectors $(m,k)^{\!\top}$.
+
+\begin{definition}[Levels]\label{def:level}
+Each orbit is given a representative with $|\eta|\in[1,\rho)$, where $\rho>1$ is the factor by
+which $P$ multiplies $\eta$ (Lemma~\ref{lem:automorph}). The \emph{level} of the state obtained
+from the representative by $L$ applications of $P$ is $L\in\Z$; equivalently, $L$ is the unique
+integer with $|\eta|/\rho^{L}\in[1,\rho)$. Levels are absolute: there is no per-orbit offset.
+\end{definition}
+
+\begin{theorem}[Effective classification of strict records]\label{thm:main}
+There is an algorithm which, on input $(A,B,C,s,M,\mathcal R)$ as in Section~\ref{sec:setting},
+terminates and outputs
+\begin{enumerate}\itemsep2pt
+\item a matrix $P\in SL_2(\Z)$ with $P\equiv I\pmod M$ which preserves $Q$ exactly, preserves
+$\gcd(m,k)$, and multiplies $\eta$ by a fixed $\rho>1$;
+\item a state $w\in\adm$ with attained error $\epsw:=\varepsilon(w)<\epsbar$, where
+$\epsbar:=\min\bigl(1,\sqrt\Delta/(2|B|)\bigr)$ and the second entry is omitted when $B=0$;
+\item integers $B_{\mathrm{cut}}\le B_{\mathrm{comp}}$ and a finite list of orbits
+$O_1,\dots,O_N$ which together contain every admissible state with $|Q|\le B_{\mathrm{comp}}$;
+\item for each $O_i$ an integer $L_i^{*}$ together with the two exact witnesses
+$Y_{L_i^{*}}\le Y_i^{*}<Y_{L_i^{*}+1}$, and a tail-start level $T_i>L_i^{*}$;
+\item for each $O_i$ a verdict in $\{\textsf{record},\textsf{tie},\textsf{excluded}\}$ which is
+correct at \emph{every} level $L\ge T_i$;
+\item the exact strict-record set of the finite region $H\le H(w)$, and the exact verdict of
+each state at the finitely many levels $L_i^{*}<L<T_i$.
+\end{enumerate}
+The strict records of $\adm$ are then exactly
+\begin{align*}
+&\underbrace{\{\text{records with }H\le H(w)\}}_{\text{(6), finite}}
+\ \cup\
+\underbrace{\{\text{records at levels }L_i^{*}<L<T_i\}}_{\text{(6), finite}}\\[2pt]
+&\qquad\cup\quad
+\bigcup_{i\,:\,O_i\ \textsf{record}}\ \bigl\{\text{states of }O_i\text{ at levels }
+L\ge T_i\bigr\},
+\end{align*}
+and the last set is the complete forward $\langle P\rangle$-orbit of the seed
+$P^{\,T_i}(\text{rep}_i)$. Every output item is accompanied by exact inequalities that a
+checker can re-derive from the definitions.
+\end{theorem}
+
+The three unions are disjoint, and together with the analytically excluded parts they exhaust
+$\adm$; this is made precise as Proposition~\ref{prop:partition}. The theorem is about
+\emph{strict} records. Ties are detected and reported --- item (5) --- and the certified ties
+are genuine infinite families of weak records, but we do \emph{not} claim a classification of
+all weak records; see Section~\ref{sec:limits}.
+
+\begin{remark}[Effectiveness versus cost]\label{rem:cost}
+Every step below terminates for every admissible input, and that is what Theorem~\ref{thm:main}
+asserts. It does \emph{not} assert a bound on the running time. The dominant cost is the
+enumeration of Section~\ref{sec:enum}, whose size grows with $\rho=\lambda^{\,j}$ where $j$ is
+the index of Lemma~\ref{lem:automorph}, and $j$ is bounded only by $|GL_2(\Z/M\Z)|$. The two
+are separated deliberately; see Section~\ref{sec:limits}.
+\end{remark}
+
+\section{The class-fixing automorph}\label{sec:automorph}
+
+\begin{lemma}\label{lem:automorph}
+Let $(T,U)$ be the least solution of $T^2-\Delta U^2=4$ in positive integers. Then
+\[
+X_0:\ (m,k)\longmapsto
+\Bigl(\tfrac{T+BU}{2}\,m+AU\,k,\ -CU\,m+\tfrac{T-BU}{2}\,k\Bigr)
+\]
+is an integral matrix of determinant $1$ with $Q(X_0v)=Q(v)$ for all $v$, and $X_0$ multiplies
+$\eta$ by the unit $\lambda=(T+U\sqrt\Delta)/2$ of the order of discriminant $\Delta$; after
+replacing $X_0$ by $X_0^{-1}$ if necessary, $\lambda>1$. Moreover there is a least
+$j\le|GL_2(\Z/M\Z)|$ with
+\[
+P:=X_0^{\,j}\equiv I \pmod M,
+\]
+and $P$ preserves $Q$, fixes every residue class modulo $M$, preserves $\gcd(m,k)$, and
+multiplies $\eta$ by $\rho:=\lambda^{\,j}>1$.
+\end{lemma}
+
+\begin{proof}
+Integrality: $T^2\equiv\Delta U^2\equiv B^2U^2\pmod4$, so $T\equiv BU\pmod2$ and both displayed
+halves are integers. That $X_0$ is the proper automorph of the form $Q$, of determinant $1$, and
+that it acts on $\eta$ as multiplication by $\lambda$, is the classical automorph of an
+indefinite binary quadratic form \cite{BuellBQF,ConradGenPell}; $\lambda>1$ after the possible
+inversion because $\Delta>0$ and $(T,U)$ is positive. Reducing modulo $M$ puts $X_0$ in the
+finite group $GL_2(\Z/M\Z)$, so the cyclic subgroup it generates is finite and some power is the
+identity there; take the least such $j$. $P\equiv I\pmod M$ fixes every residue class
+individually, hence maps $\adm$-residues to themselves; $P\in GL_2(\Z)$ gives
+$\gcd(Pv)=\gcd(v)$; and $Q(Pv)=Q(v)$ and $\eta(Pv)=\rho\,\eta(v)$ by iteration.
+\end{proof}
+
+\begin{remark}[Why proper automorphs only]\label{rem:proper}
+One may instead use a power of the fundamental \emph{unit}, which may have norm $-1$; then $Q$
+alternates sign along an orbit and every comparison below acquires a parity-dependent
+right-hand side. Restricting to proper automorphs makes $Q$ \emph{constant} on each orbit at
+the cost of splitting each former orbit into at most two. Every comparison below then has a
+constant right-hand side and no verdict alternates.
+\end{remark}
+
+\begin{remark}[No entrywise-positive power when $\alpha'>0$]\label{rem:nopos}
+If $\alpha'>0$ then both eigendirections $(1,\alpha)$ and $(1,\alpha')$ of $P$ lie in the open
+positive quadrant, and $P^{n}/\rho^{n}$ tends to a multiple of $(1,\alpha)\,(-\alpha',1)$, which
+has a negative entry. Hence \emph{no} power of the automorph is entrywise positive and the
+positive quadrant is not forward invariant. For example at $\alpha=(3+\sqrt5)/2$ one gets
+$P=\binom{-3\ \ 8}{-8\ \ 21}$. Any argument of the form ``once a state is positive all its
+successors are'' is therefore unavailable here, and is replaced by Lemma~\ref{lem:window}.
+\end{remark}
+
+\section{A comparison family, unconditionally}\label{sec:family}
+
+\begin{lemma}\label{lem:window}
+Along an orbit $\sgn\eta$ is constant and $\xi\to0$ in forward direction. Consequently
+$m=(\eta-\xi)/\dd\to+\infty$ forward if and only if $\sgn\eta=\sgn\dd$, and then also
+$k=\xi+m\alpha\to+\infty$. Thus:
+\begin{enumerate}\itemsep2pt
+\item an orbit has an infinite forward tail of positive states iff $\sgn(\eta\,\dd)>0$, and then
+$\varepsilon\to0$ along it;
+\item if $\alpha'<0$, every orbit either has such a tail or has only finitely many positive
+states;
+\item if $\alpha'>0$, an orbit with $Q<0$ is positive in \emph{both} directions, and backward
+$\varepsilon$ increases to the limit $|\dd|/(\alpha+\alpha')>0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+$P$ multiplies $\eta$ by $\rho>0$ and $\xi=Q/(A\eta)$ by $\rho^{-1}$, giving the first
+sentence and (1), with $\varepsilon=|\xi|/H\to0$ since $|\xi|\to0$ and $H\to\infty$. For (2)
+and (3), in the backward direction $\eta\to0$ and $|\xi|\to\infty$, so
+$m\approx-\xi/\dd$ and $k=\xi+m\alpha\approx-\xi\alpha'/\dd$; both are positive exactly when
+$\sgn\xi=-\sgn\dd$ and $\alpha'>0$, which with $\sgn(\eta\dd)>0$ means $\xi\eta<0$, i.e.
+$Q<0$. On such a ray $H\approx-\xi(\alpha+\alpha')/\dd$ and $\varepsilon=|\xi|/H\to
+|\dd|/(\alpha+\alpha')$.
+\end{proof}
+
+\begin{lemma}[Existence of a comparison family]\label{lem:fam}
+Every nonempty $\mathcal R$ admits an admissible state $A_1$ with $\sgn(\eta\dd)>0$, and hence a
+family $A_1,A_2,\dots$ --- its forward $P$-orbit, or the union of finitely many such orbits ---
+of admissible states with heights increasing to infinity and $\varepsilon\to0$. No prescribed
+or minimal defect is needed: $|Q(A_1)|$ is whatever it is, and is computed.
+\end{lemma}
+
+\begin{proof}
+Pick $(a,b)\in\mathcal R$. The open interval with endpoints $m\alpha'$ and $m\alpha$ --- that is
+$(m\alpha',m\alpha)$ when $\alpha>\alpha'$, and $(m\alpha,m\alpha')$ when $\alpha$ is the
+smaller root --- has length $m|\dd|\to\infty$, so for $m\equiv a\pmod M$ large enough it
+contains $M$ consecutive integers and hence some $k\equiv b\pmod M$. For such $(m,k)$ the value
+$k$ lies strictly between $m\alpha'$ and $m\alpha$, so $\xi$ and $\eta$ have opposite signs and
+$\sgn\eta=\sgn\dd$. Lemma~\ref{lem:window}(1) does the rest; $Q\ne0$ and is computable.
+\end{proof}
+
+\begin{remark}
+Stage~3 of the earlier programme asked for an admissible state of \emph{prescribed} or
+\emph{minimal} defect and recorded its absence as a gap. Lemma~\ref{lem:fam} shows the theorem
+needs only existence. A small $|Q(A_1)|$, and a family built from several orbits, improve the
+constant in Section~\ref{sec:cutoff} but are not required.
+\end{remark}
+
+\section{A sufficient record-defect cutoff}\label{sec:cutoff}
+
+\begin{theorem}[Cutoff]\label{thm:cutoff}
+Let $A,C$ be consecutive members of an admissible comparison family and let $B^{*}$ be a strict
+record with $H_A<H_{B^{*}}\le H_C$. Then
+\begin{equation}\label{eq:cut}
+|Q_{B^{*}}|\ <\ |Q_A|\Bigl(\frac{H_C}{H_A}\Bigr)^{2}\bigl(1+\theta_A\bigr),
+\qquad
+\theta_A=\frac{BQ_A+|BQ_A|}{2\alpha A^2\eta_A^2}=2\max(u_A,0).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$B^{*}$ is a record above $A$, so $\varepsilon_{B^{*}}<\varepsilon_A$; the map
+$x\mapsto x(\sqrt\Delta+|B|x)$ is strictly increasing on $x\ge0$; and $H_{B^{*}}\le H_C$.
+Hence \eqref{eq:Qz} gives
+$|Q_{B^{*}}|<H_C^{2}\varepsilon_A(\sqrt\Delta+|B|\varepsilon_A)/(2\alpha)$. Now substitute
+$\varepsilon_A=|Q_A|\sqrt\Delta/G_A$ and $H_C^2=G_C^2/(Y_C\Delta)$ from \eqref{eq:ident} and
+simplify, using $Q_C=Q_A$ and $Y_C=\rho^2Y_A$ for a single-orbit family, to reach
+\eqref{eq:cut}.
+\end{proof}
+
+No sign hypothesis is used: not $B\le0$, not $\alpha'<0$, not $\alpha>1$, not $A=1$, not
+primitivity.
+
+\begin{lemma}[A computable majorant]\label{lem:tailbound}
+Write $u=BQ/(2\alpha Y)$, so $u$ is multiplied by $\rho^{-2}$ at each step. For a consecutive
+family pair with $r=|\eta_C/\eta_A|$ and $v=\max(|u_A|,|u_C|)<1$,
+\begin{equation}\label{eq:maj}
+|Q_A|\Bigl(\frac{H_C}{H_A}\Bigr)^{2}(1+\theta_A)
+\ \le\ |Q_A|\,r^{2}\Bigl(\frac{1+v}{1-v}\Bigr)^{2}(1+2v).
+\end{equation}
+Consequently
+$B_{\mathrm{cut}}:=\bigl\lfloor\max\bigl(\text{\eqref{eq:cut} over the finitely many pairs
+before a cut level},\ \text{\eqref{eq:maj} at that level}\bigr)\bigr\rfloor$
+is a computable integer, and every strict record of height $>H(A_1)$ satisfies
+$|Q|\le B_{\mathrm{cut}}$.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:ident}, $H_C/H_A=(\eta_C/\eta_A)(1+u_C)/(1+u_A)$, so
+$(H_C/H_A)^2\le r^2((1+v)/(1-v))^2$, and $\theta_A=2\max(u_A,0)\le 2v$. Since $|u|$ decreases
+by the factor $\rho^{-2}$ along the family, \eqref{eq:maj} evaluated at a cut level bounds every
+later pair, so the displayed maximum bounds \eqref{eq:cut} over all pairs.
+\end{proof}
+
+\begin{warning}\label{warn:sup}
+$B_{\mathrm{cut}}$ is a \emph{certified upper bound} obtained from the majorant \eqref{eq:maj};
+it is not claimed to equal the supremum of \eqref{eq:cut}. Only the implication
+``record $\Rightarrow|Q|\le B_{\mathrm{cut}}$'' is used.
+\end{warning}
+
+\begin{remark}[Families beat single ladders]\label{rem:families}
+Each family member contributes at least $|Q_A|$ to the maximum, so
+$B_{\mathrm{cut}}\ge\max_A|Q_A|$: the cutoff cannot be pushed below the largest defect the
+family contains. The useful trade-off is therefore to take the family to be \emph{all}
+admissible orbits of defect $\le D$ for a small $D$, obtained from the enumeration of
+Section~\ref{sec:enum} with no height search, and to minimise over a short list of $D$. The
+effect can be large: at $\alpha=\sqrt6$ with $(m,k)\equiv(1,1)\pmod3$, where
+$\rho=(5+2\sqrt6)^6=940898$, a single-orbit ladder gives a cutoff near $7.3\cdot10^{8}$,
+whereas the family of all orbits with $|Q|\le50$ gives $B_{\mathrm{cut}}=135$.
+\end{remark}
+
+\section{Complete finite enumeration}\label{sec:enum}
+
+\begin{proposition}[Reduction box]\label{prop:box}
+Fix $B_{\max}>0$. Normalise $|\eta|$ into $[1,\lambda)$ by powers of $X_0$. Then
+$|\xi|=|Q|/(A|\eta|)\le B_{\max}/A$, and since $m=(\eta-\xi)/\dd$ and $k=\xi+m\alpha$,
+\[
+|m|\le\frac{\lambda+B_{\max}/A}{|\dd|}+1,\qquad
+|k|\le\frac{B_{\max}}{A}+|m|\alpha+1 .
+\]
+An exhaustive scan of that box meets every $\lambda$-class of states with $0<|Q|\le B_{\max}$.
+\end{proposition}
+
+This is the classical reduction theory of the generalised Pell equation
+\cite{ConradGenPell,BuellBQF,Cohen1993}: finiteness of the classes of solutions of a given norm
+under the automorph group, together with an explicit bounded region containing a representative
+of each. \emph{No class-number or principal-ideal hypothesis is used}, and representatives with
+non-positive coordinates must be retained, since their orbits enter the positive region
+elsewhere.
+
+\begin{proposition}[Splitting and admissibility]\label{prop:split}
+Each $\lambda$-class splits into at most $j$ $P$-orbits. Walking $p=0,\dots,j-1$ from the class
+representative by $X_0$ and keeping those translates whose residue lies in $\mathcal R$
+enumerates exactly the admissible $P$-orbits with $0<|Q|\le B_{\max}$.
+\end{proposition}
+
+Using $\lambda$ rather than $\rho=\lambda^{\,j}$ for the box is essential: the box size is
+$O(\lambda+B_{\max})$ instead of $O(\lambda^{\,j}+B_{\max})$.
+
+\begin{lemma}[Imprimitive states are retained]\label{lem:imprim}
+$P\in GL_2(\Z)$ preserves $\gcd$, so the orbit of an imprimitive state is a separate orbit
+inside $\adm$ with the same gcd, and $|Q|\le B_{\max}$ bounds $g=\gcd(m,k)$ by
+$\sqrt{B_{\max}/|Q_0|}$ where $Q_0$ is the defect of the reduced pair. Imprimitive states are
+\emph{not} discardable in general.
+\end{lemma}
+
+\begin{warning}\label{warn:imprim}
+For the odd/odd class one may discard them, because the gcd of two odd numbers is odd and
+dividing it stays in the class. That argument is special. At $\alpha=\sqrt6$ with
+$(m,k)\equiv(1,1)\pmod3$ the state $(4,10)$ has $\gcd=2$ and defect $+4$, is a strict record,
+and its reduction $(2,5)$ is $(2,2)\bmod3\notin\mathcal R$; it generates a \emph{permanent
+record tail}, and three further imprimitive record tails occur in the same instance. At
+$\alpha=\sqrt3$ with $\mathcal R=\{(1,1),(2,3)\}\bmod5$ there are record tails of $\gcd$ $2$
+and $3$.
+\end{warning}
+
+\section{The comparison state and the blocker bound}\label{sec:eps0}
+
+Two symbols are kept distinct: the \emph{bound}
+\[
+\epsbar:=\min\Bigl(1,\ \frac{\sqrt\Delta}{2|B|}\Bigr)\quad(\text{second entry omitted if }B=0),
+\]
+and the \emph{attained} value $\epsw=\varepsilon(w)$ of a chosen comparison state $w$ with
+$\epsw<\epsbar$. Such a $w$ exists by Lemma~\ref{lem:fam}, since $\varepsilon\to0$ along a
+forward tail; the implementation maximises $\epsw$ over an explicit finite candidate family ---
+the first state of each family seed's forward tail that falls below $\epsbar$ --- because a
+larger $\epsw$ gives a shallower cutoff level in Lemma~\ref{lem:cutlevel}. \emph{No global
+maximum over $\adm$ is claimed or needed: any computable admissible $w$ with
+$\varepsilon(w)<\epsbar$ serves.} The tail analysis is conducted only above $H(w)$; the region
+$H\le H(w)$ is finite and is decided directly.
+
+\begin{lemma}[Small error forces $G>0$]\label{lem:G}
+If $\varepsilon(m,k)<\sqrt\Delta/|B|$ then $\eta\,\dd>0$, hence $G>0$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:ident}, $\eta=(H\dd-(B/A)\xi)/(2\alpha)$ and $|\xi|=\varepsilon H$, so
+$\eta\,\dd\ge H|\dd|(|\dd|-|B|\varepsilon/A)/(2\alpha)$, which is positive exactly when
+$\varepsilon<A|\dd|/|B|=\sqrt\Delta/|B|$. Then $G=A^2\eta\,\dd\,H>0$.
+\end{proof}
+
+Since $\epsw<\epsbar\le\sqrt\Delta/(2|B|)$, every strict record above $H(w)$ and every state
+that blocks one has error below $\epsw$ and therefore lies on the branch $G>0$. This is what
+makes the error monotone (Lemma~\ref{lem:epsmono}) and the height eventually increasing
+(Section~\ref{sec:compare}) wherever those facts are used.
+
+\begin{lemma}[Blocker bound]\label{lem:blocker}
+Say $V$ \emph{blocks} the state $B^{*}$ if $H_V<H_{B^{*}}$ and
+$\varepsilon_V\le\varepsilon_{B^{*}}$. If $V$ blocks $B^{*}$ and
+$\sqrt\Delta>|B|\varepsilon_{B^{*}}$ then
+\[
+|Q_V|\ \le\ |Q_{B^{*}}|\,
+\frac{\sqrt\Delta+|B|\varepsilon_{B^{*}}}{\sqrt\Delta-|B|\varepsilon_{B^{*}}} .
+\]
+In particular, when $\varepsilon_{B^{*}}\le\sqrt\Delta/(2|B|)$ --- which holds for every record
+above $H(w)$ --- the bound is $|Q_V|\le3|Q_{B^{*}}|$, so
+$B_{\mathrm{comp}}:=3B_{\mathrm{cut}}$ is always safe.
+\end{lemma}
+
+\begin{proof}
+Apply \eqref{eq:Qz} to $V$ and to $B^{*}$: $|Q_V|\le H_V^2\varepsilon_V(\sqrt\Delta+|B|
+\varepsilon_V)/(2\alpha)$, which is at most
+$H_{B^{*}}^2\varepsilon_{B^{*}}(\sqrt\Delta+|B|\varepsilon_{B^{*}})/(2\alpha)$; and
+$|Q_{B^{*}}|\ge H_{B^{*}}^2\varepsilon_{B^{*}}(\sqrt\Delta-|B|\varepsilon_{B^{*}})/(2\alpha)$
+from the same identity. Divide.
+\end{proof}
+
+The gain from $\epsbar$ is that the bound of Lemma~\ref{lem:blocker} is \emph{never vacuous};
+the implementation uses the tighter per-candidate value and records both. The uniform
+$3B_{\mathrm{cut}}$ is what the proof needs.
+
+\section{The two backward exclusions}\label{sec:backward}
+
+\begin{lemma}[Error monotonicity, with its branch]\label{lem:epsmono}
+On the branch $G>0$, $\varepsilon$ strictly decreases along an orbit as $|\eta|$ grows. On the
+branch $G<0$ it strictly \emph{increases}, and there $\varepsilon\ge\sqrt\Delta/|B|$.
+\end{lemma}
+
+\begin{proof}
+$\varepsilon=|Q|\sqrt\Delta/|G|$ with $G=2\alpha Y+BQ$ strictly increasing in $Y=A^2\eta^2$.
+Where $G>0$, $|G|$ grows and $\varepsilon$ falls. Where $G<0$, $|G|=|BQ|-2\alpha Y$ falls, so
+$\varepsilon$ grows, and $|G|\le|BQ|$ gives
+$\varepsilon\ge|Q|\sqrt\Delta/|BQ|=\sqrt\Delta/|B|$.
+\end{proof}
+
+\begin{warning}\label{warn:epsmono}
+The unconditional statement ``$\varepsilon$ decreases along every orbit'' is false. At
+$\alpha=(3+\sqrt5)/2$ with $m,k$ odd and $P=\binom{-3\ \ 8}{-8\ \ 21}$ we have
+$P(55,21)=(3,1)$, both states positive with $Q=1$, yet
+\[
+\varepsilon(55,21)=0.745442\ldots<\varepsilon(3,1)=0.774116\ldots,
+\]
+because $G=-2.9997$ and $-2.8885$ there. Both respect the floor $\sqrt5/3=0.745356\ldots$ of
+Lemma~\ref{lem:epsmono}.
+\end{warning}
+
+\begin{lemma}[Backward exclusion, two cases]\label{lem:backward}
+No state in either case below is a strict record of height $>H(w)$, nor blocks one.
+\begin{enumerate}\itemsep2pt
+\item \textbf{Orbits with $\sgn(\eta\dd)<0$.} There $G<0$ at every positive state, so
+$\varepsilon\ge\sqrt\Delta/|B|\ge2\epsbar>\epsw$ by Lemma~\ref{lem:epsmono}.
+\item \textbf{Doubly-infinite orbits ($G>0$ throughout).} Here the floor of case~(1) is
+\emph{false}. Instead, on $G>0$,
+\begin{equation}\label{eq:ystar}
+\varepsilon\ \ge\ \epsw
+\quad\Longleftrightarrow\quad
+Y\ \le\ Y^{*}:=\frac{|Q|\sqrt\Delta/\epsw-BQ}{2\alpha},
+\end{equation}
+an explicit cutoff on the level. Levels with $Y\le Y^{*}$ are excluded; only the finitely many
+levels with $Y>Y^{*}$ below the tail start remain.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Case (1) is Lemma~\ref{lem:epsmono} together with
+$\sqrt\Delta/|B|\ge2\epsbar>\epsw$. In case (2), $G>0$ gives
+$\varepsilon=|Q|\sqrt\Delta/(2\alpha Y+BQ)$, and $\varepsilon\ge\epsw$ rearranges to
+\eqref{eq:ystar}. In both cases a state with $H>H(w)$ and $\varepsilon\ge\epsw=\varepsilon(w)$
+is not a strict record, because $w$ has smaller height and error at most its own; and it cannot
+block a record $B^{*}$ above $H(w)$, since such a $B^{*}$ has
+$\varepsilon_{B^{*}}<\epsw\le\varepsilon$.
+\end{proof}
+
+\begin{warning}\label{warn:floor}
+The case split is necessary: the floor of case (1) does not cover case (2). At
+$\alpha=(3+\sqrt5)/2$ with $m,k$ odd, $P^{-1}(1,1)=(13,5)$ lies on a doubly-infinite positive
+orbit with $Q=-1$ and $G=3.006211>0$, yet
+\[
+\varepsilon(13,5)=0.743816\ldots\ <\ \frac{\sqrt\Delta}{|B|}=\frac{\sqrt5}{3}=0.745356\ldots,
+\]
+and every further backward state of that ray is also below the floor: on the backward ray
+$\varepsilon$ rises to $\sqrt\Delta/|B|$ \emph{from below}.
+\end{warning}
+
+\begin{lemma}[The cutoff level, with termination]\label{lem:cutlevel}
+Fix an orbit with normalised $|\eta|=r\in[1,\rho)$ and put $Y_L=A^2r^2\rho^{2L}$, the value of
+$Y$ at level $L$. Since $\rho>1$, $Y_L$ is strictly increasing in $L$ with $Y_L\to0$ as
+$L\to-\infty$ and $Y_L\to\infty$ as $L\to+\infty$. As $Y^{*}$ is finite and positive there is a
+\emph{unique} integer $L^{*}$ with
+\begin{equation}\label{eq:witness}
+Y_{L^{*}}\ \le\ Y^{*}\ <\ Y_{L^{*}+1},
+\end{equation}
+and a two-sided expanding exact search locates it in finitely many steps. The two inequalities
+\eqref{eq:witness} are the whole certificate: by monotonicity they prove $Y_L\le Y^{*}$, hence
+$\varepsilon\ge\epsw$, for \emph{every} $L\le L^{*}$, and $Y_L>Y^{*}$ for every $L>L^{*}$. The
+orbit list is finite, so all such searches terminate.
+\end{lemma}
+
+Written logarithmically, $L^{*}=\bigl\lfloor\log(Y^{*}/(A^2r^2))/(2\log\rho)\bigr\rfloor$; the
+implementation and the certificate use exact power comparisons only, so no rounding enters.
+
+\begin{lemma}[The retained region is at or beyond the height minimum]\label{lem:ymin}
+If $BQ>0$ then $H$, as a function of $Y$ along the orbit, has its minimum at
+$Y_{\min}=BQ/(2\alpha)$, and $Y^{*}\ge Y_{\min}$. Hence on the retained region $Y>Y^{*}$ one
+has $Y>Y_{\min}$ and the height is strictly increasing in the level.
+\end{lemma}
+
+\begin{proof}
+$H=2\alpha\eta/\dd+BQ/(A^2\eta\dd)$ has $\partial H/\partial\eta=(2\alpha A^2\eta^2-BQ)/
+(A^2\eta^2\dd)$, vanishing at $Y=BQ/(2\alpha)$. And $Y^{*}\ge Y_{\min}$ reduces to
+$|Q|\sqrt\Delta/\epsw\ge2BQ$, which holds since $\epsw\le\sqrt\Delta/(2|B|)$ and
+$BQ\le|B||Q|$. On $Y>Y^{*}\ge Y_{\min}$ the derivative is positive.
+\end{proof}
+
+\begin{remark}
+Using the attained $\epsw$ rather than the bound $\epsbar$ gives extra margin and a shallower
+$L^{*}$, which is why the implementation does it. It is not needed for
+Lemma~\ref{lem:ymin}: the retained condition is the strict $Y>Y^{*}$, so even in the boundary
+case $Y^{*}=Y_{\min}$ the conclusion holds.
+\end{remark}
+
+\section{Exact comparison formulas}\label{sec:compare}
+
+Because $P$ is a proper automorph, $Q$ is \emph{constant} along each orbit. Write $r_A\in[1,\rho)$
+for the normalised $|\eta|$ of orbit $A$.
+
+\begin{lemma}[Error comparison]\label{lem:epscmp}
+Let $G_A,G_B>0$, with $A$ at level $p-d$ and $B$ at level $p$. Then
+\begin{equation}\label{eq:crit}
+\varepsilon_B<\varepsilon_A
+\iff |Q_A|G_B-|Q_B|G_A>0
+\iff 2\alpha A^2\Gamma>B\bigl(|Q_B|Q_A-|Q_A|Q_B\bigr),
+\end{equation}
+where $\Gamma=|Q_A|\eta_B^2-|Q_B|\eta_A^2=\rho^{2(p-d)}\Gamma_d$ and
+$\Gamma_d=|Q_A|r_B^2\rho^{2d}-|Q_B|r_A^2$ is independent of $p$. The right-hand side is a
+constant integer bounded in absolute value by $2|B||Q_A||Q_B|$, so if $\Gamma_d\ne0$ then
+$\sgn\Gamma_d$ decides \eqref{eq:crit} for all $p$ with
+\begin{equation}\label{eq:epsthr}
+2\alpha A^2\rho^{2(p-d)}|\Gamma_d|>\bigl|B(|Q_B|Q_A-|Q_A|Q_B)\bigr|,
+\end{equation}
+an explicitly computable threshold. If $\Gamma_d=0$ the verdict is the constant sign of
+$-B(|Q_B|Q_A-|Q_A|Q_B)$: a three-way outcome, and for $B=0$ an \emph{exact permanent equality}.
+\end{lemma}
+
+\begin{proof}
+$\varepsilon=|Q|\sqrt\Delta/G$ on $G>0$ gives the first equivalence; expanding
+$G=2\alpha A^2\eta^2+BQ$ gives $2\alpha A^2\Gamma+B(|Q_A|Q_B-|Q_B|Q_A)>0$, which is the second.
+$\Gamma$ scales by $\rho^2$ per level because $Q$ is constant, whence the factorisation.
+\end{proof}
+
+\begin{warning}\label{warn:sign}
+The right-hand side of \eqref{eq:crit} is $B(|Q_B|Q_A-|Q_A|Q_B)$ and not its negative. A single
+exact instance pins the orientation and is kept as a regression: at $\alpha=\varphi$ with
+$m,k$ odd take $a=(1,1)$, $b=(1,3)$, so $Q_a=-1$, $Q_b=5$ and $\Gamma=0$ exactly, with
+$G_a,G_b>0$. The correct right-hand side is $+10$ and $0>10$ is false, predicting
+$\varepsilon_b\ge\varepsilon_a$; indeed
+\[
+\varepsilon_a=\sqrt5-2=0.236068\ldots<\varepsilon_b=\tfrac{10-3\sqrt5}{11}=0.299254\ldots
+\]
+The opposite sign would read $0>-10$ and predict the reverse.
+\end{warning}
+
+\begin{lemma}[Height comparison]\label{lem:hcmp}
+Let $A$ be at level $q$ and $B$ at level $q+d$, on the branch $\eta\dd>0$. Then
+\begin{equation}\label{eq:hcrit}
+\sgn(H_B-H_A)=\sgn\bigl(\rho^{2q}U+V\bigr),\qquad
+\begin{aligned}
+U&=2\alpha A^2r_Ar_B\rho^{d}\bigl(r_B\rho^{d}-r_A\bigr),\\
+V&=B\bigl(Q_Br_A-Q_Ar_B\rho^{d}\bigr),
+\end{aligned}
+\end{equation}
+certified once $\rho^{2q}|U|>|V|$. Moreover $U=0$ forces $r_A=r_B\rho^{d}$, i.e. the same orbit
+after an index shift, and then $V=0$ as well.
+\end{lemma}
+
+\begin{proof}
+$H=2\alpha\eta/\dd+BQ/(A^2\eta\dd)$. On the branch $\eta\dd>0$ the quantity
+$A^2|\dd|\,r_Ar_B\rho^{q+d}$ is \emph{positive}; multiplying $H_B-H_A$ by it turns the first
+term into $\rho^{2q}U$ and the second into exactly $V$. If $r_A=r_B\rho^d$ then taking norms
+gives $Q_A=Q_B$ and $V=B(Q_Br_A-Q_Ar_B\rho^d)=BQ_B(r_A-r_B\rho^d)=0$.
+\end{proof}
+
+\begin{warning}\label{warn:hsign}
+Two details of \eqref{eq:hcrit} are easy to get wrong. The exponent is $\rho^{2q}$, not
+$\rho^{q}$: at $\alpha=2+\sqrt2$ with $X_0=\binom{-1\ \ 2}{-4\ \ 7}$, $\rho=3+2\sqrt2$ and
+normalised representatives $a_0=(-61,-30)$, $b_0=(-59,-29)$ mapping to $a_1=(1,34)$,
+$b_1=(1,33)$, one has $H_{b_1}-H_{a_1}=-1$ exactly, while at $q=1,d=0$
+\[
+\rho^{q}U+V=-7196+5460\sqrt2=+525.606\ldots\ (\text{wrong sign}),\qquad
+\rho^{2q}U+V=-525.606\ldots\ (\text{right}).
+\]
+And the clearing factor must carry $|\dd|$: for the smaller root $\dd<0$ --- e.g.
+$\dd=-2.236068$ at $\alpha=(3-\sqrt5)/2$ --- while $\eta\dd>0$ on the retained states.
+\end{warning}
+
+\section{A finite comparison ledger}\label{sec:ledger}
+
+For each ordered pair of orbits and each offset $d$, Lemmas~\ref{lem:epscmp} and \ref{lem:hcmp}
+supply one exact sign and one threshold. To make the collection finite both endpoints of the
+offset range must be justified.
+
+\begin{lemma}[Upper endpoint]\label{lem:dstar}
+Let $d^{*}$ be the least $d\ge1$ with $\rho^{2d-2}>B_{\mathrm{comp}}$. On the branch $G>0$,
+$\varepsilon_A>\varepsilon_{B^{*}}$ holds as soon as $|Q_A|G_{B^{*}}>|Q_{B^{*}}|G_A$, and using
+$r_A<\rho$, $r_{B^{*}}\ge1$ it suffices that
+\begin{equation}\label{eq:noblock}
+2\alpha A^2\rho^{2L}\bigl(|Q_A|-|Q_{B^{*}}|\rho^{2-2d}\bigr)
+>|Q_A||BQ_{B^{*}}|+|Q_{B^{*}}||BQ_A| .
+\end{equation}
+The bracket is positive for every pair with $|Q|\le B_{\mathrm{comp}}$ once $d>d^{*}$, and the
+additive part then fixes a level threshold $p_{\mathrm{noblock}}$. Hence for $d>d^{*}$ no
+competitor can block at any level $\ge p_{\mathrm{noblock}}$, irrespective of the height
+relation, and only $d\le d^{*}$ needs the thresholds \eqref{eq:epsthr}.
+\end{lemma}
+
+\begin{lemma}[Lower endpoint]\label{lem:lower}
+For every ordered pair the $d=1$ instance of \eqref{eq:hcrit} with the \emph{candidate} in the
+first slot certifies $H_{\text{comp}}(q+1)>H_{\text{cand}}(q)$ beyond its threshold. With
+Lemma~\ref{lem:ymin} --- the height is strictly increasing in the level on the retained region
+--- every competitor state at a level above the candidate's lies above it in height and
+therefore cannot block. So negative offsets are excluded and the ledger covers exactly
+$0\le d\le d^{*}$.
+\end{lemma}
+
+Accordingly put
+\begin{align*}
+p_{\mathrm{cert}}:=\max\bigl(\,&\text{thresholds of Lemmas~\ref{lem:epscmp} and
+  \ref{lem:hcmp}, over every ordered pair with a candidate}\\
+&\text{side and every }0\le d\le d^{*};\quad
+p_{\mathrm{noblock}};\quad L_{\epsw}\,\bigr),
+\end{align*}
+where $L_{\epsw}$ is the least level at which every candidate has $\varepsilon<\epsw$. Beyond
+$p_{\mathrm{cert}}$ every sign in the ledger is constant.
+
+\section{Binding-state sufficiency}\label{sec:binding}
+
+\begin{lemma}[Sufficiency]\label{lem:binding}
+Fix a candidate $B^{*}$ and an orbit $O$. Among the states of $O$ of height below $H_{B^{*}}$,
+let $V^{*}$ be one of minimal $\varepsilon$. If \emph{any} state of $O$ blocks $B^{*}$ then
+$V^{*}$ blocks $B^{*}$. Moreover the three-way verdict read off $V^{*}$ equals the verdict of an
+exhaustive scan of $O$: if $\varepsilon_{V^{*}}>\varepsilon_{B^{*}}$ no state of $O$ blocks; if
+$\varepsilon_{V^{*}}=\varepsilon_{B^{*}}$ every blocker in $O$ ties; if
+$\varepsilon_{V^{*}}<\varepsilon_{B^{*}}$ there is a strict loss. Hence testing $V^{*}$ alone is
+sufficient.
+\end{lemma}
+
+\begin{proof}
+If $V\in O$ blocks then $\varepsilon_{V^{*}}\le\varepsilon_V\le\varepsilon_{B^{*}}$ and
+$H_{V^{*}}<H_{B^{*}}$, so $V^{*}$ blocks. If $\varepsilon_{V^{*}}=\varepsilon_{B^{*}}$ then any
+blocker $V$ has $\varepsilon_{B^{*}}\ge\varepsilon_V\ge\varepsilon_{V^{*}}=\varepsilon_{B^{*}}$,
+so $\varepsilon_V=\varepsilon_{B^{*}}$ and all blockers tie. The remaining two cases are
+immediate.
+\end{proof}
+
+\begin{warning}\label{warn:binding}
+The stronger-sounding statement ``a state below the $\varepsilon$-minimal one cannot block'' is
+\emph{false}, and Lemma~\ref{lem:binding} is deliberately a sufficiency claim. At
+$\alpha=\varphi$ with no congruence restriction take $b=(15,24)=3\cdot(5,8)$ and the orbit
+$(5,8)\mapsto(13,21)\mapsto(34,55)$ of $\binom{1\ \ 1}{1\ \ 2}$. Then
+\[
+H(5,8)<H(13,21)<H(b)<H(34,55),\qquad
+\varepsilon(13,21)<\varepsilon(5,8)=\varepsilon(b),
+\]
+so $(13,21)$ is the $\varepsilon$-minimal state below $H(b)$ --- yet the \emph{earlier} $(5,8)$
+also blocks $b$, by exact equality of the error. On the branch $G>0$ the
+$\varepsilon$-minimal state is the one of largest level (Lemma~\ref{lem:epsmono}), which is why
+a largest-level rule also works there; on the branch $G<0$ that rule is reversed, so the
+implementation selects by $\varepsilon$ and needs no monotonicity hypothesis.
+\end{warning}
+
+\section{The partition, and termination}\label{sec:partition}
+
+Levels are absolute (Definition~\ref{def:level}). For orbit $i$ let $\mathrm{enter}_i$ be the
+least non-negative level at which the state is positive, and define the \emph{tail-start level}
+\[
+T_i:=\mathrm{enter}_i+p_{\mathrm{cert}},\qquad\text{certified to satisfy}\qquad T_i>L_i^{*}.
+\]
+
+\begin{proposition}[Exhaustive disjoint partition]\label{prop:partition}
+Every admissible state lies in exactly one of the following, and each split is a dichotomy on an
+explicitly computable quantity.
+\begin{center}\small
+\begin{tabular}{@{}llp{7.4cm}@{}}
+\toprule
+part & condition & status \\
+\midrule
+$P_1$ & $H\le H(w)$ & decided by direct scan of an explicitly bounded region \\
+$P_{2a}$ & $H>H(w)$, $|Q|>B_{\mathrm{comp}}$ & neither a strict record nor a blocker of one
+  (Theorem~\ref{thm:cutoff}, Lemma~\ref{lem:blocker}) \\
+$P_{2b}$ & $H>H(w)$, $B_{\mathrm{cut}}<|Q|\le B_{\mathrm{comp}}$ & not a record; retained as a
+  competitor \\
+$P_3$ & $H>H(w)$, $|Q|\le B_{\mathrm{cut}}$, no forward tail & excluded by
+  Lemma~\ref{lem:backward}(1) \\
+$P_4$ & $H>H(w)$, $|Q|\le B_{\mathrm{cut}}$, forward tail, $L\le L_i^{*}$ & excluded by
+  Lemma~\ref{lem:backward}(2) \\
+$P_5$ & $H>H(w)$, $|Q|\le B_{\mathrm{cut}}$, forward tail, $L_i^{*}<L<T_i$ & finitely many
+  levels (possibly negative $L$), decided exactly \\
+$P_6$ & $H>H(w)$, $|Q|\le B_{\mathrm{cut}}$, forward tail, $L\ge T_i$ & the certified tail: one
+  verdict per orbit \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+\begin{proof}
+$P_1$ versus the rest is a height dichotomy. Inside $H>H(w)$, the three-way split on the
+integer $|Q|$ against $B_{\mathrm{cut}}\le B_{\mathrm{comp}}$ is exhaustive and disjoint. Inside
+$|Q|\le B_{\mathrm{cut}}$, ``forward tail or not'' is decided by $\sgn(\eta\dd)$
+(Lemma~\ref{lem:window}). Inside the forward-tail case, $L\le L_i^{*}$ or not is decided by the
+two witnesses \eqref{eq:witness}, and then $L<T_i$ or not; since $T_i>L_i^{*}$ is certified,
+$P_5$ is well defined (possibly empty) and $P_4,P_5,P_6$ are disjoint. The stated status of each
+part is the cited lemma.
+\end{proof}
+
+The parts that can be \emph{infinite} are exactly $P_{2a}$, $P_{2b}$, $P_3$ and $P_4$ --- a
+doubly-infinite orbit has infinitely many positive states --- and each is excluded by one
+inequality, not enumerated. What remains finite is $P_1$, bounded by
+\begin{equation}\label{eq:P1box}
+1\le m\le\bigl\lfloor H(w)/\alpha\bigr\rfloor,\qquad
+1\le k\le\bigl\lfloor H(w)\bigr\rfloor
+\end{equation}
+followed by the exact height and residue filters, and $P_5$, finitely many levels on finitely
+many orbits. $P_6$ is infinite but carries one verdict per orbit.
+
+\begin{remark}[How $P_1$ and $P_5$ completeness is verified]\label{rem:completeness}
+Correctness of a \emph{listed} exception is weaker than completeness of the \emph{list}. Both
+regions are therefore enumerated independently and compared by \emph{set equality}: $P_1$ from
+the explicit bounds \eqref{eq:P1box}, with its record set recomputed as a running minimum; and
+$P_5$ by walking the levels $L_i^{*}<L<T_i$ of each candidate orbit and recomputing each verdict
+with no pruning. Demanding this found a genuine classification error in an earlier
+implementation, which had been reporting $P_1$ and $P_4$ states as $P_5$ anomalies.
+\end{remark}
+
+\begin{proposition}[Termination]\label{prop:term}
+Every search in Theorem~\ref{thm:main} terminates: the index $j$ of
+Lemma~\ref{lem:automorph} is at most $|GL_2(\Z/M\Z)|$; the cutoff of
+Lemma~\ref{lem:tailbound} is a maximum over finitely many pairs and one majorant; the box of
+Proposition~\ref{prop:box} is finite; the cutoff-level search of Lemma~\ref{lem:cutlevel}
+terminates by monotonicity of $Y_L$ and finiteness of $Y^{*}$; the thresholds of
+Lemmas~\ref{lem:epscmp}, \ref{lem:hcmp}, \ref{lem:dstar} are each reached after finitely many
+exactly tested levels; and the finite regions $P_1$, $P_5$ are bounded by \eqref{eq:P1box} and
+by $T_i-L_i^{*}-1$.
+\end{proposition}
+
+\begin{remark}[Exact ordering, with a guaranteed fallback]\label{rem:sort}
+Every height-ordered list is produced by presorting with an approximate key, verifying
+\emph{all} adjacent pairs exactly, and --- if key generation raises or any adjacent pair fails
+--- re-sorting with the exact algebraic comparator. Because $H$ is a strict total order
+(Remark~\ref{rem:order}), adjacent-pair correctness implies the whole list is sorted, so the
+verification is a complete certificate of the ordering. Because of the fallback, verification
+failure or key degeneracy costs a slower sort rather than an abort, so termination with a
+correctly ordered list holds for every input; verification alone would only prevent a wrong
+answer. No ordering decision is ever taken from an approximate key.
+\end{remark}
+
+\section{A worked example}\label{sec:example}
+
+Take $\alpha=\varphi=(1+\sqrt5)/2$, i.e. $(A,B,C,s)=(1,-1,-1,+1)$, with $M=2$ and
+$\mathcal R=\{(1,1)\}$: both coordinates odd. The algorithm produces the following, all of it
+present in the emitted certificate \texttt{control\_phi.json}.
+
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Pell solution & $(T,U)=(3,1)$, $\lambda=\varphi^2=(3+\sqrt5)/2$ \\
+fundamental automorph & $X_0=\binom{1\ \ 1}{1\ \ 2}$ \\
+class-fixing index & $j=3$, $P=\binom{5\ \ 8}{8\ \ 13}=\varphi^6$, $\rho=17.944272\ldots$ \\
+comparison family & all admissible orbits with $|Q|\le1$; lowest member $(1,1)$, $H=2.618\ldots$ \\
+cutoff & $B_{\mathrm{cut}}=18$, attained at the pair $\bigl((3,5),(13,21)\bigr)$ \\
+comparison state & $w=(1,1)$, $\epsw=\sqrt5-2=0.236068\ldots<\epsbar=1$ \\
+blocker bound & $B_{\mathrm{comp}}=22$ (per-candidate; the uniform bound is $3\cdot18=54$) \\
+reduction box & $|m|\le13$, $|k|\le45$; $40$ $\lambda$-classes; $14$ admissible orbits \\
+certified levels & $d^{*}=2$, $p_{\mathrm{noblock}}=1$, $p_{\mathrm{cert}}=2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Three orbits receive the verdict \textsf{record}, with first positive states and defects
+\[
+(1,1)\ [Q=-1,\ L^{*}=0],\qquad
+(3,5)\ [Q=+1,\ L^{*}=-1],\qquad
+(7,11)\ [Q=-5,\ L^{*}=-1],
+\]
+each with $T_i=2$. Merging the three tails in increasing height reproduces the sequence
+\[
+(1,1),\ (3,5),\ (7,11),\ (13,21),\ (55,89),\ (123,199),\ (233,377),\ \dots
+\]
+whose signed defects cycle $(-1,+1,-5)$; the first family is $(F_{3t+1},F_{3t+2})$ and the third
+is the odd Lucas pairs $(L_{6t+4},L_{6t+5})$. One orbit receives the verdict \textsf{tie}: the
+imprimitive orbit through $(3,3)=3\cdot(1,1)$, defect $-9$, whose error equals that of the
+$(1,1)$ orbit at three times the height, forever. The finite region $H\le H(w)=2.618\ldots$
+contains the single record $(1,1)$, and the list of $P_5$ exceptions is empty.
+
+A reader can check one certificate comparison by hand. For the pair $A=(1,1)$, $B=(1,3)$ at
+offset $d=0$ one has $Q_A=-1$, $Q_B=5$ and, since $\eta_A=\varphi$, $\eta_B=\varphi+2$,
+\[
+\Gamma=|Q_A|\eta_B^2-|Q_B|\eta_A^2=(\varphi+2)^2-5\varphi^2=0 ,
+\]
+so Lemma~\ref{lem:epscmp} falls to its degenerate case: the verdict is the constant sign of
+$-B(|Q_B|Q_A-|Q_A|Q_B)=-10$, which is negative, so $(1,3)$ does \emph{not} beat $(1,1)$ --- in
+agreement with $\varepsilon(1,1)=0.236068\ldots<0.299254\ldots=\varepsilon(1,3)$. This is
+Warning~\ref{warn:sign}.
+
+\section{Stress examples}\label{sec:stress}
+
+The instances below exercise each hypothesis that was removed. All data are read from the
+emitted certificates; $\rho=\lambda^{\,j}$.
+
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrrrp{3.5cm}@{}}
+\toprule
+instance & $j$ & $\rho$ & $B_{\mathrm{cut}}$ & orb. & tails & ties & feature \\
+\midrule
+$\varphi$, odd/odd & 3 & $17.94$ & 18 & 14 & 3 & 1 & control \cite{DeJesus2026oddodd} \\
+$1+\sqrt3$, odd/odd & 2 & $13.93$ & 44 & 31 & 3 & 1 & control \\
+$\sqrt3$, odd/odd & 2 & $13.93$ & 27 & 14 & 2 & 4 & control; $B=0$, permanent ties \\
+$(3+\sqrt5)/2$, odd/odd & 3 & $17.94$ & 18 & 21 & 3 & 1 & \textbf{two positive conjugates} \\
+$(3-\sqrt5)/2$, odd/odd & 3 & $17.94$ & 18 & 21 & 3 & 1 & \textbf{smaller root}, $\alpha<1$ \\
+$(5+\sqrt{21})/2$, odd/odd & 3 & $110.0$ & 77 & 102 & 6 & 2 & positive conjugate \\
+$1/\sqrt2$, odd/odd & 1 & $5.83$ & 18 & 6 & 2 & 1 & \textbf{nonmonic} $A=2$, $\alpha<1$ \\
+$3x^2\!-\!x\!-\!1$, odd/odd & 3 & $1298$ & 32 & 40 & 9 & 3 & \textbf{nonmonic} $A=3$ \\
+$\sqrt3$, $\{(1,1),(2,3)\}\bmod5$ & 3 & $51.98$ & 164 & 32 & 6 & 0 & \textbf{residue union};
+  two imprimitive \\
+$\sqrt6$, $(2,2)\bmod4$ & 2 & $97.99$ & 113 & 12 & 6 & 0 & every state imprimitive;
+  all six tails so \\
+$\sqrt2$, $(1,1)\bmod3$ & 4 & $1154$ & 61 & 33 & 9 & 2 & $M=3$; two imprimitive tails \\
+$\sqrt6$, $(1,1)\bmod3$ & 6 & $9.4\cdot10^{5}$ & 135 & 84 & 20 & 6 & \textbf{imprimitive
+  record} $(4,10)$ \\
+$N+\sqrt2$, $N=2,\dots,20$ & 1--4 & $5.8$--$1154$ & 15--92 & 17--108 & 2--9 & 0--2 &
+  $\sqrt\Delta/|B|=\sqrt2/N\to0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Three observations. At $\sqrt6$ with $(m,k)\equiv(1,1)\bmod3$ the record tails include four
+imprimitive families, among them the seed $(4,10)$ of Warning~\ref{warn:imprim}. The family
+$\alpha_N=N+\sqrt2$ has $\Delta=8$ and $\lambda=3+2\sqrt2$ independent of $N$, while the
+blocker-bound budget $\sqrt\Delta/|B|=\sqrt2/N$ tends to $0$; it is the regime in which
+Lemma~\ref{lem:blocker} is tightest, and $d^{*}\in\{2,3\}$ and $p_{\mathrm{cert}}\in\{2,3\}$
+throughout. Across all $26$ instances the cutoff level satisfies $L^{*}\in\{-1,0,1\}$, the
+realised blocking offsets are $\{0,1\}$, and the $P_5$ exception lists are all empty.
+
+\section{Reproducibility and verification scope}\label{sec:repro}
+
+\paragraph{What the computations are for.}
+Theorem~\ref{thm:main} and every lemma above are proved for arbitrary admissible input. The
+computations do three separable things: they instantiate the algorithm on $26$ inputs; they emit
+a machine-readable certificate per input containing every quantity the proof requires; and they
+audit those certificates with a checker written separately from the classifier. They do
+\emph{not} establish the theorem, and no universal statement is inferred from them.
+
+\paragraph{Artifacts.}
+The frozen archive accompanying this note contains, with \texttt{sha256} for every file:
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\texttt{scripts/gq.py} & exact arithmetic over $\Q(\sqrt\Delta)$ and the algorithm's stages \\
+\texttt{scripts/emit.py} & runs the algorithm and writes one certificate per instance \\
+\texttt{scripts/check.py} & the independent checker (own arithmetic, no classifier routines) \\
+\texttt{scripts/qr\_general.py} & the classifier-side verifier (98 checks) \\
+\texttt{scripts/lit\_bridge.py} & the two bridges of Section~\ref{sec:objective} (14 checks) \\
+\texttt{scripts/review3,4,5.py} & the regression controls of Warnings~\ref{warn:sign},
+  \ref{warn:hsign}, \ref{warn:epsmono}, \ref{warn:floor}, \ref{warn:binding} \\
+\texttt{scripts/review6\_sail.py} & the exact witness of Proposition~\ref{prop:sail}
+  (14 checks) \\
+\texttt{certificates/*.json} & the $26$ certificates \\
+\texttt{results/*.log} & the complete logs of the runs quoted below \\
+\texttt{notes/*.md} & the working proof and audit notes this note consolidates \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Commands.} With Python 3.11 or later and no third-party packages:
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\texttt{python3 scripts/emit.py} & regenerate all $26$ certificates into \texttt{certificates/} \\
+\texttt{python3 scripts/check.py} & audit every certificate in \texttt{certificates/} \\
+\texttt{python3 scripts/check.py NAME} & audit one certificate \\
+\texttt{python3 scripts/qr\_general.py} & the classifier-side suite \\
+\texttt{python3 scripts/review3.py} (4, 5) & the regression controls \\
+\texttt{python3 scripts/review6\_sail.py} & the counterexample of
+  Proposition~\ref{prop:sail} \\
+\texttt{python3 scripts/lit\_bridge.py} & the objective-comparison checks \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{What the checker verifies.}
+\texttt{check.py} shares no code, no data representation and no decision routine with the
+classifier: it represents elements of $\Q(\sqrt\Delta)$ as $(a+b\sqrt\Delta)/d$ with a single
+integer denominator over $\Delta$ itself rather than over its squarefree part, and it implements
+its own sign, floor, matrix and comparison routines. It does \emph{not} use the blocker bound:
+all competitor comparisons are unpruned. Per certificate it re-derives the Pell solution and its
+minimality; the automorph, $P=X_0^{\,j}$, $P\equiv I\pmod M$, $Q$-invariance and $\gcd$
+preservation; $B_{\mathrm{cut}}$ recomputed from Theorem~\ref{thm:cutoff} with the majorant
+\eqref{eq:maj}; $\epsw<\epsbar$ and the blocker bound; the two cases of
+Lemma~\ref{lem:backward}; $L^{*}$ with both witnesses \eqref{eq:witness} and $Y^{*}\ge Y_{\min}$;
+$T_i>L_i^{*}$; the orbit list by an \emph{independent} scan of the reduction box; every ledger
+row; $d^{*}$, $p_{\mathrm{noblock}}$ and $p_{\mathrm{cert}}$; the realised offsets; the
+sufficiency statement of Lemma~\ref{lem:binding} against exhaustive scans; the tail verdicts
+unpruned; each declared tie as an exact equality at lower height; the partition of
+Proposition~\ref{prop:partition} on a bounded population; the completeness of $P_1$ and $P_5$ by
+independent enumeration and set equality; and an independent brute-force scan.
+
+\paragraph{Results obtained here.}
+The archive is self-contained: running \texttt{emit.py} inside it regenerates all $26$
+certificates \emph{byte-identically} (verified by \texttt{sha256} before and after), and running
+\texttt{check.py} inside it reproduces the audit below exactly. The runs recorded in
+\texttt{results/} are:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+run & result & log \\
+\midrule
+\texttt{check.py}, all 26 certificates & $1707/1707$ exact checks, $0$ failures &
+  \texttt{check\_v8.log} \\
+\quad the same, re-run inside the archive & $1707/1707$, $0$ failures &
+  \texttt{check\_archive.log} \\
+\texttt{emit.py} inside the archive & $26$ certificates, byte-identical &
+  \texttt{emit\_archive.log} \\
+\texttt{qr\_general.py} & $98/98$, $0$ failures & \texttt{qr\_general2.log} \\
+\texttt{lit\_bridge.py} & $14/14$, $0$ failures & \texttt{lit\_bridge.log} \\
+\texttt{review3.py} & $25/25$, $0$ failures & \texttt{review3.log} \\
+\texttt{review4.py} & $14/14$, $0$ failures & \texttt{review4.log} \\
+\texttt{review5.py} & $14/14$, $0$ failures & \texttt{review5.log} \\
+\texttt{review6\_sail.py} & $14/14$, $0$ failures & \texttt{review6\_sail.log} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{What is not claimed.}
+No part of this note is machine-checked in a proof assistant; none of it has been refereed; and
+testing $26$ instances does not and cannot establish Theorem~\ref{thm:main}, which rests
+on the proofs of Sections~\ref{sec:automorph}--\ref{sec:partition}.
+
+\section{Limitations and extension questions}\label{sec:limits}
+
+\paragraph{Limitations.}
+\begin{enumerate}\itemsep2pt
+\item \textbf{Cost.} Theorem~\ref{thm:main} asserts termination, not efficiency. No closed-form
+bound on the running time is proved, and the dominant cost grows with $\rho=\lambda^{\,j}$ where
+$j\le|GL_2(\Z/M\Z)|$ (Remark~\ref{rem:cost}). The constant
+$d^{*}$ is computed per instance from $\rho$ and $B_{\mathrm{comp}}$; no single closed form
+uniform in the input is written out.
+\item \textbf{The finite region is scanned.} $P_1$ is decided by a direct scan of
+\eqref{eq:P1box} rather than by the orbit machinery. That is legitimate for an effectiveness
+theorem, and the region is small in every instance tested, but it is a scan.
+\item \textbf{Weak records.} The theorem classifies \emph{strict} records. Ties are detected and
+the certified tie families are genuine infinite families of weak records, but a full
+classification of weak records --- in particular of imprimitive ones --- is not claimed and
+would need a separate argument.
+\item \textbf{$B_{\mathrm{cut}}$ is an upper bound}, not the supremum of \eqref{eq:cut}
+(Warning~\ref{warn:sup}).
+\item \textbf{Equality in Proposition~\ref{prop:classical} is open.} The inclusion is proved and
+its strictness is witnessed; whether the two sets ever coincide as infinite sets is not decided.
+The agreement observed at $\alpha=\sqrt3$ with $m,k$ odd holds over a finite range of heights
+only and is recorded as an observation, not a theorem (Remark~\ref{rem:noteq}).
+\item \textbf{Novelty.} Whether this objective, or a classification of its records, appears in
+the literature is unsettled. Targeted searches found nothing matching, which is not evidence.
+The objective is a weighted multiplicative-metric best-approximation problem on a union of
+residue cosets, and such problems are a recognised family, so a prior treatment is plausible and
+has not been excluded. The effectiveness, generality and certificate-completeness claims of
+Section~\ref{sec:intro} are therefore labelled a \emph{proposed} contribution. The nearest
+works consulted, and the specific distinctions, are these.
+\begin{itemize}\itemsep2pt
+\item \cite{KushwahaSarma} develops best approximation for
+$\mathcal F_{p^\ell}$-continued fractions. The congruence structure there is supplied by a fixed
+prime power and the approximants are reduced fractions compared under denominator ordering; here
+$M$ and $\mathcal R$ are arbitrary, imprimitive pairs are admissible and are shown to occur
+among records, and the order is $H$.
+\item \cite{HanLee2025} proves moment formulas for Siegel transforms under congruence
+conditions in dimension $2$, with a Schmidt-type counting theorem and a quantitative Khintchine
+theorem for approximation by $p/q$ with congruence constraints on the pair. Those are counting
+and metric statements --- almost-everywhere and on average, for primitive pairs --- whereas the
+present question is the exact identification of individual record states for a fixed $\alpha$.
+\item \cite{SpaldingVeselov} relates the Conway river of a real indefinite binary quadratic form
+to the Arnold sail of the corresponding pair of lines; the sails there are attached to a
+specified pair of lines. The forms are the same objects as $Q$ here, so the comparison is
+natural, but Proposition~\ref{prop:sail} shows the records of $\varepsilon$ are not in general
+hull vertices of their admissible cone, so no reading-off of records from such a sail is
+available.
+\end{itemize}
+None of this establishes priority in either direction, and references that bear on the question
+are welcome.
+\item \textbf{$H$-order versus denominator order.} Proposition~\ref{prop:classical} compares two
+notions both ordered by $H$. Converting to the denominator-ordered notion of
+\cite{KimLeeLiao2022,KimLeeLiao2025,KushwahaSarma} is an unresolved bridge, and nothing here may
+be read as a statement about best $1$-rational approximations in their sense. In particular the
+witness $(7,11)$ of Proposition~\ref{prop:classical} is a statement about the $H$-ordered
+comparison only and does not bear on the denominator-ordered one.
+\item \textbf{$\mathcal R$ is a union of cosets}, not in general a sublattice of $\Z^2$; it is a
+sublattice only when $\mathcal R$ is a subgroup containing $(0,0)$. The sail picture of
+\cite{Karpenkov2013,SpaldingVeselov} therefore applies coset by coset at best, and
+Proposition~\ref{prop:sail} rules out the natural coset-hull reduction outright. It does not rule
+out some other geometric description of the record set, and finding one is an open question
+rather than a closed door.
+\item \textbf{Scope.} The method is specific to quadratic $\alpha$; it says nothing about
+$\alpha$ of higher degree, and nothing in this note bears on any other conjecture.
+\end{enumerate}
+
+\paragraph{Extension questions.} Clearly separated from the theorem:
+\begin{enumerate}\itemsep2pt
+\item \emph{Sharper cutoffs and cost.} Is there a bound on $B_{\mathrm{cut}}$, or on the total
+work, polynomial in $(\log\Delta,\ M)$? The obstruction identified here is
+$B_{\mathrm{cut}}\ge\max_A|Q_A|$ over any family (Remark~\ref{rem:families}); is there a
+family-free cutoff?
+\item \emph{A bridge to denominator-ordered approximation.} Is there a transfer, in either
+direction, between records of $\varepsilon$ ordered by $H$ and best approximations ordered by
+the denominator, under a congruence restriction? Even a partial dictionary would connect this
+classification to \cite{KimLeeLiao2022,KimLeeLiao2025,Elsner2000}.
+\item \emph{Weak records.} Classify all weak records, including imprimitive ones. The certified
+ties here suggest the equality mechanism is governed by the degenerate case $\Gamma_d=0$ of
+Lemma~\ref{lem:epscmp}; is that the only source?
+\item \emph{Other error objectives.} For which alternative objectives can one establish
+analogues of the defect cutoff (Theorem~\ref{thm:cutoff}) and the eventual comparison lemmas
+(Section~\ref{sec:compare})? Nothing here establishes that being a ratio of two linear forms in
+$(m,k)$ is by itself sufficient; the cutoff proof uses the specific identities of
+Lemma~\ref{lem:ident}.
+\item \emph{Higher degree.} Is there any analogue when $\alpha$ is cubic? This is a
+\emph{question}, not a transfer: the whole mechanism rests on a rank-one unit group acting on a
+binary form, and no higher-degree substitute is proposed here.
+\item \emph{A Lagrange-type spectrum.} Along a fixed-defect orbit
+$H^2\varepsilon\to2\alpha|Q|/\sqrt\Delta$, so the accumulation values at records are explicit.
+What is the envelope of $H\mapsto H^2\varepsilon$ \emph{between} records?
+\end{enumerate}
+
+\begin{thebibliography}{99}
+\bibitem{BuellBQF} D.~A.~Buell. \emph{Binary Quadratic Forms: Classical Theory and Modern
+Computations}. Springer, 1989. \href{https://doi.org/10.1007/978-1-4612-4542-1}
+{doi:10.1007/978-1-4612-4542-1}.
+
+\bibitem{ChaKim2023} B.~Cha and D.~H.~Kim. \emph{Intrinsic Diophantine approximation on the unit
+circle and its Lagrange spectrum}. Ann. Inst. Fourier (Grenoble) \textbf{73} (2023), no.~1,
+101--161. \href{https://doi.org/10.5802/aif.3522}{doi:10.5802/aif.3522}.
+
+\bibitem{Cohen1993} H.~Cohen. \emph{A Course in Computational Algebraic Number Theory}. GTM
+138, Springer, 1993. \href{https://doi.org/10.1007/978-3-662-02945-9}
+{doi:10.1007/978-3-662-02945-9}.
+
+\bibitem{ConradGenPell} \emph{Generalized Pell equation}. Math 154 course handout, Stanford
+University. Theorem 1.1 (finiteness of the classes of solutions of $x^2-dy^2=n$ under the
+norm-one units) and Theorem 2.1 (an explicit bounded region containing a representative of each
+class). The handout carries no printed author line and is cited by title, course and URL.
+\url{https://virtualmath1.stanford.edu/~conrad/154Page/handouts/genpell.pdf}.
+
+\bibitem{DeJesus2026baseline} E.~De Jes\'us. \emph{Boundary and Interior Record Chronologies for
+the Two-Mode Oscillator Spectrum}. Zenodo, 2026. \href{https://doi.org/10.5281/zenodo.21796640}
+{doi:10.5281/zenodo.21796640} (version); concept DOI 10.5281/zenodo.21796540.
+
+\bibitem{DeJesus2026oddodd} E.~De Jes\'us. \emph{Odd/Odd Records for a Relative Approximation
+Error: Three Quadratic Classifications and an Exact Certificate}. Zenodo, 2026.
+\href{https://doi.org/10.5281/zenodo.24046651}{doi:10.5281/zenodo.24046651} (version); concept
+DOI 10.5281/zenodo.24046650.
+
+\bibitem{Elsner2000} C.~Elsner. \emph{On Diophantine approximations with rationals restricted by
+arithmetical conditions}. Fibonacci Quart. \textbf{38} (2000), no.~1, 25--34.
+
+\bibitem{HanLee2025} J.~Han and S.~B.~Lee. \emph{Moment formulas of Siegel transforms with
+congruence conditions in dimension 2}. Preprint, arXiv:2507.05905 [math.NT], 2025.
+\href{https://arxiv.org/abs/2507.05905}{arXiv:2507.05905}.
+
+\bibitem{Karpenkov2013} O.~Karpenkov. \emph{Geometry of Continued Fractions}. Algorithms and
+Computation in Mathematics 26, Springer, 2013.
+\href{https://doi.org/10.1007/978-3-642-39368-6}{doi:10.1007/978-3-642-39368-6}.
+
+\bibitem{KimLeeLiao2022} D.~H.~Kim, S.~B.~Lee and L.~Liao. \emph{Odd-odd continued fraction
+algorithm}. Monatsh. Math. \textbf{198} (2022), 323--344.
+\href{https://doi.org/10.1007/s00605-022-01704-2}{doi:10.1007/s00605-022-01704-2}.
+
+\bibitem{KimLeeLiao2025} D.~H.~Kim, S.~B.~Lee and L.~Liao. \emph{Diophantine approximation by
+rational numbers of certain parity types}. Mathematika \textbf{71} (2025), e12285.
+\href{https://doi.org/10.1112/mtk.12285}{doi:10.1112/mtk.12285}.
+\bibitem{KushwahaSarma} S.~Kushwaha and R.~Sarma. \emph{Best approximations by
+$\mathcal F_{p^\ell}$-continued fractions}. Preprint, arXiv:2112.00367 [math.NT], 2021.
+\href{https://arxiv.org/abs/2112.00367}{arXiv:2112.00367}.
+
+\bibitem{SpaldingVeselov} K.~Spalding and A.~P.~Veselov. \emph{Conway river and Arnold sail}.
+Arnold Math. J. \textbf{4} (2018), 169--177. Preprint arXiv:1801.10072 [math.NT].
+\href{https://arxiv.org/abs/1801.10072}{arXiv:1801.10072}.
+\end{thebibliography}
+
+\appendix
+
+\section{Proof-to-certificate crosswalk}\label{app:crosswalk}
+
+Each row names an obligation, where it is proved, the certificate fields that carry it, and the
+check that re-derives it from the definitions. Check labels are those printed by
+\texttt{check.py}.
+
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{5.0cm}
+                    >{\raggedright\arraybackslash}p{2.3cm}
+                    >{\raggedright\arraybackslash}p{5.2cm}
+                    >{\raggedright\arraybackslash}p{1.1cm}@{}}
+\toprule
+obligation & proved in & certificate fields & check \\
+\midrule
+\endhead
+$T^2-\Delta U^2=4$, $U$ minimal, $\Delta$ nonsquare, primitive, $\alpha>0$ &
+  Lem.~\ref{lem:automorph} & \texttt{T}, \texttt{U}, \texttt{A,B,C,s}, \texttt{Delta} & C1 \\
+$X_0$ proper automorph; $\det=1$; $Q$-invariant; $\eta\mapsto\lambda\eta$, $\lambda>1$ &
+  Lem.~\ref{lem:automorph} & \texttt{X0} & C2 \\
+$P=X_0^{\,j}\equiv I\!\!\pmod M$; preserves $Q$, classes, $\gcd$; $\eta\mapsto\rho\eta$ &
+  Lem.~\ref{lem:automorph} & \texttt{P}, \texttt{j} & C3 \\
+comparison family admissible, $|Q|\le D$, declared floor lowest &
+  Lem.~\ref{lem:fam} & \texttt{family}, \texttt{D}, \texttt{family\_floor} & C4 \\
+$B_{\mathrm{cut}}$ from \eqref{eq:cut} with the majorant \eqref{eq:maj} &
+  Thm.~\ref{thm:cutoff}, Lem.~\ref{lem:tailbound} &
+  \texttt{Bcut}, \texttt{maxF\_pair}, \texttt{cutoff\_periods}, \texttt{cutoff\_tail\_from} & C5 \\
+$\epsw<\epsbar$; blocker bound non-vacuous; $B_{\mathrm{comp}}\le3B_{\mathrm{cut}}$ &
+  Lem.~\ref{lem:G}, \ref{lem:blocker} &
+  \texttt{eps0\_state}, \texttt{eps0\_num}, \texttt{Bcomp}, \texttt{Bcomp\_uniform} & C6 \\
+$P_3$: no forward tail $\Rightarrow G<0$ and the floor holds &
+  Lem.~\ref{lem:backward}(1) & per-orbit \texttt{case}$=$\texttt{i} & C6b \\
+$P_4$: $Y\le Y^{*}\!\iff\!\varepsilon\ge\epsw$ on $G>0$ &
+  Lem.~\ref{lem:backward}(2) & per-orbit \texttt{case}$=$\texttt{ii}, \texttt{Ystar\_num} & C6b \\
+$L^{*}$ with both witnesses \eqref{eq:witness}; $Y_L$ strictly increasing &
+  Lem.~\ref{lem:cutlevel} & per-orbit \texttt{Lstar}, \texttt{lvl\_eps0} & C6b \\
+$Y^{*}\ge Y_{\min}$ when $BQ>0$ & Lem.~\ref{lem:ymin} & per-orbit \texttt{Ystar\_num},
+  \texttt{Q} & C6b \\
+$T_i=\mathrm{enter}_i+p_{\mathrm{cert}}$ and $T_i>L_i^{*}$ &
+  \S\ref{sec:partition} & per-orbit \texttt{T}, \texttt{Lstar}, \texttt{enter} & C6b \\
+enumeration complete to $B_{\mathrm{comp}}$; imprimitive retained; no PID input &
+  Prop.~\ref{prop:box}, \ref{prop:split}, Lem.~\ref{lem:imprim} &
+  \texttt{box}, \texttt{nclass}, \texttt{orbits}, \texttt{W} & C7 \\
+every ledger row: $\Gamma_d$ sign, right-hand side, both thresholds &
+  Lem.~\ref{lem:epscmp}, \ref{lem:hcmp} & \texttt{ledger} & C8 \\
+$\varepsilon$ decreasing and $H$ increasing along every candidate orbit &
+  Lem.~\ref{lem:epsmono}, \ref{lem:hcmp} & same-orbit $d{=}1$ rows & C8 \\
+$d^{*}$, $p_{\mathrm{noblock}}$, and $p_{\mathrm{cert}}$ dominating both &
+  Lem.~\ref{lem:dstar} & \texttt{d\_star}, \texttt{p\_noblock}, \texttt{p\_cert} & C9 \\
+offset range complete at both ends: $d\le d^{*}$ and $d\ge0$ &
+  Lem.~\ref{lem:dstar}, \ref{lem:lower} & \texttt{ledger} (both orders at $d{=}1$),
+  \texttt{observed\_blocking\_offsets} & C9 \\
+binding-state sufficiency against exhaustive scans & Lem.~\ref{lem:binding} &
+  --- (behavioural) & C9 \\
+$P_6$: tail verdicts unpruned; tails and ties reproduce; ties exact at lower height &
+  Lem.~\ref{lem:epscmp}, \ref{lem:binding} & \texttt{record\_tails}, \texttt{ties} & C10 \\
+exact ordering with a guaranteed exact-comparator fallback & Rem.~\ref{rem:sort} &
+  --- (behavioural) & C5, C12 \\
+the partition is exhaustive and each part's property holds &
+  Prop.~\ref{prop:partition} & all of the above & C13 \\
+$P_1$ complete from \eqref{eq:P1box}, record set recomputed &
+  \S\ref{sec:partition} & \texttt{p1\_records}, \texttt{eps0\_state} & C14(a) \\
+$P_5$ complete: every level $L_i^{*}<L<T_i$ enumerated, set equality &
+  \S\ref{sec:partition}, Rem.~\ref{rem:completeness} & \texttt{initial\_exceptions},
+  \texttt{Lstar}, \texttt{T} & C14(b) \\
+\bottomrule
+\end{longtable}}
+
+One statement of the note is outside the certificate scheme, because it is a single finite
+witness rather than a property of an instance: Proposition~\ref{prop:sail} is verified by
+\texttt{scripts/review6\_sail.py} ($14/14$), which does not read the certificates.
+
+\section{Certificate schema}\label{app:schema}
+
+Each \texttt{certificates/NAME.json} is a flat JSON object. Its fields, grouped by the stage
+that produces them:
+
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{11.3cm}@{}}
+\toprule
+stage & fields \\
+\midrule
+input &
+\texttt{name}, \texttt{A}, \texttt{B}, \texttt{C}, \texttt{s}, \texttt{M}, \texttt{R},
+\texttt{Delta}, \texttt{Dsqfree} \\
+automorph &
+\texttt{T}, \texttt{U}, \texttt{X0}, \texttt{j}, \texttt{P} \\
+family, cutoff &
+\texttt{family}, \texttt{D}, \texttt{family\_floor}, \texttt{Bcut}, \texttt{maxF\_pair},
+\texttt{cutoff\_periods}, \texttt{cutoff\_tail\_from} \\
+comparison state &
+\texttt{eps0\_state}, \texttt{eps0\_num}, \texttt{Bcomp}, \texttt{Bcomp\_uniform},
+\texttt{pruning}, \texttt{blocker\_fallback\_calls}, \texttt{verdict\_calls} \\
+enumeration &
+\texttt{box}, \texttt{nclass}, \texttt{W}, \texttt{window\_covers\_blockers} \\
+per orbit &
+\texttt{rep}, \texttt{Q}, \texttt{gcd}, \texttt{fwd}, \texttt{double}, \texttt{enter},
+\texttt{win\_lo}, \texttt{win\_hi}, \texttt{case}, \texttt{Lstar}, \texttt{Ystar\_num},
+\texttt{lvl\_eps0}, \texttt{T}, \texttt{tail} \\
+levels, ledger &
+\texttt{d\_star}, \texttt{p\_noblock}, \texttt{p\_cert}, \texttt{p\_cert\_binding},
+\texttt{ledger} --- one entry per ordered pair and offset, carrying \texttt{A}, \texttt{B},
+\texttt{d}, \texttt{QA}, \texttt{QB}, \texttt{rhs}, \texttt{Gd\_sign},
+\texttt{eps\_threshold}, \texttt{eps\_verdict}, \texttt{h\_threshold},
+\texttt{h\_verdict} \\
+output &
+\texttt{record\_tails}, \texttt{ties}, \texttt{initial\_exceptions}, \texttt{p1\_states},
+\texttt{p1\_records} \\
+diagnostics &
+\texttt{observed\_binding\_offsets}, \texttt{observed\_binding\_offsets\_Gpos},
+\texttt{observed\_blocking\_offsets} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Exact algebraic quantities that are not integers --- the attained error $\epsw$ and the cutoff
+$Y^{*}$ --- are stored as the four integers (numerator and denominator of each of the two
+rational coordinates over $\sqrt{\texttt{Dsqfree}}$), so a checker reconstructs them without
+rounding.
+
+\end{document}

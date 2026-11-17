@@ -9,3 +9,8 @@
 # Python
 __pycache__/
 *.pyc
+
+# ...but note 3's captured run logs are release artefacts, not build artefacts:
+# they are referenced by general-classification/README.md and docs/RELEASE_MANIFEST.md
+# and covered by general-classification/SHA256SUMS.
+!general-classification/results/*.log

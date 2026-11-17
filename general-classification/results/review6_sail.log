@@ -1,0 +1,25 @@
+==============================================================================
+alpha = 2 + sqrt2  (A,B,C,s) = (1,-4,2,+1),  M = 3,  R = {(1,1)}
+==============================================================================
+  PASS  alpha = 2 + sqrt2   3.4142135624
+  PASS  (7,25) is admissible
+  admissible states of smaller height: 42
+  PASS  there are exactly 42 admissible states of smaller height   42
+  PASS  the best of them is (4,13)   (4, 13)
+  PASS  eps(7,25) < eps(4,13), so (7,25) IS a strict record   eps(7,25) = 0.02250545  <  eps(4,13) = 0.02464110
+  PASS  and it beats EVERY one of the 42, checked individually
+  PASS  the coefficients 3/5, 1/5, 1/5 are positive and sum to 1
+  PASS  (3/5)(1,4) + (1/5)(31,106) + (1/5)(1,7) = (7,25) exactly   (7, 25)
+  PASS  all three vertices are admissible, i.e. (1,1) mod 3 with positive coordinates
+  PASS  all three satisfy k > alpha*m, so they lie in one open cone   (1, 4): k - alpha m = +0.585786, (31, 106): k - alpha m = +0.159380, (1, 7): k - alpha m = +3.585786
+  PASS  and so does (7,25)   k - alpha m = +1.100505
+  PASS  the triangle is nondegenerate   det = 90
+  PASS  (7,25) is therefore STRICTLY INSIDE the triangle: neither a hull vertex nor an edge point of the admissible points of that cone
+
+  classifier context: j = 4, rho = 1154, P = ((-239, 408), (-816, 1393))
+  Q(7,25) = 23 ;  Q(4,13) = -7 ;  Q(1,4) = 2, Q(31,106) = 14, Q(1,7) = 23
+  PASS  recorded for the note
+
+==============================================================================
+review6_sail: 14/14 checks passed, 0 failures
+==============================================================================

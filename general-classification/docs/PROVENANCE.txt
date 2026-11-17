@@ -1,0 +1,80 @@
+SOURCE PROVENANCE — recorded 2026-11-16T22:04:07-05:00
+
+Research folder:  ~/scratch/quadratic-records-general-2026-11-16
+Repository:       innerlightr-wq/two-mode-oscillator-record-chronologies
+  path:               ~/GitHub/two-mode-oscillator-record-chronologies
+  checked-out branch: companion-odd-odd-records at b8f207d3d5ac23f33465327353f1973d36127ca7
+  origin/main:        b8f207d3d5ac23f33465327353f1973d36127ca7
+  local main:         10ea1c62c6866990ded0a85a531883841d38d034   (BEHIND origin/main; not touched)
+  working tree:       0 modified paths   (re-verified)
+
+NOTE ON THE SCRIPTS: the copies in archive/scripts/ differ from the research-folder
+originals in ONE respect only -- absolute paths were replaced by paths relative to the
+script's own location, so the archive runs standalone.  This was verified not to change
+any result: emit.py run inside the archive regenerates all 26 certificates BYTE-IDENTICALLY
+(sha256 compared before and after), and check.py run inside the archive reproduces
+1707/1707 with 0 failures (archive/results/check_archive.log).
+
+review6_sail.py was added after the first freeze; it verifies the counterexample of
+Proposition 2.7 and was run inside the archive (14/14, archive/results/review6_sail.log).
+It reads nothing from certificates/ and writes nothing.
+
+lit_bridge.py was edited after the first freeze in ONE printed check LABEL only: the old
+label said the inclusion of Proposition 2.4 "is an equality for at least one instance",
+which overstated a finite-range observation.  The assertion it guards is unchanged (it only
+ever compared the two sets below an explicit height cap).  The edit was applied to BOTH the
+archive copy and the research-folder original, so the "paths only" statement above still
+holds, and lit_bridge.py was re-run inside the archive (14/14,
+archive/results/lit_bridge.log).
+
+sha256 of every archived file (50 files):
+  968c646c5cbe3e77888d6208ea62364582e23f30a324a0a861a108aa2b894ff8  archive/certificates/3x2mxm1_oddodd_nonmonic.json
+  37c6213860d04e699ccf2e746912472b66476bd61dfbcc1839336af5d275fdd6  archive/certificates/Nplussqrt2_N12_oddodd.json
+  c79dd6876aa79f8decea4133fcf30692af93119e8e4f2f59e050528fa9cec9a6  archive/certificates/Nplussqrt2_N20_oddodd.json
+  c12c69f6e6add707ac5dcb1b925976ac1bdda9b1972693208f20d6feaf73c431  archive/certificates/Nplussqrt2_N2_11mod3.json
+  04056dc3d165a3c628e1d4993cd34231e245e1b47b0b98a38f289b188ea6891b  archive/certificates/Nplussqrt2_N2_oddodd.json
+  4f84f226d14950a2938939c9aed5a61bb1d9fb0c86592c1b75e854fb69e54751  archive/certificates/Nplussqrt2_N2_union_mod4.json
+  ae9f0d19eff93692328ad856a126c235cc60f1fe222e08e11f750f0e4bacf2af  archive/certificates/Nplussqrt2_N3_oddodd.json
+  9fc6954d9a6a23cbb2dbdc65a85b0dfc25b52ef63157e07b0a6ff42fd3856e9c  archive/certificates/Nplussqrt2_N4_oddodd.json
+  30614373aa5ca0044163c7df1afc9c3d9778cfe6bf6b8902585c227c1d9aa65e  archive/certificates/Nplussqrt2_N5_11mod3.json
+  de24c06cb7b3dd80b8c059bb23b9e7fbdefe5f2900e18a8f536dea7ecbc3827b  archive/certificates/Nplussqrt2_N5_union_mod4.json
+  88eea0662164c8b6d535cd70eaf116b674e238ec1258ed5884405642eaddcc35  archive/certificates/Nplussqrt2_N6_oddodd.json
+  101c23bf91bc22f22e2c8cd4c1eaa81f488e5f3284c6588f4934387c378d7c2d  archive/certificates/Nplussqrt2_N8_oddodd.json
+  1448b9ec687add6543792e15a39ce8c5cf8e86281cc309235b0a97b2fa261dd1  archive/certificates/Nplussqrt2_N9_11mod3.json
+  94b2da8af37b9de045e989fa02c3ea9ce4046a6478f85d5ccf1407070bb8e771  archive/certificates/Nplussqrt2_N9_union_mod4.json
+  4423c2998b81ebcbf9404fe9a3dd0f93c72d80623ca610d8a4d7d98f457515fe  archive/certificates/control_1plus_sqrt3.json
+  09975ba2480f43388fc56ac06bb62b8febee1d457bad27b5835d309f8e8b9973  archive/certificates/control_phi.json
+  04ff812f860706cbd8724d509e48a42e561e0aac028c5778dfcf6b2640b7a03a  archive/certificates/control_sqrt3.json
+  8bc16e5f9f2aac5346c217d2d12ac176447c8901dfd5bd6336712dbebda363ab  archive/certificates/half3minussqrt5_oddodd.json
+  81df1ee2cd708fa31bc143d4f8f1d1a51440528283cb7fba4b8c5fd84d047e00  archive/certificates/half3plussqrt5_oddodd.json
+  b4bcc36029698f4ba008b4c03e1c01ae62cd306eb2c526e37099cfa5bb0bf686  archive/certificates/half5plussqrt21_oddodd.json
+  af7c71b61d3be6fc8b61392afebd43a7b5706872de9386c2cfe07cd541675c28  archive/certificates/inv_sqrt2_oddodd_nonmonic.json
+  7dafb31f726333c855a79d6d573716120efccc8b24071b2fa004a5cb13056346  archive/certificates/sqrt2_11mod3.json
+  2b5f3f89f9ced2eaeccf472e11548d84464d7b946b9a98c98a5d1ffb7bfd881a  archive/certificates/sqrt2_oddodd.json
+  97ed4dd6ac03bdae114c034df2808a4e5bdc69976102b69ca659540b35c1c9ec  archive/certificates/sqrt3_union_mod5.json
+  6f9d36a378d3547ec25d14457b367b87ce0d3806331c00f0633a423fe2392247  archive/certificates/sqrt6_11mod3.json
+  ef6b71e3198395afe85eb0a030b6d97c8c224b6af746c1f1278cbc39b26a34ed  archive/certificates/sqrt6_22mod4.json
+  810abc4217fb971600f9144f133fa7c8fab8005a5b21bd0e61c16a4441c3121e  archive/notes/GAPS_AND_COUNTEREXAMPLES.md
+  8933bfe0da04de077f976cece264f8429f4a6f72b01bf31516eecc60155732cd  archive/notes/LITERATURE_MAP.md
+  34dd99ef18010be3d9b32964fdae72fd42a6a8b12ccce4dd533f95cafc4d8bf2  archive/notes/PARTITION_AND_CHECK_MAP.md
+  cd2ee89e5b12faeb909fcc3b38dc3043e5405762843df0965d5704a8d2233ca5  archive/notes/README.md
+  6d1dfb9dcd92db137fc57e7ead182d6f0ecdf5c822ad9f88c10a9edb5b196c8c  archive/notes/THEOREM_AND_PROOF.md
+  bcfff149cd1e144cfbae7953c3289c438b18d8211e7dcc02c456d971172b7541  archive/results/check_archive.log
+  bcfff149cd1e144cfbae7953c3289c438b18d8211e7dcc02c456d971172b7541  archive/results/check_v8.log
+  6e7a9cbb405c678b0edce56f800353899da2799b21e77e42e3da6dba47617cea  archive/results/emit_archive.log
+  dca42c9c8d72a6f26a8635c54fed552a124181aca3038389f128fd0120100422  archive/results/emit_v8.log
+  16a58db2ebf1ace3ec4154308d446613133692e2a0f346e01a8a976f67ced224  archive/results/lit_bridge.log
+  84f45490869112e4fdc2280d2cdbcd70d647ae12ba981e192c54c6a8a44df28e  archive/results/qr_general2.log
+  ecce966105258e3935803c8db075b55bee9d44c8ba36176d91aff47c7ea5db44  archive/results/review3.log
+  c89bed33b1662da3d6ac0823f460995169b7a06f841e3d5097263e6c30a6b6dc  archive/results/review4.log
+  8d8d3ecffaae8ed1476e95f85503f77bc7fa08f600441f852c01519ac1901d6a  archive/results/review5.log
+  9fc10f03781cd12813af90a1d283954a5163cc7ca519b1b129ce97b6bb21db1d  archive/results/review6_sail.log
+  c24d2671b7b81e87721b22aa2cc9c3c12ad02d7e1ac1f36dc8886a7b11f02024  archive/scripts/check.py
+  cf08b7e763c608a30ec3d744a3a419fec1735f2544b32ce10cf201e07e45be60  archive/scripts/emit.py
+  415b626b54fc36178a13c1492101fcb46d46b4648e8c774f34f2fc4fd042b11d  archive/scripts/gq.py
+  7d0118609f7ca47b5a5f163f416e85271f446d86f6ffb9cb859dc339032435c3  archive/scripts/lit_bridge.py
+  0093dc3c8f79dee559738b0f18abeb7ac168fbc2a6414d0a8f0e0d0257b1cc2b  archive/scripts/qr_general.py
+  0e5c2e042aae4d258875647a40eaef0521d347b4e43b01cdb2aaa2335dc4d327  archive/scripts/review3.py
+  dd6a66cf6e8a7d4dbd0f4f9e3d7e34470866b038b91ae24dd25cb00b868b2b3c  archive/scripts/review4.py
+  5155580dc552a1425795a78ee1b8fdf31e48eed8f5b81ef8741980be31629402  archive/scripts/review5.py
+  6145d6aa7738520789f8850352f3646d7bb728c66c738ede4488bd49066db291  archive/scripts/review6_sail.py

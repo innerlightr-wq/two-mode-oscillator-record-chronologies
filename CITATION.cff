@@ -1,19 +1,21 @@
 cff-version: 1.2.0
 message: >-
-  If you use this repository, please cite the note your work relies on; both are listed
+  If you use this repository, please cite the note your work relies on; all three are listed
   under "references" below. Each has a version DOI (the specific deposit) and a concept
   DOI (all versions); cite the version DOI when reproducibility depends on the exact files.
 title: "Record chronologies for odd/odd Diophantine approximation — reproducibility material"
 abstract: >-
-  Exact-arithmetic computations, certificates and data supporting two technical notes on
-  chronological record minima for odd/odd rational approximation of quadratic irrationals.
+  Exact-arithmetic computations, certificates and data supporting three technical notes on
+  chronological record minima for rational approximation of quadratic irrationals under
+  congruence restrictions, from the odd/odd case to an effective classification for arbitrary
+  quadratic slopes and arbitrary residue classes.
 authors:
   - family-names: "De Jesús"
     given-names: "Elias"
     orcid: "https://orcid.org/0009-0007-0190-9143"
 repository-code: "https://github.com/innerlightr-wq/two-mode-oscillator-record-chronologies"
-date-released: 2026-11-08
-version: "congruence-records-v1.0.0"
+date-released: 2026-11-17
+version: "general-classification-v1.0.0"
 license:
   - MIT
   - CC-BY-4.0
@@ -23,6 +25,9 @@ keywords:
   - quadratic irrationals
   - congruence conditions
   - Pell equation
+  - binary quadratic forms
+  - effective classification
+  - mathematical certificates
   - two-mode oscillator spectrum
   - exact arithmetic
 references:
@@ -57,4 +62,20 @@ references:
     identifiers:
       - type: doi
         value: "10.5281/zenodo.24046650"
+        description: "Concept DOI — resolves to the latest version"
+  - type: report
+    title: >-
+      An Effective Classification of Congruence-Restricted Quadratic Relative-Error Records
+    authors:
+      - family-names: "De Jesús"
+        given-names: "Elias"
+        orcid: "https://orcid.org/0009-0007-0190-9143"
+    year: 2026
+    month: 11
+    publisher:
+      name: Zenodo
+    doi: "10.5281/zenodo.24297228"
+    identifiers:
+      - type: doi
+        value: "10.5281/zenodo.24297227"
         description: "Concept DOI — resolves to the latest version"

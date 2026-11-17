@@ -1,0 +1,68 @@
+==============================================================================
+R1.  Lemma 6.2 sign.  Correct form:  eps_B < eps_A  <=>  |Q_A| G_B - |Q_B| G_A > 0
+     i.e.  2 alpha A^2 Gamma > B(|Q_B| Q_A - |Q_A| Q_B)   [RHS opposite to the
+     published display].  Counterexample: alpha = phi, a=(1,1), b=(1,3).
+==============================================================================
+  PASS  defects are Q_a = -1, Q_b = 5   -1, 5
+  PASS  Gamma = |Q_a| eta_b^2 - |Q_b| eta_a^2 = 0 exactly
+  PASS  both G > 0 (so the branch hypothesis holds)
+  PASS  published RHS = -10, corrected RHS = +10   -10, 10
+  PASS  TRUTH: eps_b > eps_a   eps_a = 0.236068, eps_b = 0.299254
+  PASS  the PUBLISHED display predicts eps_b < eps_a -- WRONG
+  PASS  the CORRECTED form predicts eps_b > eps_a -- right
+  PASS  sanity
+  -- effect on the code:
+  PASS  classification: verdicts are computed by Fast.eps_cmp (a direct exact comparison of |xi| H' vs |xi'| H), never via the Gamma/RHS formula
+  PASS  thresholds: certify_tail uses only |Gamma_d| and |rhs|, so the sign convention cannot affect p_cert
+  -- the ledger label IS affected: emit.py records, for Gamma_d = 0,
+     eps_verdict = 'B_beats_A' if -rhs > 0, i.e. if rhs < 0; with the corrected
+     RHS the condition is rhs_correct < 0, i.e. rhs_published > 0 -- INVERTED.
+
+==============================================================================
+R2.  Lemma 6.1 ("eps decreases along every orbit") is FALSE on the G < 0 branch.
+     Counterexample: alpha = (3+sqrt5)/2, P(55,21) = (3,1), both positive.
+==============================================================================
+  PASS  P = ((-3,8),(-8,21)) as stated   ((-3, 8), (-8, 21))
+  PASS  P(55,21) = (3,1)   (3, 1)
+  PASS  both states are positive
+  PASS  eps INCREASES along the step -- Lemma 6.1 fails   eps(55,21) = 0.745442 < eps(3,1) = 0.774116
+     (55, 21): Q = 1, eta = -0.008131, G = -2.999654
+     (3, 1): Q = 1, eta = -0.145898, G = -2.888544
+  PASS  the cause: G < 0 there, so |G| DEcreases as |eta| grows and eps = |Q|sqrt(D)/|G| grows
+  PASS  on the G<0 branch eps >= sqrt(Delta)/|B| (here 0.745356), an explicit positive floor   floor = 0.745356
+  -- effect on the code: verdict() selects the competitor of LARGEST PERIOD
+     below H_B, justified by Lemma 6.1.  On a G<0 branch that is the state of
+     LARGEST eps, so a blocker could in principle be missed.  Mitigation: every
+     G<0 state has eps >= sqrt(Delta)/|B|, so it cannot block a candidate with
+     eps below that floor.  Whether every evaluated candidate satisfied this is
+     tested in R4 below.
+
+==============================================================================
+R3.  Lemma 6.3 exponent: the correct statement is sgn(rho^{2q} U + V), not rho^q.
+     Counterexample: alpha = 2+sqrt2, a0 = (-61,-30), b0 = (-59,-29), q = 1, d = 0.
+==============================================================================
+  PASS  X0 = ((-1,2),(-4,7)) as stated   ((-1, 2), (-4, 7))
+  PASS  X0 a0 = (1,34), X0 b0 = (1,33)   (1, 34), (1, 33)
+  PASS  H_b1 - H_a1 = -1 exactly
+  PASS  both representatives are normalised into [1, lam)   r_a = 5.732973, r_b = 5.561400, lam = 5.828427
+     rho^q U + V   = +525.6061   (published form)
+     rho^2q U + V  = -525.6061   (corrected form)
+  PASS  the published expression is POSITIVE, predicting H_b1 > H_a1 -- WRONG
+  PASS  the corrected expression is NEGATIVE -- right
+  PASS  the published value matches the reported -7196 + 5460 sqrt2   525.6061
+  -- effect on the code: certify_tail tests rho^q |U| > |V| as the threshold.
+     Since rho > 1 and q >= 0, rho^q|U| > |V| implies rho^{2q}|U| > |V|, so the
+     code's threshold is CONSERVATIVE: the q it returns satisfies the correct
+     condition too, hence p_cert remains valid (merely larger than necessary).
+  PASS  so no emitted threshold is too small
+
+==============================================================================
+R4.  Did the G<0 branch ever matter?  For every certificate, every orbit and
+     every evaluated candidate state, test eps_candidate < sqrt(Delta)/|B|
+     (vacuous when B = 0), which rules out every G<0 competitor.
+==============================================================================
+  PASS  every evaluated candidate has eps < sqrt(Delta)/|B|, so no G<0 state could have blocked it   554 candidates tested; violations []
+
+==============================================================================
+review3: 25/25 checks passed, 0 failures
+==============================================================================
